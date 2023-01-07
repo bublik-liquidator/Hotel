@@ -1,11 +1,18 @@
 <div class="container">
     <br>
     <div class="alert alert-success">
-        Характеристики автомобиля:
-        <ul> <img class="autoPhotos" src="{{newCar.path_picturs}}" class="auto" alt="dsffaesgarf">
-            <li>ID автомобиля: <strong>{{newCar.id}}</strong></li>
-            <li>Имя автомобиля: <strong>{{newCar.name}}</strong></li>
-            <li>Скорость: <strong>{{newCar.speed}}</strong> км</li>
+        Характеристики номера:
+        <ul class="Haracteristik"> <img class="autoPhotos" src="{{newCar.path_picturs}}" class="auto" alt="dsffaesgarf">
+            <li>ID номера: <strong>{{newCar.id}}</strong></li>
+            <li>Имя номера: <strong>{{newCar.name}}</strong></li>
+            <li>Вместимость: <strong>{{newCar.speed}}</strong> человек</li>
+            <!-- <li>Удобства: <strong class="imgMini">{{newCar.path_icons}}</strong></li>             -->
+            <li>Удобства: <strong><img  class="imgMini" src="{{newCar.path_icons}}" ></strong></li>  
+           
+            <p>Описание: {{user?.specification}}</p>
+           
+            
+            в масивы у сторожа будет храниться путь а тут(car compon) будет открытие файла по этому пути
         </ul>
     </div>
 

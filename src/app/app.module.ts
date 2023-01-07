@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CarComponent } from './components/car/car.component';
-import { ContactsComponent } from './components/contacts/kontakti.component';
+import { ContactsComponent } from './components/Contacts/kontakti.component';
 import { HeaderComponent } from './components//header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 
@@ -21,7 +21,7 @@ import { SharedService } from './components/SharedService';
 import { PopUpComponent } from './components/pop-up/pop-up.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
-
+import { HttpClientModule }   from '@angular/common/http';
 
 const appRoutes: Routes = [
   {path:'',component:CarComponent},
@@ -51,7 +51,8 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes), // forRoot какие юрд адреса отслеживаем
     MatDialogModule,
-    BrowserAnimationsModule   
+    BrowserAnimationsModule,
+    HttpClientModule
     
     
   ],
