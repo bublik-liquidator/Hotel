@@ -1,0 +1,11 @@
+<body>
+<div>Car name</div>
+<input type="text" placeholder="Название машины" class="form-control" [(ngModel)]="editedCar.name" name="name"><br>
+<div>Car speed</div>
+<input type="text" placeholder="Скорость машины" class="form-control" [(ngModel)]="editedCar.speed"><br>
+<div>Car path_picturs</div>
+<input type="text" placeholder="Фото машины" class="form-control" [(ngModel)]="editedCar.path_picturs"><br>
+<button class="Cancel" (click)="Cancel()">Cancel</button>
+<button class="save" (click)="saveCarsToStorage()">Save</button>
+</body>
+<!-- <button (click)="helloFunction();">Click Me</button> -->

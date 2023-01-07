@@ -1,0 +1,44 @@
+.formRegistration {
+  width: 300px;
+  height: 250px;
+}
+.informationError {
+  color: rgb(85, 103, 192);
+  font-size: 20px;
+  position: absolute;
+}
+.inputPlusLabels {
+  margin-top: 20px;
+}
+button {
+  border-radius: 10px 10px 10px 10px; /*Закругляем уголки*/
+  position: relative;
+  appearance: none;
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  padding: 8px;
+  font-size: 16px;
+}
+.logBtn {
+  margin-left: 0px;
+  background: #3c62e0;
+}
+.regBtn {
+  margin-left: 130px;
+  background: #143295;
+}
+
+.formRegistration {
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  max-width: 100%;
+  padding: 20px;
+  /* то что ниже можно удалить */
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+

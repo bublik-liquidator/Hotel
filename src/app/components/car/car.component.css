@@ -1,0 +1,37 @@
+button {
+    margin-right: 10px;
+    background-color: rgb(102, 102, 175); 
+    border: none;
+    outline: none;   
+}
+button:hover{
+    background-color: rgb(36, 36, 125);    
+
+}
+.btn-sss{
+    margin-bottom:20px;
+}
+.btn-sm{
+    font-size: 0.8em;
+    padding: 5px;
+    line-height: 8px;
+}
+.container{
+    margin-bottom: 50px;
+}
+.auto{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:50%;
+    height:50%;
+}
+.CarName{
+    display:inline-block;
+}
+.autoPhotos{
+    overflow: hidden;
+}
+.stillInfAto{
+    text-align: center;
+}

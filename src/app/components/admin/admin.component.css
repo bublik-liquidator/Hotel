@@ -1,0 +1,233 @@
+@media (max-width: 2000px) and (min-width: 1200px) {
+  table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 17px;
+    border-radius: 10px;
+    border-spacing: 0;
+    text-align: center;
+    margin: auto;
+  }
+  .imgTabel {
+    width: 200px;
+  }
+
+  th:last-child {
+    border-top-right-radius: 10px;
+    border-right: none;
+    width: 40%;
+  }
+  th {
+    background: #75a2b9;
+    color: #014753;
+    text-shadow: 0 1px 1px #ffffff;
+    font-size: 18px;
+  }
+}
+@media (max-width: 1200px) and (min-width: 999px) {
+  table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 13px;
+    border-radius: 10px;
+    border-spacing: 0;
+    text-align: center;
+    margin: auto;
+  }
+  .imgTabel {
+    width: 160px;
+  }
+
+  th:last-child {
+    border-top-right-radius: 10px;
+    border-right: none;
+    width: 20%;
+  }
+  th {
+    background: #75a2b9;
+    color: #014753;
+    text-shadow: 0 1px 1px #ffffff;
+    font-size: 16px;
+  }
+}
+@media (max-width: 999px) and (min-width: 839px) {
+  table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 10px;
+    border-radius: 10px;
+    border-spacing: 0;
+    text-align: center;
+    margin: auto;
+  }
+  .imgTabel {
+    width: 130px;
+  }
+  th:last-child {
+    border-top-right-radius: 10px;
+    border-right: none;
+    width: 10%;
+  }
+  th {
+    background: #75a2b9;
+    color: #014753;
+    text-shadow: 0 1px 1px #ffffff;
+    font-size: 10px;
+  }
+}
+@media (max-width: 839px) and (min-width: 600px) {
+  table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 9px;
+    border-radius: 10px;
+    border-spacing: 0;
+    text-align: center;
+    margin: auto;
+  }
+  .imgTabel {
+    width: 100px;
+  }
+  th:last-child {
+    border-top-right-radius: 10px;
+    border-right: none;
+    width: 10%;
+  }
+  th {
+    background: #75a2b9;
+    color: #014753;
+    text-shadow: 0 1px 1px #ffffff;
+    font-size: 10px;
+  }
+  .thImg{
+    font-size: 2px;
+    width: 10%;
+  }
+}
+@media (max-width: 600px) and (min-width: 400px) {
+  table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 9px;
+    border-radius: 10px;
+    border-spacing: 0;
+    text-align: center;
+    margin: auto;
+  }
+  .imgTabel {
+    width: 90px;
+  }
+  th:last-child {
+    border-top-right-radius: 10px;
+    border-right: none;
+    width: 10%;
+  }
+  th {
+    background: #75a2b9;
+    color: #014753;
+    text-shadow: 0 1px 1px #ffffff;
+    font-size: 10px;
+  }
+  .thImg{
+    font-size: 2px;
+    width: 10%;
+  }
+  button {
+    margin: 10px;
+    font-size: 13px;
+    scale: 0.8;
+    display: inline-block;
+  }
+}
+@media (max-width: 400px) and (min-width: 0px) {
+  table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 9px;
+    border-radius: 10px;
+    border-spacing: 0;
+    text-align: center;
+    margin: auto;
+    width: 10%;
+  }
+  .imgTabel {
+    width: 70px;
+  }
+  th:last-child {
+    border-top-right-radius: 10px;
+    border-right: none;
+    width: 8%;
+  }
+  th {
+    background: #75a2b9;
+    color: #014753;
+    text-shadow: 0 1px 1px #ffffff;
+    font-size: 8px;
+  }
+  .thImg{
+    font-size: 2px;
+    width: 7%;
+  }
+  button {
+    margin: 10px;
+    font-size: 8px;
+    scale: 0.6;
+    display: inline-block;
+  }
+}
+th,
+td {
+  border-style: solid;
+  border-width: 0 1px 1px 0;
+  border-color: white;
+}
+th:first-child,
+td:first-child {
+  text-align: center;
+}
+th:first-child {
+  border-top-left-radius: 10px;
+}
+
+td {
+  padding: 10px 20px;
+  background: #aacfe2; /* background: #f8e391; */
+}
+tr:last-child td:first-child {
+  border-radius: 0 0 0 10px;
+}
+tr:last-child td:last-child {
+  border-radius: 0 0 10px 0;
+}
+tr td:last-child {
+  border-right: none;
+}
+button {
+  margin: 10px;
+  font-size: 17px;
+}
+
+.AddCar {
+  margin: auto;
+  display: block;
+  top: 5px;
+  border-radius: 10px 10px 10px 10px; /*Закругляем уголки*/
+  appearance: none;
+  border: 0;
+  border-radius: 5px;
+  background: #4676d7;
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 16px;
+}
+
+.form-control {
+  margin-top: 15px;
+}
+input {
+  width: 100%;
+}
+
+.centr {
+  margin: auto;
+}
+
+.inputtext {
+  background-color: #f6f6f6; /*Цвет текстового поля*/
+  border-radius: 10px 10px 10px 10px; /*Закругляем уголки*/
+  width: 95%;
+}

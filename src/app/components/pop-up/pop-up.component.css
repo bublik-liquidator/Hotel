@@ -1,0 +1,25 @@
+button{   
+    border-radius: 10px 10px 10px 10px; /*Закругляем уголки*/
+    position: relative; 
+    appearance: none;
+    border: 0;
+    border-radius: 5px;   
+    color: #fff;
+     padding: 20px;
+    font-size: 16px;   
+}
+.save{
+    right: -60px;
+    background: #0ca227;
+}
+.Cancel{
+    background: #a90808;
+}
+body {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+    /* то что ниже можно удалить */
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }

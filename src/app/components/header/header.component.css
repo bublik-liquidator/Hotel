@@ -1,0 +1,218 @@
+@import url("https://fonts.googleapis.com/css2?family=Fascinate&family=Rajdhani:wght@300;400&display=swap");
+
+@media (max-width: 770px) and (min-width: 600px) {
+  .kursachWortt {
+    font-size: 30pt;
+    margin-top: 10px;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: rgb(78, 78, 78);
+    transition: all 1s;
+    font-family: "Fascinate", sans-serif;
+  }
+
+  .kursachWort:hover {
+    color: rgb(27, 35, 42);
+    scale: 1;
+  }
+  .loginBtnn {
+    display: block;
+    padding: 0 20px;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    color: rgb(78, 78, 78);
+    background-color: #e7f3ff;
+    cursor: pointer;
+    user-select: none;
+    appearance: none;
+    touch-action: manipulation;
+    margin-top: -60px;
+    margin-left: 540px;
+  }
+}
+@media (max-width: 800px) and (min-width: 770px) {
+  .kursachWortt {
+    font-size: 30pt;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: rgb(78, 78, 78);
+    transition: all 1s;
+    font-family: "Fascinate", sans-serif;
+    margin-left: 540px;
+  }
+
+  .kursachWort:hover {
+    color: rgb(27, 35, 42);
+    scale: 1;
+  }
+  .loginBtnn {
+    display: block;
+    padding: 0 20px;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    color: rgb(78, 78, 78);
+    background-color: #e7f3ff;
+    cursor: pointer;
+    user-select: none;
+    appearance: none;
+    touch-action: manipulation;
+    margin-left: 100px;
+  }
+}
+@media (max-width: 2000px) and (min-width: 770px) {
+  .kursachWortt {
+    font-size: 30pt;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: rgb(78, 78, 78);
+    transition: all 1s;
+    font-family: "Fascinate", sans-serif;
+    margin-left: 540px;
+  }
+
+  .kursachWort:hover {
+    color: rgb(27, 35, 42);
+    scale: 1;
+  }
+  .loginBtnn {
+    display: block;
+    padding: 0 20px;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    color: rgb(78, 78, 78);
+    background-color: #e7f3ff;
+    cursor: pointer;
+    user-select: none;
+    appearance: none;
+    touch-action: manipulation;
+    margin-left: 400px;
+  }
+}
+
+.infText {
+  position: absolute;
+  font-size: 15px;
+  top: 20px;
+  color: rgb(78, 78, 78);
+}
+.animaite:hover {
+  transform: scale(0.9);
+}
+
+.font-weight-normal {
+  margin-left: auto;
+  margin-right: auto;
+  position: absolut;
+}
+.main {
+  left: 10px;
+  transition: transform 0.25s;
+}
+.contacts {
+  left: 80px;
+  transition: transform 0.25s;
+}
+.admin {
+  left: 160px;
+  transition: transform 0.25s;
+}
+.kursachWort {
+  font-size: 30pt;
+  margin-top: 10px;
+  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  color: rgb(78, 78, 78);
+  transition: all 1s;
+  font-family: "Fascinate", sans-serif;
+}
+.loginBtn {
+  display: block;
+  padding: 0 20px;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  color: rgb(78, 78, 78);
+  background-color: #e7f3ff;
+  cursor: pointer;
+  user-select: none;
+  appearance: none;
+  touch-action: manipulation;
+}
+
+
+
+.kursachWort {
+  font-size: 30pt;
+  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+  text-align: center; 
+  color: rgb(78, 78, 78); 
+  transition: all 1s;
+  font-family: "Fascinate", sans-serif;
+
+}
+
+.kursachWort:hover {
+  color: rgb(27, 35, 42);
+  scale: 1;
+}
+.loginBtn {
+    display: inline-block;	
+    box-sizing: border-box;
+    padding: 0 20px;
+    outline: none;
+    border: none;  
+    border-radius: 6px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    color: rgb(78, 78, 78);     
+    background-color: #e7f3ff;
+    cursor: pointer;
+    user-select: none;
+    appearance: none;
+    touch-action: manipulation;
+  }
+  .loginBtn:focus-visible {
+    box-shadow: 0 0 0 2px #666;
+  }
+  .loginBtn:hover {
+    color: #385898;
+  }
+  .loginBtn:active {
+    transform: scale(0.96);
+  }
+
+.loginBtn:focus-visible {
+  box-shadow: 0 0 0 2px #666;
+}
+.loginBtn:hover {
+  color: #385898;
+}
+.loginBtn:active {
+  transform: scale(0.96);
+}

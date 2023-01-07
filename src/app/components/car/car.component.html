@@ -1,0 +1,20 @@
+<div class="container">
+    <br>
+    <div class="alert alert-success">
+        Характеристики автомобиля:
+        <ul> <img class="autoPhotos" src="{{newCar.path_picturs}}" class="auto" alt="dsffaesgarf">
+            <li>ID автомобиля: <strong>{{newCar.id}}</strong></li>
+            <li>Имя автомобиля: <strong>{{newCar.name}}</strong></li>
+            <li>Скорость: <strong>{{newCar.speed}}</strong> км</li>
+        </ul>
+    </div>
+
+
+    <h5>Выберите автомобиль</h5>
+    <div class="CarName" *ngFor="let car of cars">
+        <button class="btn btn-danger" (click)="carSelect(car.name)">{{car.name}}</button>
+    </div>
+    <br><br>
+
+
+</div>

@@ -1,0 +1,15 @@
+<div class="formRegistration">
+    <div class="informationError">{{informationError}} </div><br>
+        <div class="inputPlusLabels">
+            <div>Login</div>
+            <input [(ngModel)]="user.login" type="text" placeholder="Ваш login" class="form-control" name="name"><br>
+            <div>Password</div>
+            <input [(ngModel)]="user.password" type="text" placeholder="name" placeholder="Ваш password"
+                class="form-control"><br>
+
+            <button class="cancelBtn" (click)="Cancel()">Cancel</button>
+
+            <button class="regBtn" (click)="Registration(user.login,user.password)">Registration</button>
+         </div>
+
+</div>
