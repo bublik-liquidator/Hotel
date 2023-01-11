@@ -1,15 +1,27 @@
-<div class="formRegistration">
-    <div class="informationError">{{informationError}} </div><br>
-        <div class="inputPlusLabels">
-            <div>Login</div>
-            <input [(ngModel)]="user.login" type="text" placeholder="Ваш login" class="form-control" name="name"><br>
-            <div>Password</div>
-            <input [(ngModel)]="user.password" type="text" placeholder="name" placeholder="Ваш password"
-                class="form-control"><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="formRegistration">
+        <div class="informationError">{{informationError}} </div><br>
+            <div class="inputPlusLabels">
+                <div>Login</div>
+                <input [(ngModel)]="user.login" type="text" placeholder="Ваш login" class="form-control" name="name"><br>
+                <div>Password</div>
+                <input [(ngModel)]="user.password" type="text" placeholder="name" placeholder="Ваш password"
+                    class="form-control"><br>
+    
+                <button class="cancelBtn" (click)="Cancel()">Cancel</button>
+    
+                <button class="regBtn" (click)="Registration(user.login,user.password)">Registration</button>
+             </div>
+    
+    </div>
+</body>
+</html>
 
-            <button class="cancelBtn" (click)="Cancel()">Cancel</button>
-
-            <button class="regBtn" (click)="Registration(user.login,user.password)">Registration</button>
-         </div>
-
-</div>

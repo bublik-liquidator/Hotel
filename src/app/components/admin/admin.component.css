@@ -316,3 +316,8 @@ input {
   width: 95%;
 }
 
+.Perenos{
+  display: block;
+    word-wrap :break-word;
+    text-align: center;
+}

@@ -1,10 +1,16 @@
 <body>
-<div>Car name</div>
+<div>Название</div>
 <input type="text" placeholder="Название машины" class="form-control" [(ngModel)]="editedCar.name" name="name"><br>
-<div>Car speed</div>
-<input type="text" placeholder="Скорость машины" class="form-control" [(ngModel)]="editedCar.speed"><br>
-<div>Car path_picturs</div>
-<input type="text" placeholder="Фото машины" class="form-control" [(ngModel)]="editedCar.path_picturs"><br>
+<div>Колличесво людей</div>
+<input type="text" placeholder="Колличесво людей" class="form-control" [(ngModel)]="editedCar.speed"><br>
+<div>Path_picturs</div>
+<input type="text" placeholder="Path_picturs" class="form-control" [(ngModel)]="editedCar.path_picturs"><br>
+<div>Path_icons</div>
+<input type="text" placeholder="Path_icons" class="form-control" [(ngModel)]="editedCar.path_icons"><br>
+<div>Path_json</div>
+<input type="text" placeholder="Path_json" class="form-control" [(ngModel)]="editedCar.path_json"><br>
+<div>Cost</div>
+<input type="text" placeholder="cost" class="form-control" [(ngModel)]="editedCar.cost"><br>
 <button class="Cancel" (click)="Cancel()">Cancel</button>
 <button class="save" (click)="saveCarsToStorage()">Save</button>
 </body>

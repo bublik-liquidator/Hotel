@@ -1,27 +1,46 @@
 <div class="container">
     <br>
-    <div class="alert alert-success">
+    <br><br>
+     <div class="alert alert-success"> <!--alert-success alert-dark -->
         Характеристики номера:
         <ul class="Haracteristik"> <img class="autoPhotos" src="{{newCar.path_picturs}}" class="auto" alt="dsffaesgarf">
             <li>ID номера: <strong>{{newCar.id}}</strong></li>
             <li>Имя номера: <strong>{{newCar.name}}</strong></li>
-            <li>Вместимость: <strong>{{newCar.speed}}</strong> человек</li>
+            <li>Вместимость: <strong>{{newCar.speed}} человек</strong> </li>
             <!-- <li>Удобства: <strong class="imgMini">{{newCar.path_icons}}</strong></li>             -->
-            <li>Удобства: <strong><img  class="imgMini" src="{{newCar.path_icons}}" ></strong></li>  
-           
-            <p>Описание: {{user?.specification}}</p>
-           
-            
-            в масивы у сторожа будет храниться путь а тут(car compon) будет открытие файла по этому пути
+            <li>Удобства: <strong><img class="imgMini" src="{{newCar.path_icons}}"></strong></li>
+            <li>Стоимость: <strong>{{newCar.cost}} $</strong></li>
+            <p>Описание: <strong>{{user?.specification}}</strong></p>
+
+            <div class="toBook">
+            <button class="btn bk" (click)="toBook(newCar)">{{deistveSnomerom}} {{newCar.name}}</button> <!-- <a routerLink="/toBook"></a> -->
+            </div>
         </ul>
     </div>
 
-
-    <h5>Выберите автомобиль</h5>
+<div *ngIf="isEditNomer">
+    <h5>Выберите номер</h5>
     <div class="CarName" *ngFor="let car of cars">
         <button class="btn btn-danger" (click)="carSelect(car.name)">{{car.name}}</button>
     </div>
     <br><br>
+</div>
+    <form *ngIf="isEdit">
+        <div class="alert alert-success"> 
+            <div > <!--alert-success alert-dark -->
+                Выберете дату бронирования:
+                <input type="date" id="start" name="trip-start" [(ngModel)]="today" value="{{today}}" min="{{today}}" max="2023-12-31">
+                <input type="date" id="start2" name="trip-start2" [(ngModel)]="leaveDay" value="{{leaveDay}}" min="{{today}}" max="2023-12-31">
+                <input type="date" placeholder="{{today}}" class="form-control" [(ngModel)]="today"  min="{{today}}" max="2023-12-31"><br>
+                <!-- <input type="date" [(ngModel)]="today"><br> -->
+            </div>
+        </div>
+        <div>
+            <button  class="btn btn-warning btn-sm" (click)="Come(today,leaveDay)">ЗАЕХАТь</button>
+          
+        </div>
+      </form>
+
 
 
 </div>

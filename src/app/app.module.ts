@@ -22,13 +22,15 @@ import { PopUpComponent } from './components/pop-up/pop-up.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { HttpClientModule }   from '@angular/common/http';
+import { BuyComponent } from './components/buy/buy.component';
 
 const appRoutes: Routes = [
   {path:'',component:CarComponent},
   {path:'about',component:ContactsComponent},
   {path:'admin',component:AdminComponent},
   {path:'login',component:LoginComponent},
-  {path:'registration',component:RegistrationComponent}
+  {path:'registration',component:RegistrationComponent},
+  {path:'toBook',component:BuyComponent}
 ]
 
 @NgModule({
@@ -42,7 +44,8 @@ const appRoutes: Routes = [
     AdminComponent,
     PopUpComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    BuyComponent
     
   ],
   imports: [

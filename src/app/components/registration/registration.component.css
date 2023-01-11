@@ -29,5 +29,12 @@ button{
     background: #744f9d;
 }
 
-
+body {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+    /* то что ниже можно удалить */
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
 

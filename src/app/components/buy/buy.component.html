@@ -1,0 +1,22 @@
+<div class="container">
+    <br>
+    <br><br>
+    <div class="alert alert-success"> <!--alert-success alert-dark -->
+        Характеристики номера:
+        <ul class="Haracteristik"> <img class="autoPhotos" src="{{editedCar.path_picturs}}" class="auto"
+                alt="dsffaesgarf">
+            <li>ID номера: <strong>{{editedCar.id}}</strong></li>
+            <li>Имя номера: <strong>{{editedCar.name}}</strong></li>
+            <li>Вместимость: <strong>{{editedCar.speed}} человек</strong> </li>
+            <!-- <li>Удобства: <strong class="imgMini">{{newCar.path_icons}}</strong></li>             -->
+            <li>Удобства: <strong><img class="imgMini" src="{{editedCar.path_icons}}"></strong></li>
+            <li>Стоимость: <strong>{{editedCar.cost}} $</strong></li>
+            <p>Описание: <strong>{{user?.specification}}</strong></p>
+
+            <!-- <div class="toBook">
+             <a routerLink="/toBook"><button class="btn bk" (click)="toBook(newCar)">Забронировать {{newCar.name}}</button></a>
+            </div> -->
+        </ul>
+    </div>
+   
+    

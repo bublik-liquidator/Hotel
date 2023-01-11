@@ -6,6 +6,9 @@ export class CarData {
     public path_picturs: string;
     public path_icons: string;
     public path_json: string;
+    public cost: string;
+    public feedback: string;
+    
     
 
 
@@ -15,7 +18,10 @@ export class CarData {
         to.speed = from.speed;
         to.path_picturs = from.path_picturs;
         to.path_icons = from.path_icons;
-        to.path_json = from.path_json;     
+        to.path_json = from.path_json;
+        to.cost = from.cost;
+        to.feedback = from.feedback;
+
     }
 
 }

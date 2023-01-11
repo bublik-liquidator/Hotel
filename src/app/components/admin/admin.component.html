@@ -6,14 +6,15 @@
 
                 
 <div class="container">
-      <table class="tablica">
+      <table class="tablica" class="Perenos">
         <tr>
             <th height="40">id </th>
             <th>name</th>
-            <th>speed</th>
+            <th>man</th>
             <th >IMG</th>
             <th >Icons</th>
             <th >Json</th>
+            <th >Cost</th>
             <th colspan="2" class="lastTh">button</th>   
         </tr>
         <tr *ngFor="let car of cars">
@@ -41,6 +42,10 @@
                 <div class="tablic">{{car.path_json}}                    
                 </div>
             </td>
+            <td>
+                <div class="tablic">{{car.cost}}                    
+                </div>
+            </td>
             <td class="lastTh" >
                 <button  class="btn btn-warning btn-sm" (click)="EditCar(car)">Edit car</button>
             </td> 
@@ -57,10 +62,11 @@
         <form *ngIf="isEdit">
             <input type="text" placeholder="Название отеля" class="form-control" [(ngModel)]="newCar.name"
                 name="name"><br>
-            <input type="text" placeholder="Колличесво человек" class="form-control" [(ngModel)]="newCar.speed" name="speed"><br>
+            <input type="text" placeholder="Количество человек" class="form-control" [(ngModel)]="newCar.speed" name="speed"><br>
             <input type="text" placeholder="path_picturs" class="form-control" [(ngModel)]="newCar.path_picturs" name="path_picturs"><br> 
             <input type="text" placeholder="path_icons" class="form-control" [(ngModel)]="newCar.path_icons" name="path_icons"><br>
             <input type="text" placeholder="path_json" class="form-control" [(ngModel)]="newCar.path_json" name="path_json"><br>
+            <input type="text" placeholder="cost" class="form-control" [(ngModel)]="newCar.cost" name="cost"><br>
                        <button class="btn btn-warning btn-sm" (click)="AddCar()">Добавить</button>
         </form>
     </div>
