@@ -5,7 +5,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CarComponent } from './components/car/car.component';
 import { ContactsComponent } from './components/Contacts/kontakti.component';
 import { HeaderComponent } from './components//header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -22,21 +21,21 @@ import { PopUpComponent } from './components/pop-up/pop-up.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { HttpClientModule }   from '@angular/common/http';
-import { BuyComponent } from './components/buy/buy.component';
+import { AccountComponent } from './components/account/account.component';
+import { HotelsComponent } from './components/hotels/hotels.component';
 
 const appRoutes: Routes = [
-  {path:'',component:CarComponent},
+  {path:'',component:HotelsComponent},
   {path:'about',component:ContactsComponent},
   {path:'admin',component:AdminComponent},
   {path:'login',component:LoginComponent},
   {path:'registration',component:RegistrationComponent},
-  {path:'toBook',component:BuyComponent}
+  {path:'account',component:AccountComponent}
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    CarComponent,
     ContactsComponent,
     HeaderComponent,
     FooterComponent,
@@ -45,7 +44,8 @@ const appRoutes: Routes = [
     PopUpComponent,
     LoginComponent,
     RegistrationComponent,
-    BuyComponent
+    AccountComponent,
+    HotelsComponent
     
   ],
   imports: [

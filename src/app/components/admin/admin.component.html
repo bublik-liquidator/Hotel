@@ -17,40 +17,40 @@
             <th >Cost</th>
             <th colspan="2" class="lastTh">button</th>   
         </tr>
-        <tr *ngFor="let car of cars">
+        <tr *ngFor="let hotel of hotels">
             <td>
-                <div class="tablic">{{car.id}}                   
+                <div class="tablic">{{hotel.id}}                   
                 </div>
             </td>
             <td>
-                <div >{{car.name}}</div>
-                <!-- <input type="text" placeholder="Название машины" class="form-control" [(ngModel)]="car.name" name="name"
-                    (ngModelChange)="saveCarsToStorage()"><br> -->
+                <div >{{hotel.name}}</div>
+                <!-- <input type="text" placeholder="Название машины" class="form-control" [(ngModel)]="hotel.name" name="name"
+                    (ngModelChange)="savehotelsToStorage()"><br> -->
             </td>
             <td>
-                <div class="tablic">{{car.speed}}                    
+                <div class="tablic">{{hotel.speed}}                    
                 </div>
             </td>
             <td>
-                <div class="tablic" class="thImg"><img class="imgTabel"  src= {{car.path_picturs}} > {{car.path_picturs}}</div> 
+                <div class="tablic" class="thImg"><img class="imgTabel"  src= {{hotel.path_picturs}} > {{hotel.path_picturs}}</div> 
             </td>
             <td>
-                <div class="tablic">{{car.path_icons}}                    
+                <div class="tablic">{{hotel.path_icons}}                    
                 </div>
             </td>
             <td>
-                <div class="tablic">{{car.path_json}}                    
+                <div class="tablic">{{hotel.path_json}}                    
                 </div>
             </td>
             <td>
-                <div class="tablic">{{car.cost}}                    
+                <div class="tablic">{{hotel.cost}}                    
                 </div>
             </td>
             <td class="lastTh" >
-                <button  class="btn btn-warning btn-sm" (click)="EditCar(car)">Edit car</button>
+                <button  class="btn btn-warning btn-sm" (click)="Edithotel(hotel)">Edit hotel</button>
             </td> 
             <td class="lastTh">
-                <button class="btn btn-sm btn-danger"   (click)="deleteCar(car.id)">Del car</button>
+                <button class="btn btn-sm btn-danger"   (click)="deletehotel(hotel.id)">Del hotel</button>
             </td>
         </tr>
     </table>
@@ -58,16 +58,16 @@
     <br>
 
     <div class="centr">
-        <button class="AddCar"   (click)="AddButtonCar()">Хочу добавить новый номер</button>
+        <button class="Addhotel"   (click)="AddButtonhotel()">Хочу добавить новый номер</button>
         <form *ngIf="isEdit">
-            <input type="text" placeholder="Название отеля" class="form-control" [(ngModel)]="newCar.name"
+            <input type="text" placeholder="Название отеля" class="form-control" [(ngModel)]="newHotel.name"
                 name="name"><br>
-            <input type="text" placeholder="Количество человек" class="form-control" [(ngModel)]="newCar.speed" name="speed"><br>
-            <input type="text" placeholder="path_picturs" class="form-control" [(ngModel)]="newCar.path_picturs" name="path_picturs"><br> 
-            <input type="text" placeholder="path_icons" class="form-control" [(ngModel)]="newCar.path_icons" name="path_icons"><br>
-            <input type="text" placeholder="path_json" class="form-control" [(ngModel)]="newCar.path_json" name="path_json"><br>
-            <input type="text" placeholder="cost" class="form-control" [(ngModel)]="newCar.cost" name="cost"><br>
-                       <button class="btn btn-warning btn-sm" (click)="AddCar()">Добавить</button>
+            <input type="text" placeholder="Количество человек" class="form-control" [(ngModel)]="newHotel.speed" name="speed"><br>
+            <input type="text" placeholder="path_picturs" class="form-control" [(ngModel)]="newHotel.path_picturs" name="path_picturs"><br> 
+            <input type="text" placeholder="path_icons" class="form-control" [(ngModel)]="newHotel.path_icons" name="path_icons"><br>
+            <input type="text" placeholder="path_json" class="form-control" [(ngModel)]="newHotel.path_json" name="path_json"><br>
+            <input type="text" placeholder="cost" class="form-control" [(ngModel)]="newHotel.cost" name="cost"><br>
+                       <button class="btn btn-warning btn-sm" (click)="Addhotel()">Добавить</button>
         </form>
     </div>
 </div>

@@ -1,79 +1,82 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
-import { CarData } from './car-data';
+import { HotelData } from './hotel-data';
 
 @Injectable()
 export class SharedService {
-  car = new CarData();
-  cars: CarData[] = [];
-  editedCar = new CarData(); 
-  
-  initCar(car: CarData) {
-    this.car = car;
+  hotel = new HotelData();
+  hotels: HotelData[] = [];
+  editedHotel = new HotelData();
+
+  inithotel(hotel: HotelData) {
+    this.hotel = hotel;
   }
-  getCar(): CarData {
-    return this.car;
+  gethotel(): HotelData {
+    return this.hotel;
   }
-  editCar(car: CarData) {
-    CarData.copyFieldsValuesTo(car, this.car);
+  edithotel(hotel: HotelData) {
+    HotelData.copyFieldsValuesTo(hotel, this.hotel);
   }
 
   getAll() {
-    this.cars = JSON.parse(localStorage.getItem('cars') || '[]');
-    return this.cars;
+    this.hotels = JSON.parse(localStorage.getItem('hotels') || '[]');
+    return this.hotels;
   }
   getById(id: string) {
-    if (localStorage.getItem('cars') !== null) {
+    if (localStorage.getItem('hotels') !== null) {
       this.getAll();
-      // this.getAll().find(this.car -> this.car.id == id);
-      // this.NewCar = this.cars.find(({ id }) => id === id);]
+      // this.getAll().find(this.hotel -> this.hotel.id == id);
+      // this.newHotel = this.hotels.find(({ id }) => id === id);]
       console.log('ALLL ' + this.getAll().find(({ id }) => id === id));
       return this.getAll().find(({ id }) => id === id);
     }
     return 0;
   }
-  create(Car: CarData) {
+  create(hotel: HotelData) {
     //сделать проверку на существующий IDn
-    Car.id = Math.floor(Math.random() * 100).toString();
-    if (this.cars.find(({ id }) => id === Car.id)){
-      while(this.cars.find(({ id }) => id === Car.id)){
-      Car.id = String(+Math.floor(Math.random() * 100).toString()+ +Math.floor(Math.random() * 100).toString()); 
-      }        
-    }   
+    hotel.id = Math.floor(Math.random() * 100).toString();
+    if (this.hotels.find(({ id }) => id === hotel.id)) {
+      while (this.hotels.find(({ id }) => id === hotel.id)) {
+        hotel.id = String(+Math.floor(Math.random() * 100).toString() + +Math.floor(Math.random() * 100).toString());
+      }
+    }
 
-    if(+Car.speed <=0||+Car.speed >400||Car.speed==null|| /[qwertyuiopasdfghjklzxcvbnm]/.test(Car.speed)||/[йцукенгшщзхъфывапролджэячсмитьбю]/.test(this.editedCar.speed)||Car.name==null||Car.path_picturs==null){
+    if (+hotel.speed <= 0 || +hotel.speed > 400 || hotel.speed == null || /[qwertyuiopasdfghjklzxcvbnm]/.test(hotel.speed) || /[йцукенгшщзхъфывапролджэячсмитьбю]/.test(this.editedHotel.speed) || hotel.name == null || hotel.path_picturs == null) {
       alert("Некоректный ввод данны");
       return 0;
-     } 
-    else{
-    this.cars.push(Car);
-    console.log('new car saved' + Car);
-    this.save();
-    return Car;
     }
-    
-    
+    else {
+      this.hotels.push(hotel);
+      console.log('new hotel saved' + hotel);
+      this.save();
+      return hotel;
+    }
+
+
   }
   save() {
-    localStorage.setItem('cars', JSON.stringify(this.cars));
+    localStorage.setItem('hotels', JSON.stringify(this.hotels));
   }
-  // checkKorictDanni(Car:CarData){
-  //   if(+Car.speed <=0||+Car.speed >400||Car.speed==null||Car.name==null||Car.path_picturs==null){
+  // checkKorictDanni(hotel:HotelData){
+  //   if(+hotel.speed <=0||+hotel.speed >400||hotel.speed==null||hotel.name==null||hotel.path_picturs==null){
   //     alert("Некоректный ввод данны");
   //     return 0;
   //    } 
   //    else return 
   // }
 
- 
-  // update(car: CarData) {
-  //   localStorage.setItem('cars', JSON.stringify(this.cars));
+
+  // update(hotel: HotelData) {
+  //   localStorage.setItem('hotels', JSON.stringify(this.hotels));
   // не понял что сюда пихать 
   // есть метод Cancel и Save в pop-up component, их?
   // }
   delete(id: string) {
-    this.cars = this.cars.filter((obj) => obj.id != id);
-    console.log('deleted car with id=' + id);
+    this.hotels = this.hotels.filter((obj) => obj.id != id);
+    console.log('deleted hotel with id=' + id);
     this.save();
+  }
+  session(sesiy: any){
+    localStorage.setItem('session', JSON.stringify(sesiy));
   }
 }

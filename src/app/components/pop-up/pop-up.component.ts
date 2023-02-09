@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog, matDialogAnimations } from '@angular/material/dialog';
-import { CarData } from '../car-data';
+import { HotelData } from '../hotel-data';
 import { SharedService } from '../SharedService';
 // FormsModule
 @Component({
@@ -12,35 +12,35 @@ export class PopUpComponent {
   constructor(private sharedService: SharedService, public matdialog:MatDialog) {}
   
   ngOnInit(): void {
-    this.car = this.sharedService.getCar();
-    CarData.copyFieldsValuesTo(this.car, this.editedCar);
+    this.hotel = this.sharedService.gethotel();
+    HotelData.copyFieldsValuesTo(this.hotel, this.editedHotel);
   }
 
-  car = new CarData(); // оригинальная машина
-  editedCar = new CarData(); // это редактируем
+  hotel = new HotelData(); // оригинальная машина
+  editedHotel = new HotelData(); // это редактируем
 
 
-  saveCarsToStorage() {
-    if(+this.editedCar.speed <=0||+this.editedCar.speed >400||/[qwertyuiopasdfghjklzxcvbnm]/.test(this.editedCar.speed)||/[йцукенгшщзхъфывапролджэячсмитьбю]/.test(this.editedCar.speed)||this.editedCar.speed==null||this.editedCar.name==null||this.editedCar.path_picturs==null){
+  savehotelsToStorage() {
+    if(+this.editedHotel.speed <=0||+this.editedHotel.speed >400||/[qwertyuiopasdfghjklzxcvbnm]/.test(this.editedHotel.speed)||/[йцукенгшщзхъфывапролджэячсмитьбю]/.test(this.editedHotel.speed)||this.editedHotel.speed==null||this.editedHotel.name==null||this.editedHotel.path_picturs==null){
       alert("Некоректный ввод данны");
       return 0;
      } 
      else{
-    console.log(this.car instanceof CarData);
-    CarData.copyFieldsValuesTo(this.editedCar, this.car);
-    this.sharedService.initCar(this.editedCar);
-    console.log('edited:' + this.editedCar.name);
+    console.log(this.hotel instanceof HotelData);
+    HotelData.copyFieldsValuesTo(this.editedHotel, this.hotel);
+    this.sharedService.inithotel(this.editedHotel);
+    console.log('edited:' + this.editedHotel.name);
     this.sharedService.save();
     this.matdialog.closeAll();
     return true;
     }
   }
   Cancel() {    
-    this.editedCar.name = this.car.name;
-    this.editedCar.speed = this.car.speed;
-    this.editedCar.path_picturs = this.car.path_picturs;
+    this.editedHotel.name = this.hotel.name;
+    this.editedHotel.speed = this.hotel.speed;
+    this.editedHotel.path_picturs = this.hotel.path_picturs;
     this.matdialog.closeAll();
-    //!this.editedCar= this.car;
+    //!this.editedHotel= this.hotel;
   }
 
 }

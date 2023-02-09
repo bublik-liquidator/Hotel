@@ -1,6 +1,6 @@
 
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { CarData } from '../car-data';
+import { HotelData } from '../hotel-data';
 import { MatDialog } from '@angular/material/dialog';
 import { PopUpComponent } from '../pop-up/pop-up.component';
 import { SharedService } from '../SharedService';
@@ -11,57 +11,57 @@ import { SharedService } from '../SharedService';
   styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent implements OnInit {
-  cars: CarData[] = [];
-  newCar = new CarData(); 
+  hotels: HotelData[] = [];
+  newHotel = new HotelData(); 
   isEdit: boolean = false;
   constructor(private matdialog:MatDialog,private sharedService: SharedService) {    
   }
 
   
-  EditCar(car:CarData){
+  Edithotel(hotel:HotelData){
     this.matdialog.open(PopUpComponent);
-    this.sharedService.initCar(car);
+    this.sharedService.inithotel(hotel);
   }
   
   ngOnInit(): void {
-    // this.initCars();
-    this.cars = this.sharedService.getAll();
+    // this.inithotels();
+    this.hotels = this.sharedService.getAll();
   }
 
-  // initCars() {
-  //   this.cars = JSON.parse(localStorage.getItem('cars') || '[]');
+  // inithotels() {
+  //   this.hotels = JSON.parse(localStorage.getItem('hotels') || '[]');
   // }
 
 
-  AddButtonCar() {
+  AddButtonhotel() {
     this.isEdit = !this.isEdit;
   }
 
-  AddCar() {
-    this.addNewCar(this.newCar);
+  Addhotel() {
+    this.addnewHotel(this.newHotel);
   } 
   
-   deleteCar(id: string) {
+   deletehotel(id: string) {
     this.sharedService.delete(id);
-    this.cars = this.sharedService.getAll();
+    this.hotels = this.sharedService.getAll();
     // console.log(id+" ID");
-  //   this.cars = this.cars.filter((obj) => obj.id != id);
-  //   console.log('deleted car with id=' + id);
-  //   this.saveCarsToStorage();
+  //   this.hotels = this.hotels.filter((obj) => obj.id != id);
+  //   console.log('deleted hotel with id=' + id);
+  //   this.savehotelsToStorage();
   }
 
-  saveCarsToStorage() {
-    localStorage.setItem('cars', JSON.stringify(this.cars));
+  savehotelsToStorage() {
+    localStorage.setItem('hotels', JSON.stringify(this.hotels));
   }
 
-  addNewCar(car: CarData) {
-    this.sharedService.create(car);
-    this.newCar = new CarData();
-    // car.id = Math.floor(Math.random() * 100).toString();
-    // this.cars.push(car);
-    // console.log('new car saved');
-    // this.newCar = new CarData();
-    // this.saveCarsToStorage();
+  addnewHotel(hotel: HotelData) {
+    this.sharedService.create(hotel);
+    this.newHotel = new HotelData();
+    // hotel.id = Math.floor(Math.random() * 100).toString();
+    // this.hotels.push(hotel);
+    // console.log('new hotel saved');
+    // this.newHotel = new HotelData();
+    // this.savehotelsToStorage();
   }
 
 }

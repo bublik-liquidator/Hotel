@@ -1,0 +1,30 @@
+<div class="container">
+    <br>
+    <br><br>
+    <div class="alert alert-success"> <!--alert-success alert-dark -->
+        Характеристики пользователя {{session}}: 
+        <div> {{Activleuser.name}}</div>
+        <div> {{Activleuser.birthday}}</div>
+        <div> {{Activleuser.email}}</div>
+        <div> {{Activleuser.many}}</div>
+        <div> {{Activleuser.phoneNomber}}</div>
+        <img class="imgTabel"  src= {{Activleuser.photo}} > {{Activleuser.photo}}
+       
+       
+
+        <!-- <ul class="Haracteristik"> <img class="autoPhotos" src="{{newHotel.path_picturs}}" class="auto" alt="dsffaesgarf"> -->
+            <!-- <li>ID номера: <strong>{{newHotel.id}}</strong></li> -->
+        <!-- </ul> -->
+    </div>
+    <button class="IdetInfo"   (click)="EditButtonInfo()">Хочу изменить информацию</button>
+    <form *ngIf="isEdit">
+    <body>
+        <div>Имя</div>
+        <input type="text" placeholder="Имя" class="form-control" [(ngModel)]="Activleuser.name" name="name"><br>
+        <div>Ваш день рождения</div>
+        <input type="text" placeholder="Днюха" class="form-control" [(ngModel)]="Activleuser.birthday"  name="birthday"><br>
+<!--           
+        <button class="Cancel" (click)="Cancel()">Cancel</button>
+        <button class="save" (click)="savehotelsToStorage()">Save</button> -->
+        </body>   
+         </form>

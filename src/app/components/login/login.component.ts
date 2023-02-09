@@ -27,8 +27,11 @@ export class LoginComponent implements OnInit {
     console.log(this.users.find(({ login }) => login === userLogin));
     if (this.users.find(({ login }) => login === userLogin)) {
       if (this.users.find(({ password }) => password === userPassword)) {
-        this._router.navigate(['/admin']);
+        this._router.navigate(['/account']);
+        this.sharedService.session(userLogin);
         this.matdialog.closeAll();
+         
+
       }
     }
 
