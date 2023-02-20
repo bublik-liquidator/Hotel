@@ -5,9 +5,12 @@
       <a class="p-2 main infText animaite" routerLink="/" >Главная</a>
       <a class="p-2 contacts infText animaite" routerLink="/about">Контакты</a>
       <a class="p-2 admin infText animaite" routerLink="/admin">АДМИНИТЬ</a>
-    </nav>
-      <button class="loginBtn" (click)="loginBtn()">Вход</button>
+   
+      <a  *ngIf="isEdit" class="p-2 acount infText animaite" routerLink="/account">Мой аккаунт</a>
 
+    </nav>
+      <button class="loginBtn" (click)="loginBtn()">{{buttonInfo}}</button>
+ 
 
     
     <!-- <a class="btn btn-outline-primary vhod" href="#">Войти</a> -->

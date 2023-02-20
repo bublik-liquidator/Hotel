@@ -23,6 +23,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { HttpClientModule }   from '@angular/common/http';
 import { AccountComponent } from './components/account/account.component';
 import { HotelsComponent } from './components/hotels/hotels.component';
+import { SharedServiceUsers } from './components/SharedServiceUsers';
 
 const appRoutes: Routes = [
   {path:'',component:HotelsComponent},
@@ -59,7 +60,7 @@ const appRoutes: Routes = [
     
     
   ],
-  providers: [CookieService,SharedService],
+  providers: [CookieService,SharedService,SharedServiceUsers,HeaderComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

@@ -21,7 +21,7 @@ export class PopUpComponent {
 
 
   savehotelsToStorage() {
-    if(+this.editedHotel.speed <=0||+this.editedHotel.speed >400||/[qwertyuiopasdfghjklzxcvbnm]/.test(this.editedHotel.speed)||/[йцукенгшщзхъфывапролджэячсмитьбю]/.test(this.editedHotel.speed)||this.editedHotel.speed==null||this.editedHotel.name==null||this.editedHotel.path_picturs==null){
+    if(+this.editedHotel.people <=0||+this.editedHotel.people >400||/[qwertyuiopasdfghjklzxcvbnm]/.test(this.editedHotel.people)||/[йцукенгшщзхъфывапролджэячсмитьбю]/.test(this.editedHotel.people)||this.editedHotel.people==null||this.editedHotel.name==null||this.editedHotel.path_picturs==null){
       alert("Некоректный ввод данны");
       return 0;
      } 
@@ -37,7 +37,7 @@ export class PopUpComponent {
   }
   Cancel() {    
     this.editedHotel.name = this.hotel.name;
-    this.editedHotel.speed = this.hotel.speed;
+    this.editedHotel.people = this.hotel.people;
     this.editedHotel.path_picturs = this.hotel.path_picturs;
     this.matdialog.closeAll();
     //!this.editedHotel= this.hotel;

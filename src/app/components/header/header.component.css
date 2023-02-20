@@ -216,3 +216,11 @@
 .loginBtn:active {
   transform: scale(0.96);
 }
+
+
+
+
+.acount{
+  left: 250px;
+  transition: transform 0.25s;
+}

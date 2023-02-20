@@ -36,8 +36,8 @@ export class HotelsComponent implements OnInit {
       this.newHotel = this.hotels[i];
     }
 
-    this.http.get(this.path_json_with_opisaniem).subscribe({ next: (data: any) => this.user = new User(data.specification) });
-    console.log(this.path_json_with_opisaniem);
+    //this.http.get(this.path_json_with_opisaniem).subscribe({ next: (data: any) => this.user = new User(data.specification) });
+    //console.log(this.path_json_with_opisaniem);
 
   }
 
@@ -46,7 +46,7 @@ export class HotelsComponent implements OnInit {
       if (hotelName == this.hotels[i].name) {
         this.newHotel = this.hotels[i];
 
-        this.http.get(this.newHotel.path_json).subscribe({ next: (data: any) => this.user = new User(data.specification) });
+       // this.http.get(this.newHotel.path_json).subscribe({ next: (data: any) => this.user = new User(data.specification) });
 
       }
     }
@@ -72,6 +72,7 @@ export class HotelsComponent implements OnInit {
     console.log(this.today + this.leaveDay);
     console.log(typeof this.today);
     console.log(typeof this.leaveDay);
+    //if(user)
   }
 
 

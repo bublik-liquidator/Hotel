@@ -2,14 +2,16 @@
     <br>
     <br><br>
     <div class="alert alert-success"> <!--alert-success alert-dark -->
-        Характеристики пользователя {{session}}: 
-        <div> {{Activleuser.name}}</div>
-        <div> {{Activleuser.birthday}}</div>
-        <div> {{Activleuser.email}}</div>
-        <div> {{Activleuser.many}}</div>
-        <div> {{Activleuser.phoneNomber}}</div>
-        <img class="imgTabel"  src= {{Activleuser.photo}} > {{Activleuser.photo}}
+        Характеристики пользователя {{user.login}}: 
+        <div position>  <img class="photoUser"  src= {{user.photo}} > </div>
        
+        <div  class="pading">Имя: {{user.name}}</div>
+        <div  class="pading">День рождения: {{user.birthday}}</div>
+        <div  class="pading">Почта: {{user.email}}</div>
+        <div  class="pading">Деньги: {{user.many}}</div>
+        <div  class="pading">Номер телефона: {{user.phoneNomber}}</div>
+        
+        
        
 
         <!-- <ul class="Haracteristik"> <img class="autoPhotos" src="{{newHotel.path_picturs}}" class="auto" alt="dsffaesgarf"> -->
@@ -20,10 +22,21 @@
     <form *ngIf="isEdit">
     <body>
         <div>Имя</div>
-        <input type="text" placeholder="Имя" class="form-control" [(ngModel)]="Activleuser.name" name="name"><br>
+        <input type="text" placeholder="Имя" class="form-control" [(ngModel)]="user.name" name="name"><br>
         <div>Ваш день рождения</div>
-        <input type="text" placeholder="Днюха" class="form-control" [(ngModel)]="Activleuser.birthday"  name="birthday"><br>
-<!--           
+        <input type="text" placeholder="день рождения" class="form-control" [(ngModel)]="user.birthday"  name="birthday"><br>
+        <div>Ваша почта</div>
+        <input type="text" placeholder="Почта" class="form-control" [(ngModel)]="user.email"  name="email"><br>
+        <div>Доступные фингансы</div>
+        <input type="text" placeholder="Деньги" class="form-control" [(ngModel)]="user.many"  name="many"><br>
+        <div>Ваш номер телефона</div>
+        <input type="text" placeholder="Телефон" class="form-control" [(ngModel)]="user.phoneNomber"  name="phoneNomber"><br>
+        <div>Ваше фото</div>
+        <input type="text" placeholder="Фото" class="form-control" [(ngModel)]="user.photo"  name="photo"><br>
+        <button class="btn btn-warning " (click)="Save()">Сохранить</button>
+
+
+        <!--           
         <button class="Cancel" (click)="Cancel()">Cancel</button>
         <button class="save" (click)="savehotelsToStorage()">Save</button> -->
         </body>   

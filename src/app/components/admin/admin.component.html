@@ -28,7 +28,7 @@
                     (ngModelChange)="savehotelsToStorage()"><br> -->
             </td>
             <td>
-                <div class="tablic">{{hotel.speed}}                    
+                <div class="tablic">{{hotel.people}}                    
                 </div>
             </td>
             <td>
@@ -62,7 +62,7 @@
         <form *ngIf="isEdit">
             <input type="text" placeholder="Название отеля" class="form-control" [(ngModel)]="newHotel.name"
                 name="name"><br>
-            <input type="text" placeholder="Количество человек" class="form-control" [(ngModel)]="newHotel.speed" name="speed"><br>
+            <input type="text" placeholder="Количество человек" class="form-control" [(ngModel)]="newHotel.people" name="people"><br>
             <input type="text" placeholder="path_picturs" class="form-control" [(ngModel)]="newHotel.path_picturs" name="path_picturs"><br> 
             <input type="text" placeholder="path_icons" class="form-control" [(ngModel)]="newHotel.path_icons" name="path_icons"><br>
             <input type="text" placeholder="path_json" class="form-control" [(ngModel)]="newHotel.path_json" name="path_json"><br>

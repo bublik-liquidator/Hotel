@@ -41,7 +41,7 @@ export class SharedService {
       }
     }
 
-    if (+hotel.speed <= 0 || +hotel.speed > 400 || hotel.speed == null || /[qwertyuiopasdfghjklzxcvbnm]/.test(hotel.speed) || /[йцукенгшщзхъфывапролджэячсмитьбю]/.test(this.editedHotel.speed) || hotel.name == null || hotel.path_picturs == null) {
+    if (+hotel.people <= 0 || +hotel.people > 400 || hotel.people == null || /[qwertyuiopasdfghjklzxcvbnm]/.test(hotel.people) || /[йцукенгшщзхъфывапролджэячсмитьбю]/.test(this.editedHotel.people) || hotel.name == null || hotel.path_picturs == null) {
       alert("Некоректный ввод данны");
       return 0;
     }

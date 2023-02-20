@@ -1,47 +1,65 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { SharedService } from '../SharedService';
+import { SharedServiceUsers } from '../SharedServiceUsers';
 import { UsersData } from '../users-data';
 import { Router } from '@angular/router';
 import { RegistrationComponent } from '../registration/registration.component';
+import { HeaderComponent } from '../header/header.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private sharedService: SharedService,public matdialog: MatDialog,private _router: Router
-  ) {}
+  constructor(private sharedService: SharedServiceUsers, private header: HeaderComponent, public matdialog: MatDialog, private _router: Router
+  ) { }
 
   informationError: string = 'Войдите в систему, пожалуйста)';
-  user = new UsersData();
+  userr = new UsersData();
   users: UsersData[] = [];
 
   ngOnInit(): void {
-    this.user.login="";
-    this.user.password="";
+    // this.users = this.sharedService.getAll();
+    this.userr.login = "";
+    this.userr.password = "";
+    this.users = JSON.parse(localStorage.getItem('users') || '[]');
+    //this.sharedService.initChekButton(this.isEdit);
+
   }
 
-  Loginnn(userLogin: string, userPassword: string) {
-    this.users = JSON.parse(localStorage.getItem('users') || '[]');
-    console.log(this.users.find(({ login }) => login === userLogin));
-    if (this.users.find(({ login }) => login === userLogin)) {
-      if (this.users.find(({ password }) => password === userPassword)) {
-        this._router.navigate(['/account']);
-        this.sharedService.session(userLogin);
+  Loginnn(user: UsersData) {
+
+    //this.log = this.users[0].login
+    console.log(this.users.find(({ login }) => login == user.login));
+    if (this.users.find(({ login }) => login === user.login)) {
+      if (this.users.find(({ password }) => password === user.password)) {
+        //this.sharedService.session(userLogin);       
+        user = this.users.find(({ login }) => login === user.login)!;
+
+        // this.user1 = this.SharedServiceUser.getByName(userLogin);
+        //this.sharedService.inituser(this.userse);
+
+
+
+        this.header.ChekButton();
+       
+        //localStorage.setItem('activnast', JSON.stringify(this.user.login));
+
+        this.sharedService.inituser(user);
         this.matdialog.closeAll();
-         
+        //this._router.navigate(['/account']);
+
 
       }
     }
 
-    if ((userPassword == '' && userLogin == '') ||  (userPassword != '' && userLogin != '')) {
+    if ((user.password == '' && user.login == '') || (user.password != '' && user.login != '')) {
       this.informationError = 'Некорректный Password и Login';
     }
-    if (userLogin == '' && userPassword != '') {
+    if (user.login == '' && user.password != '') {
       this.informationError = 'Некорректный Login';
     }
-    if (userPassword == '' && userLogin != '') {
+    if (user.password == '' && user.login != '') {
       this.informationError = 'Некорректный Password';
     }
   }

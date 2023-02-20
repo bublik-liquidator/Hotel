@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { UserInfo } from '../userInfo';
-import { SharedService } from '../SharedService';
+import { SharedServiceUsers } from '../SharedServiceUsers';
+import { UsersData } from '../users-data';
+
 import { User } from '../user/user';
 
 @Component({
@@ -11,24 +13,23 @@ import { User } from '../user/user';
 })
 export class AccountComponent {
 
-  constructor(private http: HttpClient, private sharedService: SharedService) { }
+  constructor(private http: HttpClient, private sharedService: SharedServiceUsers) { }
 
-  user: User;
-  session: string;
-  test:string;
-  Activleuser = new UserInfo(); 
-
+  // user: User;
+  // session: string;
+  // test:string;
+  // Activleuser = new UserInfo(); 
+  user = new UsersData(); // оригинальная пользователь
+  users: UsersData[] = [];
+  editedUser = new UsersData(); // это редактируем
+  
   isEdit: boolean = false;
 
   ngOnInit() {
-    this.Activleuser.name="kekk";
-    this.Activleuser.birthday="10.11.23";
-    this.Activleuser.email="asdkdd@mail.ru";
-    this.Activleuser.many="500$";
-    this.Activleuser.phoneNomber="+3745156656";
-    this.Activleuser.photo="/path pohot";
-    this.session = JSON.parse(localStorage.getItem('session') || '[]');
-    //this.Activleuser = JSON.parse(localStorage.getItem('Activleuser') || '[]');
+ 
+    this.user = this.sharedService.getuser();
+    this.users = JSON.parse(localStorage.getItem('users') || '[]');
+   
   
 
   }
@@ -36,7 +37,19 @@ export class AccountComponent {
     this.isEdit = !this.isEdit;
   }
 
+  Save(){
+   // localStorage.setItem('0', JSON.stringify(this.Activleuser)); 
+ 
+   this.users = this.users.filter((obj) => this.user.login != this.user.login);
+   localStorage.setItem('users', JSON.stringify(this.users));    
+   this.users.push(this.user);
+   localStorage.setItem('users', JSON.stringify(this.users));
+  //this.users = this.sharedService.getAll();
+   //this.sharedService.save();
+   
+    return true;
 
+   }
  
 
 }
