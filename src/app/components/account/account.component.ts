@@ -25,12 +25,10 @@ export class AccountComponent {
   
   isEdit: boolean = false;
 
-  ngOnInit() {
- 
-    this.user = this.sharedService.getuser();
-    this.users = JSON.parse(localStorage.getItem('users') || '[]');
-   
-  
+  ngOnInit() { 
+    //this.user = this.sharedService.getuser();
+    this.user = JSON.parse(localStorage.getItem('Activleusers') || '[]'); 
+    this.users = JSON.parse(localStorage.getItem('users') || '[]'); 
 
   }
   EditButtonInfo() {

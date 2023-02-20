@@ -3,6 +3,7 @@ export class UsersData {
     public password: string;
     // public money: string;
 
+    public rol: string;
     public photo: string;
     public name: string;
     public many: string;

@@ -11,33 +11,52 @@ import { SharedServiceUsers } from '../SharedServiceUsers';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private sharedService: SharedServiceUsers, public matdialog:MatDialog) {}
+  constructor(private sharedService: SharedServiceUsers, public matdialog: MatDialog) { }
   isEdit: boolean;
-  buttonInfo: string=" " ;
+  isEditAdmin: boolean=false;
+  buttonInfo: string = " ";
 
   ngOnInit(): void {
-   this.isEdit =JSON.parse(localStorage.getItem('Esidit') || '[]');
-   this.sharedService.initChekButton(this.isEdit);    
-   this.buttonInfo = this.sharedService.getChekButton();  
+    this.isEdit = JSON.parse(localStorage.getItem('Esidit') || '[]');
+    this.sharedService.initChekButton(this.isEdit);
+    this.buttonInfo = this.sharedService.getChekButton();
+    this.isEditAdmin =  JSON.parse(localStorage.getItem('isEditAdmin') || '[]');
   }
 
-  loginBtn(){ 
-    this.isEdit = !this.isEdit;
-    localStorage.setItem('Esidit', JSON.stringify( this.isEdit));  
-    this.sharedService.initChekButton(this.isEdit);    
-    this.matdialog.open(LoginComponent);
+  loginBtn() {
+    if (this.isEdit == false) {
+      localStorage.setItem('Esidit', JSON.stringify(this.isEdit));
+      this.sharedService.initChekButton(this.isEdit);
+      this.matdialog.open(LoginComponent);
+    }
+    else {
+      console.log("ВЫХОД");
+      this.isEdit = !this.isEdit;
+      this.isEditAdmin = false;
+      
+    //this._router.navigate(['/home']);
+
+      localStorage.setItem('Esidit', JSON.stringify(this.isEdit));
+      localStorage.setItem('Activleusers', JSON.stringify(""));
+      localStorage.setItem('isEditAdmin', JSON.stringify(""));
+
+      this.sharedService.initChekButton(this.isEdit);
+      this.buttonInfo = this.sharedService.getChekButton();
+
+    }
   }
 
 
 
-  ChekButton(){ 
-   
-    this.buttonInfo=this.sharedService.getChekButton();
+
+  ChekButton() {
+
+    this.buttonInfo = this.sharedService.getChekButton();
 
     this.buttonInfo = JSON.parse(localStorage.getItem('vhod') || '[]');
-    console.log("this.buttonInfo"+ this.buttonInfo);
+    console.log("this.buttonInfo" + this.buttonInfo);
     location.reload();
-  //location.reload();
+    //location.reload();
     //window.location.reload();
     //this._router.navigate(['/account']);
     //this._router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => { this._router.navigate(['/account']); });
@@ -45,5 +64,5 @@ export class HeaderComponent implements OnInit {
     // <ng-container *ngIf="!rerender">
 
   }
- 
+
 }

@@ -14,11 +14,14 @@
                 <input [(ngModel)]="user.login" type="text" placeholder="Ваш login" class="form-control" name="name"><br>
                 <div>Password</div>
                 <input [(ngModel)]="user.password" type="text" placeholder="name" placeholder="Ваш password"
-                    class="form-control"><br>
-    
+                    class="form-control">
+                    <div>Rol</div>
+                    <input [(ngModel)]="user.rol" type="text" placeholder="Ваша роль" class="form-control" name="name"><br> <br>
+    <!-- //мб добавить сэда чек данных те чекбок тип я админ тогда вводи ключ 
+    Воппос а как это ключь брать-->
                 <button class="cancelBtn" (click)="Cancel()">Cancel</button>
     
-                <button class="regBtn" (click)="Registration(user.login,user.password)">Registration</button>
+                <button class="regBtn" (click)="Registration(user.login,user.password,user.rol)">Registration</button>
              </div>
     
     </div>

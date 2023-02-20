@@ -18,6 +18,7 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {
     this.user.login="";
     this.user.password="";
+    this.user.rol="";
   }
 
   Cancel(){
@@ -25,7 +26,7 @@ export class RegistrationComponent implements OnInit {
   this.matdialog.open(LoginComponent);
 
   }
-Registration(userLogin:string,userPassword:string){
+Registration(userLogin:string,userPassword:string,userRol:string){
     if(userLogin!=""&&userPassword!=""){
       this.users = JSON.parse(localStorage.getItem('users') || '[]');
       if (this.users.find(({ login }) => login === userLogin)) {
@@ -36,6 +37,8 @@ Registration(userLogin:string,userPassword:string){
       else{
       this.user.login=userLogin;
       this.user.password=userPassword;
+      this.user.rol=userRol;
+
       this.users.push(this.user);
       localStorage.setItem('users', JSON.stringify(this.users));
       this.matdialog.closeAll();

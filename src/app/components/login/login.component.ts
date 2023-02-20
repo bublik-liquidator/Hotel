@@ -17,13 +17,14 @@ export class LoginComponent implements OnInit {
   informationError: string = 'Войдите в систему, пожалуйста)';
   userr = new UsersData();
   users: UsersData[] = [];
-
+  isEdit: boolean;
   ngOnInit(): void {
     // this.users = this.sharedService.getAll();
     this.userr.login = "";
     this.userr.password = "";
     this.users = JSON.parse(localStorage.getItem('users') || '[]');
-    //this.sharedService.initChekButton(this.isEdit);
+    this.isEdit= JSON.parse(localStorage.getItem('Esidit') || '[]');
+
 
   }
 
@@ -35,17 +36,23 @@ export class LoginComponent implements OnInit {
       if (this.users.find(({ password }) => password === user.password)) {
         //this.sharedService.session(userLogin);       
         user = this.users.find(({ login }) => login === user.login)!;
-
+        if(user.rol=="admin"){
+          localStorage.setItem('isEditAdmin', JSON.stringify(true));
+        }
         // this.user1 = this.SharedServiceUser.getByName(userLogin);
         //this.sharedService.inituser(this.userse);
 
 
 
         this.header.ChekButton();
-       
-        //localStorage.setItem('activnast', JSON.stringify(this.user.login));
+        this.isEdit = !this.isEdit;
+        localStorage.setItem('Esidit', JSON.stringify(this.isEdit));
 
-        this.sharedService.inituser(user);
+        //localStorage.setItem('activnast', JSON.stringify(this.user.login));
+        
+        localStorage.setItem('Activleusers', JSON.stringify(user));
+
+        //////////////////////////////////////////this.sharedService.inituser(user);
         this.matdialog.closeAll();
         //this._router.navigate(['/account']);
 
