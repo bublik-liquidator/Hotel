@@ -44,7 +44,8 @@ export class AccountComponent {
    localStorage.setItem('users', JSON.stringify(this.users));
   //this.users = this.sharedService.getAll();
    //this.sharedService.save();
-   
+   this.isEdit = !this.isEdit;
+
     return true;
 
    }

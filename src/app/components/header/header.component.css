@@ -131,8 +131,13 @@
   transition: transform 0.25s;
 }
 .admin {
+  left: 200px;
+  transition: transform 0.25s;
+}
+acount{
   left: 160px;
   transition: transform 0.25s;
+
 }
 .kursachWort {
   font-size: 30pt;
@@ -221,6 +226,11 @@
 
 
 .acount{
-  left: 220px;
+  left: 160px;
+  transition: transform 0.25s;
+}
+
+.admin{
+  left: 260px;
   transition: transform 0.25s;
 }

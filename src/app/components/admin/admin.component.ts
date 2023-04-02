@@ -4,6 +4,7 @@ import { HotelData } from '../hotel-data';
 import { MatDialog } from '@angular/material/dialog';
 import { PopUpComponent } from '../pop-up/pop-up.component';
 import { SharedService } from '../SharedService';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-admin',
@@ -14,10 +15,13 @@ export class AdminComponent implements OnInit {
   hotels: HotelData[] = [];
   newHotel = new HotelData(); 
   isEdit: boolean = false;
-  constructor(private matdialog:MatDialog,private sharedService: SharedService) {    
+   person: { id: string; age?: number }; 
+  constructor(private matdialog:MatDialog,private sharedService: SharedService,private http: HttpClient) {    
   }
 
-  
+  isResultLoaded = false;
+  StudentArray : string[] = [];
+ 
   Edithotel(hotel:HotelData){
     this.matdialog.open(PopUpComponent);
     this.sharedService.inithotel(hotel);
@@ -26,6 +30,7 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     // this.inithotels();
     this.hotels = this.sharedService.getAll();
+ 
   }
 
   // inithotels() {
@@ -63,5 +68,15 @@ export class AdminComponent implements OnInit {
     // this.newHotel = new HotelData();
     // this.savehotelsToStorage();
   }
+  getAllStudent()
+  {
+    this.http.get("http://localhost:3000/hotel")
+    .subscribe((resultData: any)=>
+    {
+        console.log(resultData[0])
+        this.hotels =resultData;
+    });
 
+    
+  }
 }
