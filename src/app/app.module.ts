@@ -11,7 +11,7 @@ import { FooterComponent } from './components/footer/footer.component';
 
 
 import { CookieService } from 'ngx-cookie-service';
-import { VhodComponent } from './components/vhod/vhod.component';
+//import { VhodComponent } from './components/vhod/vhod.component';
 import { AdminComponent } from './components/admin/admin.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
@@ -40,7 +40,7 @@ const appRoutes: Routes = [
     ContactsComponent,
     HeaderComponent,
     FooterComponent,
-    VhodComponent,
+    //VhodComponent,
     AdminComponent,
     PopUpComponent,
     LoginComponent,

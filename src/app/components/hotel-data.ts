@@ -1,6 +1,6 @@
 export class HotelData {
 
-    public id: string;
+    public id: bigint;
     public name: string;
     public people: string;
     public path_picturs: string;

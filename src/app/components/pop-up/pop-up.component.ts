@@ -21,7 +21,7 @@ export class PopUpComponent {
 
 
   savehotelsToStorage() {
-    if(+this.editedHotel.people <=0||+this.editedHotel.people >400||/[qwertyuiopasdfghjklzxcvbnm]/.test(this.editedHotel.people)||/[йцукенгшщзхъфывапролджэячсмитьбю]/.test(this.editedHotel.people)||this.editedHotel.people==null||this.editedHotel.name==null||this.editedHotel.path_picturs==null){
+    if(+this.editedHotel.people <=0||+this.editedHotel.people >400||/[qwertyuiopasdfghjklzxcvbnm]/.test(this.editedHotel.people)||/[йцукенгшщзхъфывапролджэячсмитьбю]/.test(this.editedHotel.people)||this.editedHotel.people==null||this.editedHotel.name==null||this.editedHotel.path_picturs ==null){
       alert("Некоректный ввод данны");
       return 0;
      } 
@@ -30,7 +30,7 @@ export class PopUpComponent {
     HotelData.copyFieldsValuesTo(this.editedHotel, this.hotel);
     this.sharedService.inithotel(this.editedHotel);
     console.log('edited:' + this.editedHotel.name);
-    this.sharedService.save();
+    this.sharedService.save(this.hotel);
     this.matdialog.closeAll();
     return true;
     }
@@ -38,7 +38,7 @@ export class PopUpComponent {
   Cancel() {    
     this.editedHotel.name = this.hotel.name;
     this.editedHotel.people = this.hotel.people;
-    this.editedHotel.path_picturs = this.hotel.path_picturs;
+    this.editedHotel.path_picturs  = this.hotel.path_picturs ;
     this.matdialog.closeAll();
     //!this.editedHotel= this.hotel;
   }
