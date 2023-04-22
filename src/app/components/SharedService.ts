@@ -39,19 +39,17 @@ export class SharedService {
   }
 
   save(hotel: Object) {
-    return this.http.put('http://localhost:3000/hotel', hotel).subscribe((hotel: Object) => {
+    return this.http.put('http://localhost:3000/hotel/', hotel).subscribe((hotel: Object) => {
       console.log(hotel);
     });
   }
  
-
   delete(id: bigint) {
-    this.http.delete("http://localhost:3000/hotel" + "/" + id).subscribe((resultData: any) => {
-      console.log(resultData);
+    return this.http.delete('http://localhost:3000/hotel/' + id).subscribe((data: Object) => {
+      console.log(data);
     });
-    this.hotels = this.hotels.filter((obj) => obj.id != id);
-
   }
+
   session(sesiy: any) {
     localStorage.setItem('session', JSON.stringify(sesiy));
   }

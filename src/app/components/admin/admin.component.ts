@@ -43,8 +43,7 @@ export class AdminComponent implements OnInit {
 
   deletehotel(id: bigint) {
     this.sharedService.delete(id);
-    this.hotels = this.sharedService.getAll();
-
+    this.hotels = this.hotels.filter((obj) => obj.id != id);
   }
 
  
