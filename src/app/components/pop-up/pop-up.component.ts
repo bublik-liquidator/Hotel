@@ -30,7 +30,7 @@ export class PopUpComponent {
     HotelData.copyFieldsValuesTo(this.editedHotel, this.hotel);
     this.sharedService.inithotel(this.editedHotel);
     console.log('edited:' + this.editedHotel.name);
-    this.sharedService.save(this.hotel);
+    this.sharedService.save(this.hotel.id);
     this.matdialog.closeAll();
     return true;
     }

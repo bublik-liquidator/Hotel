@@ -11,6 +11,7 @@ const getHotel = (request, response) => {
     if (error) {
       throw error
     }
+    
     response.status(200).json(results.rows);
   })
 }

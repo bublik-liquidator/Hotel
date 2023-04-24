@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PopUpComponent } from '../pop-up/pop-up.component';
 import { SharedService } from '../SharedService';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -15,21 +16,28 @@ export class AdminComponent implements OnInit {
   hotels: HotelData[] = [];
   newHotel = new HotelData();
   isEdit: boolean = false;
+
   person: { id: string; age?: number };
-  constructor(private matdialog: MatDialog, private sharedService: SharedService, private http: HttpClient) {
+  constructor(private matdialog: MatDialog, private sharedService: SharedService, private http: HttpClient, private router: Router) {
   }
 
   isResultLoaded = false;
   StudentArray: string[] = [];
 
+  ngOnInit(): void {
+    this.GetHotel();
+  }
+
+  GetHotel() {
+    this.sharedService.getAll().subscribe((data: any) => {
+      this.hotels = data;
+    });
+  }
   Edithotel(hotel: HotelData) {
     this.matdialog.open(PopUpComponent);
     this.sharedService.inithotel(hotel);
   }
 
-  ngOnInit(): void {
-    this.hotels = this.sharedService.getAll();
-  }
 
 
   AddButtonhotel() {
@@ -38,13 +46,16 @@ export class AdminComponent implements OnInit {
 
   Addhotel() {
     this.sharedService.create(this.newHotel);
-    this.hotels.push(this.newHotel);      
-  }
+    this.GetHotel();
 
+
+
+  }
   deletehotel(id: bigint) {
     this.sharedService.delete(id);
-    this.hotels = this.hotels.filter((obj) => obj.id != id);
+    this.GetHotel();
+
   }
 
- 
+
 }
