@@ -26,6 +26,7 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.GetHotel();
+    //  this.hotels=this.sharedService.getAll();
   }
 
   GetHotel() {
@@ -33,28 +34,24 @@ export class AdminComponent implements OnInit {
       this.hotels = data;
     });
   }
+
   Edithotel(hotel: HotelData) {
     this.matdialog.open(PopUpComponent);
     this.sharedService.inithotel(hotel);
   }
-
-
 
   AddButtonhotel() {
     this.isEdit = !this.isEdit;
   }
 
   Addhotel() {
-    this.sharedService.create(this.newHotel);
-    this.GetHotel();
-
-
-
+  this.sharedService.create(this.newHotel);
+  this.GetHotel();
   }
+
   deletehotel(id: bigint) {
     this.sharedService.delete(id);
     this.GetHotel();
-
   }
 
 

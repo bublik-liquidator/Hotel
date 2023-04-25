@@ -1,10 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { UserInfo } from '../userInfo';
 import { SharedServiceUsers } from '../SharedServiceUsers';
 import { UsersData } from '../users-data';
 
-import { User } from '../user/user';
 
 @Component({
   selector: 'app-account',

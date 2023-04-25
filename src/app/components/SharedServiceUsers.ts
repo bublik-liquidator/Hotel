@@ -1,70 +1,61 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
-
 import { UsersData } from './users-data';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs/internal/Observable';
+import { Subscription } from 'rxjs/internal/Subscription';
 
 @Injectable()
 export class SharedServiceUsers {
   user = new UsersData();
   users: UsersData[] = [];
-  editedUser = new UsersData();
   ChekButton: string;
+  editeduser = new UsersData();
+  constructor(private http: HttpClient, private router: Router) {
+  }
   inituser(user: UsersData) {
     this.user = user;
   }
   getuser(): UsersData {
     return this.user;
   }
-
   edituser(user: UsersData) {
     UsersData.copyFieldsValuesTo(user, this.user);
   }
 
-  getAll() {
-    this.users = JSON.parse(localStorage.getItem('users') || '[]');
-    return this.users;
+  //{ getAll(): Observable<userData[]> {
+  //   return async function getData(this: any) {
+  //     this.http.get('http://localhost:3000/user').subscribe((data: Object) => {
+  //       this.users = data as userData[];
+  //       console.log(this.users);
+  //     });
+  //   }
+  // } }
+
+  getAll(): Observable<any> {
+    return this.http.get('http://localhost:3000/user');
   }
-  getByName(name: string) {
-    if (localStorage.getItem('users') !== null) {
-      this.getAll();
-      // this.getAll().find(this.hotel -> this.hotel.id == id);
-      // this.newHotel = this.hotels.find(({ id }) => id === id);]
-      console.log('ALLL ' + this.getAll().find(({ name }) => name === name));
-      return this.getAll().find(({ name }) => name === name);
-    }
-    return 0;
+  getById(id: string) {
+    return this.http.get(`http://localhost:3000/user/${id}`);
   }
+
   create(user: UsersData) {
-    //сделать проверку на существующий IDn
-    user.name = Math.floor(Math.random() * 100).toString();
-    if (this.users.find(({ name }) => name === user.name)) {
-      while (this.users.find(({ name }) => name === user.name)) {
-        user.name = String(+Math.floor(Math.random() * 100).toString() + +Math.floor(Math.random() * 100).toString());
-      }
-    }
-
-    if (+user.BronirovHotel <= 0 || +user.BronirovHotel > 5 || user.BronirovHotel == null || /[qwertyuiopasdfghjklzxcvbnm]/.test(user.BronirovHotel) || /[йцукенгшщзхъфывапролджэячсмитьбю]/.test(this.editedUser.BronirovHotel) || user.name == null || user.photo == null) {
-      alert("Некоректный ввод данны");
-      return 0;
-    }
-    else {
-      this.users.push(user);
-      console.log('new user saved' + user);
-      this.save();
-      return user;
-    }
-
+    this.http.post('http://localhost:3000/user', user).subscribe((user: Object) => {
+      console.log(user);
+    });
 
   }
-  save() {
-    localStorage.setItem('users', JSON.stringify(this.users));
+
+  save(user: UsersData) {
+    return this.http.put('http://localhost:3000/user/' + user.id, user).subscribe(data=>console.log(data));
+  }
+  delete(id: bigint) {
+    this.http.delete('http://localhost:3000/user/' + id).subscribe((data: Object) => {
+      console.log(data);
+    });
   }
 
-  delete(name: string) {
-    this.users = this.users.filter((obj) => obj.name != name);
-    console.log('deleted user with name=' + name);
-    this.save();
-  }
   session(sesiy: any) {
     localStorage.setItem('session', JSON.stringify(sesiy));
   }
@@ -85,6 +76,5 @@ export class SharedServiceUsers {
   getChekButton() {  
     return this.ChekButton;
   }
-
 
 }

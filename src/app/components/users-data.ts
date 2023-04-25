@@ -1,4 +1,5 @@
 export class UsersData {
+    public id: bigint;
     public login: string;
     public password: string;
     // public money: string;

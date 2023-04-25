@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { HotelData } from '../hotel-data';
 import { SharedService } from '../SharedService';
-import { User } from '../user/user';
 
 
 @Component({
@@ -17,35 +16,37 @@ export class HotelsComponent implements OnInit {
   isEditNomer: boolean = true;
   deistveSnomerom: string = "Забронировать";
   hotels: HotelData[] = [];
+  hotels2: HotelData[] = [];
+
   newHotel = new HotelData();
   constructor(private http: HttpClient, private sharedService: SharedService) { }
-  vhodhtml: string;
-
-  path_json_with_opisaniem: string = "/assets/text/1.json";
-  user: User;
 
   today: string;
   leaveDay: string;
   inf_err: string = "";
+
   ngOnInit(): void {
-    this.today = this.date_time();
-    this.leaveDay;
-
-    this.hotels = JSON.parse(localStorage.getItem('hotels') || '[]');
-    for (let i = 0; i < this.hotels.length; i++) {
-      this.newHotel = this.hotels[i];
-    }
-
+    this.today = this.date_time();    
+    this.GetHotel();
+    console.log(this.hotels)   
+   
+  }
     //this.http.get(this.path_json_with_opisaniem).subscribe({ next: (data: any) => this.user = new User(data.specification) });
     //console.log(this.path_json_with_opisaniem);
 
+ 
+  GetHotel() {
+    this.sharedService.getAll().subscribe((data: any) => {
+      this.hotels = data;     
+      this.newHotel=this.hotels[0];
+    });
+    
   }
 
   hotelselect(hotelName: string) {
     for (let i = 0; i < this.hotels.length; i++) {
       if (hotelName == this.hotels[i].name) {
         this.newHotel = this.hotels[i];
-
        // this.http.get(this.newHotel.path_json).subscribe({ next: (data: any) => this.user = new User(data.specification) });
 
       }
@@ -86,7 +87,7 @@ export class HotelsComponent implements OnInit {
     return year + "-" + month + "-" + day;
   }
   zero_first_format(value: string | number) {
-    if (value < 10) {
+    if (+value < 10) {
       value = '0' + value;
     }
     return value;
