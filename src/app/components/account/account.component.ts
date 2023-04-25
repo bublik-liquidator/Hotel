@@ -20,33 +20,25 @@ export class AccountComponent {
   user = new UsersData(); // оригинальная пользователь
   users: UsersData[] = [];
   editedUser = new UsersData(); // это редактируем
-  
+
   isEdit: boolean = false;
 
-  ngOnInit() { 
+  ngOnInit() {
     //this.user = this.sharedService.getuser();
-    this.user = JSON.parse(localStorage.getItem('Activleusers') || '[]'); 
-    this.users = JSON.parse(localStorage.getItem('users') || '[]'); 
+    this.user = JSON.parse(localStorage.getItem('Activleusers') || '[]');
+    this.users = JSON.parse(localStorage.getItem('users') || '[]');
 
   }
   EditButtonInfo() {
     this.isEdit = !this.isEdit;
   }
 
-  Save(){
-   // localStorage.setItem('0', JSON.stringify(this.Activleuser)); 
- 
-   this.users = this.users.filter((obj) => this.user.login != this.user.login);
-   localStorage.setItem('users', JSON.stringify(this.users));    
-   this.users.push(this.user);
-   localStorage.setItem('users', JSON.stringify(this.users));
-  //this.users = this.sharedService.getAll();
-   //this.sharedService.save();
-   this.isEdit = !this.isEdit;
-
+  Save() {
+    this.users = this.users.filter((obj) => this.user.login != this.user.login);
+    this.sharedService.save(this.user);
+    this.isEdit = !this.isEdit;
     return true;
 
-   }
- 
+  }
 
 }

@@ -11,12 +11,12 @@
         <div class="informationError">{{informationError}} </div><br>
             <div class="inputPlusLabels">
                 <div>Login</div>
-                <input [(ngModel)]="user.login" type="text" placeholder="Ваш login" class="form-control" name="name"><br>
+                <input [(ngModel)]="user.login" type="text" placeholder="Ваш login" class="form-control" name="login"><br>
                 <div>Password</div>
-                <input [(ngModel)]="user.password" type="text" placeholder="name" placeholder="Ваш password"
-                    class="form-control">
+                <input [(ngModel)]="user.password" type="password" placeholder="password" placeholder="Ваш password"
+                    class="form-control"><br>
                     <div>Rol</div>
-                    <input [(ngModel)]="user.rol" type="text" placeholder="Ваша роль" class="form-control" name="name"><br> <br>
+                    <input [(ngModel)]="user.rol" type="text" placeholder="Ваша роль" class="form-control" name="rol"><br>
     <!-- //мб добавить сэда чек данных те чекбок тип я админ тогда вводи ключ 
     Воппос а как это ключь брать-->
                 <button class="cancelBtn" (click)="Cancel()">Cancel</button>

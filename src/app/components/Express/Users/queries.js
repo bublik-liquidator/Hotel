@@ -7,7 +7,7 @@ const pool = new Pool({
   port: 5432,
 })
 const getUser = (request, response) => {
-  pool.query('SELECT * FROM user ORDER BY id ASC', (error, results) => {
+  pool.query('SELECT * FROM  public."user" ORDER BY id ASC', (error, results) => {
     if (error) {
       throw error
     }
@@ -19,7 +19,7 @@ const getUser = (request, response) => {
 const getUserById = (request, response) => {
   const id = parseInt(request.params.id)
 
-  pool.query('SELECT * FROM user WHERE id = $1', [id], (error, results) => {
+  pool.query('SELECT * FROM public."user" WHERE id = $1', [id], (error, results) => {
     if (error) {
       throw error
     }
@@ -28,8 +28,8 @@ const getUserById = (request, response) => {
 }
 
 const createUser = (request, response) => {
-  const { name, people, path_picturs, path_icons, cost } = request.body
-  pool.query('INSERT INTO user (name, people, path_picturs, path_icons, cost) VALUES ($1, $2, $3, $4, $5)', [name, people, path_picturs, path_icons,cost], (error, results) => {
+  const { login, password, rol, photo, name, many, birthday, phonenomber, email, bronirovhotel} = request.body
+  pool.query('INSERT INTO public."user" (login, password, rol, photo, name, many, birthday, phonenomber, email, bronirovhotel) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [login, password, rol, photo, name, many, birthday, phonenomber, email, bronirovhotel], (error, results) => {
     if (error) {
       throw error
     }
@@ -40,11 +40,11 @@ const createUser = (request, response) => {
 
 const updateUser = (request, response) => {
     const id = parseInt(request.params.id)
-    const { name, people, path_picturs, path_icons,cost } = request.body
+    const { login, password, rol, photo, name, many, birthday, phonenomber, email, bronirovhotel } = request.body
 
     pool.query(
-      'UPDATE user SET name = $1, people = $2, path_picturs = $3, path_icons = $4, cost = $5 WHERE id = $6',
-      [name, people, path_picturs, path_icons,cost, id],
+      'UPDATE public."user" SET login = $1, password = $2, rol = $3, photo = $4, name = $5, many = $6, birthday = $7, phonenomber = $8, email = $9, bronirovhotel = $10 WHERE id = $11',
+      [login, password, rol, photo, name, many, birthday, phonenomber, email, bronirovhotel, id],
       (error, results) => {
         if (error) {
           throw error
@@ -57,7 +57,7 @@ const updateUser = (request, response) => {
 const deleteUser = (request, response) => {
       const id = parseInt(request.params.id)
 
-      pool.query('DELETE FROM user WHERE id = $1', [id], (error, results) => {
+      pool.query('DELETE FROM public."user" WHERE id = $1', [id], (error, results) => {
         if (error) {
           throw error
         }
@@ -68,7 +68,7 @@ const deleteUser = (request, response) => {
 module.exports = {
   getUser,
   getUserById,
-  createUser,
+ createUser,
   updateUser,
-  deleteUser,
+ deleteUser,
 }

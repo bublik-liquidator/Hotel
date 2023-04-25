@@ -25,7 +25,7 @@ export class AdminComponent implements OnInit {
   StudentArray: string[] = [];
 
   ngOnInit(): void {
-    this.GetHotel();
+    this.GetHotel(); 
     //  this.hotels=this.sharedService.getAll();
   }
 
@@ -51,6 +51,7 @@ export class AdminComponent implements OnInit {
 
   deletehotel(id: bigint) {
     this.sharedService.delete(id);
+    this.ngOnInit();
     this.GetHotel();
   }
 

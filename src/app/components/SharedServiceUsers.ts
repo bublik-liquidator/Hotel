@@ -34,24 +34,24 @@ export class SharedServiceUsers {
   // } }
 
   getAll(): Observable<any> {
-    return this.http.get('http://localhost:3000/user');
+    return this.http.get('http://localhost:3003/user');
   }
   getById(id: string) {
-    return this.http.get(`http://localhost:3000/user/${id}`);
+    return this.http.get(`http://localhost:3003/user/${id}`);
   }
 
   create(user: UsersData) {
-    this.http.post('http://localhost:3000/user', user).subscribe((user: Object) => {
+    this.http.post('http://localhost:3003/user', user).subscribe((user: Object) => {
       console.log(user);
     });
 
   }
 
   save(user: UsersData) {
-    return this.http.put('http://localhost:3000/user/' + user.id, user).subscribe(data=>console.log(data));
+    return this.http.put('http://localhost:3003/user/' + user.id, user).subscribe(data=>console.log(data));
   }
   delete(id: bigint) {
-    this.http.delete('http://localhost:3000/user/' + id).subscribe((data: Object) => {
+    this.http.delete('http://localhost:3003/user/' + id).subscribe((data: Object) => {
       console.log(data);
     });
   }

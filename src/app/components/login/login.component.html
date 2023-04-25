@@ -3,12 +3,12 @@
         <div class="informationError">{{informationError}} </div><br>
             <div class="inputPlusLabels">
                 <div>Login</div>
-                <input [(ngModel)]="userr.login" type="text" placeholder="Ваш login" class="form-control" name="name"><br>
+                <input [(ngModel)]="user.login" type="text" placeholder="Ваш login" class="form-control" name="name"><br>
                 <div>Password</div>
-                <input type="password" [(ngModel)]="userr.password" placeholder="name" placeholder="Ваш password"
+                <input type="password" [(ngModel)]="user.password" placeholder="name" placeholder="Ваш password"
                     class="form-control"><br>
     
-                <button class="logBtn" (click)="Loginnn(userr)">LOGIN</button>
+                <button class="logBtn" (click)="Loginnn(user)">LOGIN</button>
     
                 <button class="regBtn" (click)="Registration()">Registration</button>
              </div>

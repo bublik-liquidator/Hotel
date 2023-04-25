@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import { UsersData } from '../users-data';
+import { SharedServiceUsers } from '../SharedServiceUsers';
 
 @Component({
   selector: 'app-registration',
@@ -13,12 +14,19 @@ export class RegistrationComponent implements OnInit {
   user = new UsersData();
   users: UsersData[] = [];
 
-  constructor(public matdialog: MatDialog) { }
+  constructor(private sharedService: SharedServiceUsers,public matdialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.GetUsers()
     this.user.login="";
     this.user.password="";
     this.user.rol="";
+  }
+
+  GetUsers() {
+    this.sharedService.getAll().subscribe((data: any) => {
+      this.users = data;
+    });
   }
 
   Cancel(){
@@ -28,7 +36,7 @@ export class RegistrationComponent implements OnInit {
   }
 Registration(userLogin:string,userPassword:string,userRol:string){
     if(userLogin!=""&&userPassword!=""){
-      this.users = JSON.parse(localStorage.getItem('users') || '[]');
+      this.GetUsers()
       if (this.users.find(({ login }) => login === userLogin)) {
         if (this.users.find(({ password }) => password === userPassword)) {
           this.informationError="Вы уже зарегестрировались в системе";  
@@ -39,8 +47,10 @@ Registration(userLogin:string,userPassword:string,userRol:string){
       this.user.password=userPassword;
       this.user.rol=userRol;
 
-      this.users.push(this.user);
-      localStorage.setItem('users', JSON.stringify(this.users));
+      //this.users.push(this.user);
+      this.sharedService.create(this.user);
+      
+      //localStorage.setItem('users', JSON.stringify(this.users));
       this.matdialog.closeAll();
       this.matdialog.open(LoginComponent);
       }        

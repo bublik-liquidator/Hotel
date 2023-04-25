@@ -9,7 +9,7 @@
         <div  class="pading">День рождения: {{user.birthday}}</div>
         <div  class="pading">Почта: {{user.email}}</div>
         <div  class="pading">Деньги: {{user.many}}</div>
-        <div  class="pading">Номер телефона: {{user.phoneNomber}}</div>
+        <div  class="pading">Номер телефона: {{user.phonenomber}}</div>
         
         
        
@@ -30,7 +30,7 @@
         <div>Доступные фингансы</div>
         <input type="text" placeholder="Деньги" class="form-control" [(ngModel)]="user.many"  name="many"><br>
         <div>Ваш номер телефона</div>
-        <input type="text" placeholder="Телефон" class="form-control" [(ngModel)]="user.phoneNomber"  name="phoneNomber"><br>
+        <input type="text" placeholder="Телефон" class="form-control" [(ngModel)]="user.phonenomber"  name="phonenomber"><br>
         <div>Ваше фото</div>
         <input type="text" placeholder="Фото" class="form-control" [(ngModel)]="user.photo"  name="photo"><br>
         <button class="btn btn-warning " (click)="Save()">Сохранить</button>

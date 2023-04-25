@@ -15,21 +15,24 @@ export class LoginComponent implements OnInit {
   ) { }
 
   informationError: string = 'Войдите в систему, пожалуйста)';
-  userr = new UsersData();
+  user = new UsersData();
   users: UsersData[] = [];
   isEdit: boolean;
   ngOnInit(): void {
     // this.users = this.sharedService.getAll();
-    this.userr.login = "";
-    this.userr.password = "";
-    this.users = JSON.parse(localStorage.getItem('users') || '[]');
+    this.user.login = "";
+    this.user.password = "";
+    this.GetUsers();
     this.isEdit= JSON.parse(localStorage.getItem('Esidit') || '[]');
+  }
 
-
+  GetUsers() {
+    this.sharedService.getAll().subscribe((data: any) => {
+      this.users = data;
+    });
   }
 
   Loginnn(user: UsersData) {
-
     //this.log = this.users[0].login
     console.log(this.users.find(({ login }) => login == user.login));
     if (this.users.find(({ login }) => login === user.login)) {
@@ -39,18 +42,12 @@ export class LoginComponent implements OnInit {
         if(user.rol=="admin"){
           localStorage.setItem('isEditAdmin', JSON.stringify(true));
         }
-        // this.user1 = this.SharedServiceUser.getByName(userLogin);
-        //this.sharedService.inituser(this.userse);
-
-
-
+        
         this.header.ChekButton();
         this.isEdit = !this.isEdit;
-        localStorage.setItem('Esidit', JSON.stringify(this.isEdit));
-
-        //localStorage.setItem('activnast', JSON.stringify(this.user.login));
+        localStorage.setItem('Esidit', JSON.stringify(this.isEdit));      
         
-        localStorage.setItem('Activleusers', JSON.stringify(user));
+        /////////////////////////localStorage.setItem('Activleusers', JSON.stringify(user));
 
         //////////////////////////////////////////this.sharedService.inituser(user);
         this.matdialog.closeAll();
