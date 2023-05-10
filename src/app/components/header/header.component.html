@@ -9,10 +9,14 @@
       
 <!-- так а на каой менять инфу просто скрфть показать др кнопку -->
     </nav>
-      <button class="loginBtn" (click)="loginBtn()">{{buttonInfo}}</button>
- 
 
-    
-    <!-- <a class="btn btn-outline-primary vhod" href="#">Войти</a> -->
+      <button class="loginBtn" (click)="loginBtn()">{{buttonInfo}}</button>
+      <!-- <button class="loginBtn" (click)="loginBtn()">{{buttonInfo}}</button> 
+       <button [disabled]="sharedService.buttonDisabled$ | async">Кнопка</button
+
+       <button *ngIf="!false" (click)="log()">ВходЫ</button>
+       <button *ngIf="!true" (click)="Exit()">Выходы</button>>-->
+
+      
   </div>
 </div>

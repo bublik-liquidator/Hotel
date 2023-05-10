@@ -62,12 +62,12 @@ export class SharedServiceUsers {
   initChekButton(isEdit: boolean) {
     if (isEdit == false) {
       this.ChekButton = "Вход";
-      localStorage.setItem('vhod', JSON.stringify(this.ChekButton));  
+      //localStorage.setItem('vhod', JSON.stringify(this.ChekButton));  
 
     }
     if (isEdit == true) {
       this.ChekButton = "Выход";
-      localStorage.setItem('vhod', JSON.stringify(this.ChekButton));  
+     // localStorage.setItem('vhod', JSON.stringify(this.ChekButton));  
 
       
     }

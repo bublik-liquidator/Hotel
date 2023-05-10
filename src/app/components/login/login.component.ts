@@ -51,7 +51,8 @@ export class LoginComponent implements OnInit {
 
         //////////////////////////////////////////this.sharedService.inituser(user);
         this.matdialog.closeAll();
-        //this._router.navigate(['/account']);
+        this._router.navigate(['/account']);
+        
 
 
       }

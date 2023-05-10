@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import { SharedServiceUsers } from '../SharedServiceUsers';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,18 +12,29 @@ import { SharedServiceUsers } from '../SharedServiceUsers';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private sharedService: SharedServiceUsers, public matdialog: MatDialog) { }
+  constructor(private sharedService: SharedServiceUsers, public matdialog: MatDialog,private router: Router) { }
   isEdit: boolean;
   isEditAdmin: boolean=false;
   buttonInfo: string = " ";
 
   ngOnInit(): void {
-    this.isEdit = JSON.parse(localStorage.getItem('Esidit') || '[]');
+    
+    this.isEdit=JSON.parse(localStorage.getItem('Esidit') || '[]');
     this.sharedService.initChekButton(this.isEdit);
     this.buttonInfo = this.sharedService.getChekButton();
     this.isEditAdmin =  JSON.parse(localStorage.getItem('isEditAdmin') || '[]');
   }
 
+  
+  log(){
+    this.matdialog.open(LoginComponent);
+
+  }
+
+  Exit(){
+    this.router.navigate(['/']);
+    this.isEdit = true;
+  }
   loginBtn() {
     if (this.isEdit == false) {
       localStorage.setItem('Esidit', JSON.stringify(this.isEdit));
@@ -34,7 +46,7 @@ export class HeaderComponent implements OnInit {
       this.isEdit = !this.isEdit;
       this.isEditAdmin = false;
       
-    //this._router.navigate(['/home']);
+    //
 
       localStorage.setItem('Esidit', JSON.stringify(this.isEdit));
       localStorage.setItem('Activleusers', JSON.stringify(""));
@@ -55,7 +67,7 @@ export class HeaderComponent implements OnInit {
 
     this.buttonInfo = JSON.parse(localStorage.getItem('vhod') || '[]');
     console.log("this.buttonInfo" + this.buttonInfo);
-    ///////location.reload();
+    location.reload();
     //location.reload();
     //window.location.reload();
     //this._router.navigate(['/account']);
