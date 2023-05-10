@@ -40,11 +40,15 @@ export class HeaderComponent implements OnInit {
       localStorage.setItem('Esidit', JSON.stringify(this.isEdit));
       this.sharedService.initChekButton(this.isEdit);
       this.matdialog.open(LoginComponent);
+      this.router.navigate(['/account']);
+
     }
     else {
       console.log("ВЫХОД");
       this.isEdit = !this.isEdit;
       this.isEditAdmin = false;
+      this.router.navigate(['/']);
+
       
     //
 
@@ -68,6 +72,7 @@ export class HeaderComponent implements OnInit {
     this.buttonInfo = JSON.parse(localStorage.getItem('vhod') || '[]');
     console.log("this.buttonInfo" + this.buttonInfo);
     location.reload();
+
     //location.reload();
     //window.location.reload();
     //this._router.navigate(['/account']);

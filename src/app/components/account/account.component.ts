@@ -26,7 +26,9 @@ export class AccountComponent {
   ngOnInit() {
     //this.user = this.sharedService.getuser();
     this.user = JSON.parse(localStorage.getItem('Activleusers') || '[]');
-    this.users = JSON.parse(localStorage.getItem('users') || '[]');
+    this.sharedService.getAll().subscribe((data: any) => {
+      this.users = data;
+    });
 
   }
   EditButtonInfo() {

@@ -42,11 +42,12 @@ export class LoginComponent implements OnInit {
         if(user.rol=="admin"){
           localStorage.setItem('isEditAdmin', JSON.stringify(true));
         }
-        
+        localStorage.setItem('Activleusers', JSON.stringify(user));      
+
         this.header.ChekButton();
         this.isEdit = !this.isEdit;
         localStorage.setItem('Esidit', JSON.stringify(this.isEdit));      
-        
+        this.sharedService.initUser(user);
         /////////////////////////localStorage.setItem('Activleusers', JSON.stringify(user));
 
         //////////////////////////////////////////this.sharedService.inituser(user);

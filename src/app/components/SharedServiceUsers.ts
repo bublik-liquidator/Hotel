@@ -76,5 +76,10 @@ export class SharedServiceUsers {
   getChekButton() {  
     return this.ChekButton;
   }
-
+  initUser(user: UsersData) {
+    this.user=user
+  }
+  getUsera() {  
+    return this.user;
+  }
 }
