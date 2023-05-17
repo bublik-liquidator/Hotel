@@ -7,6 +7,7 @@ const pool = new Pool({
   port: 5432,
 })
 const getUser = (request, response) => {
+  
   pool.query('SELECT * FROM  public."user" ORDER BY id ASC', (error, results) => {
     if (error) {
       throw error
@@ -27,15 +28,40 @@ const getUserById = (request, response) => {
   })
 }
 
-const createUser = (request, response) => {
-  const { login, password, rol, photo, name, many, birthday, phonenomber, email, bronirovhotel} = request.body
-  pool.query('INSERT INTO public."user" (login, password, rol, photo, name, many, birthday, phonenomber, email, bronirovhotel) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [login, password, rol, photo, name, many, birthday, phonenomber, email, bronirovhotel], (error, results) => {
-    if (error) {
-      throw error
-    }
+const createUser = async (request, response) => {
 
-    response.status(201).json('user added with name: ${request.body.name}}')
-  })
+  try {
+    const { name, email, password } = request.body;
+
+    // Hash the password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    // Insert the user into the database
+    const newUser = await pool.query(
+      'INSERT INTO user (name, email, password) VALUES ($1, $2, $3) RETURNING *',
+      [name, email, hashedPassword]
+    );
+
+    // Create and sign the JWT token
+    const token = jwt.sign({ id: newUser.rows[0].id }, process.env.JWT_SECRET);
+
+    res.json({ token });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+
+
+
+  // const { login, password, rol, photo, name, many, birthday, phonenomber, email, bronirovhotel} = request.body
+  // pool.query('INSERT INTO public."user" (login, password, rol, photo, name, many, birthday, phonenomber, email, bronirovhotel) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [login, password, rol, photo, name, many, birthday, phonenomber, email, bronirovhotel], (error, results) => {
+  //   if (error) {
+  //     throw error
+  //   }
+
+  //   response.status(201).json('user added with name: ${request.body.name}}')
+  // })
 }
 
 const updateUser = (request, response) => {

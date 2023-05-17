@@ -69,7 +69,7 @@ export class HeaderComponent implements OnInit {
 
     this.buttonInfo = this.sharedService.getChekButton();
 
-    this.buttonInfo = JSON.parse(localStorage.getItem('vhod') || '[]');
+    //this.buttonInfo = JSON.parse(localStorage.getItem('vhod') || '[]');
     console.log("this.buttonInfo" + this.buttonInfo);
     location.reload();
 

@@ -24,9 +24,11 @@ import { HttpClientModule }   from '@angular/common/http';
 import { AccountComponent } from './components/account/account.component';
 import { HotelsComponent } from './components/hotels/hotels.component';
 import { SharedServiceUsers } from './components/SharedServiceUsers';
+import { StartLoginComponent } from './components/start-login/start-login.component';
 
 const appRoutes: Routes = [
-  {path:'',component:HotelsComponent},
+   {path:'',component:HotelsComponent},//HotelsComponent StartLoginComponent
+  {path:'home',component:HotelsComponent},
   {path:'about',component:ContactsComponent},
   {path:'admin',component:AdminComponent},
   {path:'login',component:LoginComponent},
@@ -46,7 +48,8 @@ const appRoutes: Routes = [
     LoginComponent,
     RegistrationComponent,
     AccountComponent,
-    HotelsComponent
+    HotelsComponent,
+    StartLoginComponent
     
   ],
   imports: [

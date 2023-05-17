@@ -32,6 +32,7 @@ export class AdminComponent implements OnInit {
   GetHotel() {
     this.sharedService.getAll().subscribe((data: any) => {
       this.hotels = data;
+      console.log("aaaaa"+data)
     });
   }
 
@@ -46,12 +47,16 @@ export class AdminComponent implements OnInit {
 
   Addhotel() {
   this.sharedService.create(this.newHotel);
+  window.location.reload();
+
   this.GetHotel();
   }
 
   deletehotel(id: bigint) {
     this.sharedService.delete(id);
     this.ngOnInit();
+    window.location.reload();
+
     this.GetHotel();
   }
 
