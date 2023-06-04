@@ -9,14 +9,14 @@ import { Router } from '@angular/router';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
-})
+}) 
 export class HeaderComponent implements OnInit {
 
   constructor(private sharedService: SharedServiceUsers, public matdialog: MatDialog,private router: Router) { }
   isEdit: boolean;
   isEditAdmin: boolean=false;
   buttonInfo: string = " ";
-
+  isEditManager: boolean = true;
   ngOnInit(): void {
     
     this.isEdit=JSON.parse(localStorage.getItem('Esidit') || '[]');
@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit {
       localStorage.setItem('Esidit', JSON.stringify(this.isEdit));
       this.sharedService.initChekButton(this.isEdit);
       this.matdialog.open(LoginComponent);
-      this.router.navigate(['/account']);
+      //this.router.navigate(['/account']);
 
     }
     else {
@@ -51,27 +51,30 @@ export class HeaderComponent implements OnInit {
 
       
     //
+    this.onChanged(false)
+      // localStorage.setItem('Esidit', JSON.stringify(this.isEdit));
+      // localStorage.setItem('Activleusers', JSON.stringify(""));
+      // localStorage.setItem('isEditAdmin', JSON.stringify(""));
 
-      localStorage.setItem('Esidit', JSON.stringify(this.isEdit));
-      localStorage.setItem('Activleusers', JSON.stringify(""));
-      localStorage.setItem('isEditAdmin', JSON.stringify(""));
-
-      this.sharedService.initChekButton(this.isEdit);
-      this.buttonInfo = this.sharedService.getChekButton();
+      // this.sharedService.initChekButton(this.isEdit);
+      // this.buttonInfo = this.sharedService.getChekButton();
 
     }
   }
 
 
-
+  clicks:number = 0;
+  onChanged(increased:any){
+      increased==true?this.buttonInfo="Dыход":this.buttonInfo="D[jl";
+  }
 
   ChekButton() {
 
-    this.buttonInfo = this.sharedService.getChekButton();
+    //this.buttonInfo = this.sharedService.getChekButton();
 
     //this.buttonInfo = JSON.parse(localStorage.getItem('vhod') || '[]');
     console.log("this.buttonInfo" + this.buttonInfo);
-    location.reload();
+    //location.reload();
 
     //location.reload();
     //window.location.reload();

@@ -18,8 +18,7 @@ async function getAll(page, size) {
 
 function create(hotel) {
   {
-      const { name, people, path_picturs, path_icons, cost } = hotel;
-
+    const { name, people, path_picturs, path_icons, cost } = hotel;
     db.pool.query(
       "INSERT INTO hotel (name, people, path_picturs, path_icons, cost) VALUES ($1, $2, $3, $4, $5)",
       [name, people, path_picturs, path_icons, cost],
@@ -32,9 +31,17 @@ function create(hotel) {
     return hotel;
   }
 }
-async function update(hotel,id) {
-  const query = "UPDATE hotel SET name = $1, people = $2, path_picturs = $3, path_icons = $4, cost = $5 WHERE id = $6 RETURNING *";
-  const values = [hotel.name, hotel.people, hotel.path_picturs, hotel.path_icons, hotel.cost, id];
+async function update(hotel, id) {
+  const query =
+    "UPDATE hotel SET name = $1, people = $2, path_picturs = $3, path_icons = $4, cost = $5 WHERE id = $6 RETURNING *";
+  const values = [
+    hotel.name,
+    hotel.people,
+    hotel.path_picturs,
+    hotel.path_icons,
+    hotel.cost,
+    id,
+  ];
   try {
     const res = await db.pool.query(query, values);
     loggerr.info("Hotel ${id} updated successfully.");
@@ -44,11 +51,17 @@ async function update(hotel,id) {
   }
 }
 async function getById(id) {
-  const query = "SELECT * FROM hotel WHERE id = $1";
-  const values = [id];
-  const { rows } = await db.pool.query(query, values);
-  loggerr.info("hotelID name " + rows[0].name);
-  return rows[0];
+  try {
+    const result = await db.pool.query(`SELECT * FROM hotel WHERE id = ${id}`);
+    if (result.rows.length > 0) {
+      return result.rows[0];
+    } else {
+      return 0;
+    }
+  } catch (err) {
+    loggerr.error(err);
+    throw new Error("Repository getById error");
+  }
 }
 
 async function deleteById(id) {

@@ -83,8 +83,6 @@ app.post('/login', async (req, res) => {
 
 
 app.get('/user', db.getUser)
-app.get('/useriid', db.getCpechUserById)
-app.put('/useriid/:id', db.putUser) 
 app.get('/user/:id', db.getUserById)
 app.post('/user', db.createUser)
 app.put('/user/:id', db.updateUser) 

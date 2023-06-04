@@ -70,6 +70,10 @@ export class HotelsComponent implements OnInit {
       console.log("ЧЕЛ что ты творищь");
 
     }
+    else{
+      this.inf_err = "ok"
+
+    }
     console.log(this.today + this.leaveDay);
     console.log(typeof this.today);
     console.log(typeof this.leaveDay);

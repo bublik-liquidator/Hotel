@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SharedServiceUsers } from '../SharedServiceUsers';
 import { UsersData } from '../users-data';
@@ -16,14 +16,22 @@ export class LoginComponent implements OnInit {
 
   informationError: string = 'Войдите в систему, пожалуйста)';
   user = new UsersData();
+  test:UsersData;
   users: UsersData[] = [];
   isEdit: boolean;
+  @Output() onChanged = new EventEmitter<boolean>();
+ 
+  change(increased:any) {
+      this.onChanged.emit(increased);
+  }
+
   ngOnInit(): void {
     // this.users = this.sharedService.getAll();
-    this.user.login = "";
-    this.user.password = "";
+   
+    
     this.GetUsers();
     this.isEdit= JSON.parse(localStorage.getItem('Esidit') || '[]');
+    
   }
 
   GetUsers() {
@@ -38,22 +46,37 @@ export class LoginComponent implements OnInit {
     if (this.users.find(({ login }) => login === user.login)) {
       if (this.users.find(({ password }) => password === user.password)) {
         //this.sharedService.session(userLogin);       
-        user = this.users.find(({ login }) => login === user.login)!;
+       
+        if(this.users.find(({ login }) => login === user.login)!==undefined){
+          const foundUser = this.users.find(({ login }) => login === user.login);
+          if (foundUser) {
+            this.user = foundUser;
+          }
+        }
         if(user.rol=="admin"){
           localStorage.setItem('isEditAdmin', JSON.stringify(true));
         }
-        localStorage.setItem('Activleusers', JSON.stringify(user));      
+        //localStorage.setItem('Activleusers', JSON.stringify(user.id));      
 
-        this.header.ChekButton();
+        //this.header.ChekButton();
         this.isEdit = !this.isEdit;
-        localStorage.setItem('Esidit', JSON.stringify(this.isEdit));      
-        this.sharedService.initUser(user);
+        //localStorage.setItem('Esidit', JSON.stringify(this.isEdit));    
+        this.change(true)
+    
+        //как вариант см нижеthis.sharedService.initUser(user);
+        this.sharedService.PUTBYID(this.user)
+        console.log("ПРОВЕРКА "+ this.user.id)
+
+        this.sharedService.initChekButton(true);
+        //localStorage.setItem('Activleusers', JSON.stringify(user.id))
         /////////////////////////localStorage.setItem('Activleusers', JSON.stringify(user));
 
         //////////////////////////////////////////this.sharedService.inituser(user);
         this.matdialog.closeAll();
         this._router.navigate(['/account']);
-        
+        this.header.buttonInfo=this.sharedService.getChekButton();
+       //console.log("CHEC "+ this.header.buttonInfo)
+        //console.log("this.sharedService.getChekButton() "+ this.sharedService.getChekButton())
 
 
       }

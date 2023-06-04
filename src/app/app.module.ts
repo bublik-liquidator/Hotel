@@ -25,12 +25,15 @@ import { AccountComponent } from './components/account/account.component';
 import { HotelsComponent } from './components/hotels/hotels.component';
 import { SharedServiceUsers } from './components/SharedServiceUsers';
 import { StartLoginComponent } from './components/start-login/start-login.component';
+import { ManagerComponent } from './components/Manager/manager.component';
+import { EditManagerComponent } from './components/edit-manager/edit-manager.component';
 
 const appRoutes: Routes = [
    {path:'',component:HotelsComponent},//HotelsComponent StartLoginComponent
   {path:'home',component:HotelsComponent},
   {path:'about',component:ContactsComponent},
   {path:'admin',component:AdminComponent},
+  {path:'manager',component:ManagerComponent},
   {path:'login',component:LoginComponent},
   {path:'registration',component:RegistrationComponent},
   {path:'account',component:AccountComponent}
@@ -49,7 +52,9 @@ const appRoutes: Routes = [
     RegistrationComponent,
     AccountComponent,
     HotelsComponent,
-    StartLoginComponent
+    StartLoginComponent,
+    ManagerComponent,
+    EditManagerComponent
     
   ],
   imports: [

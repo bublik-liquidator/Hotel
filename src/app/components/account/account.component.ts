@@ -24,12 +24,22 @@ export class AccountComponent {
   isEdit: boolean = false;
 
   ngOnInit() {
-    //this.user = this.sharedService.getuser();
-    this.user = JSON.parse(localStorage.getItem('Activleusers') || '[]');
-    this.sharedService.getAll().subscribe((data: any) => {
-      this.users = data;
-    });
+    this.nachalo()
+   
 
+  }
+  nachalo(){
+    
+    this.sharedService.getspechBYID().subscribe((data: any) => {
+      this.sharedService.getById(data.id_user).subscribe((data: UsersData) => {
+        this.user = data;
+        console.log("data "+data.name)
+        console.log("this.user "+this.user)
+      });      
+    });
+    
+      
+  console.log("aaaaaaaaaaaaaa"+this.user.name)
   }
   EditButtonInfo() {
     this.isEdit = !this.isEdit;

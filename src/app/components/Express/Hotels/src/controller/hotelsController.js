@@ -13,11 +13,21 @@ router.get("/", async (req, res) => {
     limit = 10;
   }
   const result = await hotelService.getAll(page, limit);
-  res.json(result);
+  res.json(result); 
 });
 
-router.get("/:id", (req, res) => {
-  return res.json(hotelService.getById(req.params.id));
+router.get("/:id", async (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    const hotel = await hotelService.getById(id);
+    if (!hotel) {
+      return res.status(404).json({ error: 'hotel not found' });
+    }
+    return res.status(200).json((hotel));
+  } catch (err) {
+    loggerr.error(err);
+    return res.status(500).json({ error: 'Internal Server Error with get by id' });
+  }
 });
 
 router.post("/", (req, res) => {

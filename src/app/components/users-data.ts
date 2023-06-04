@@ -17,6 +17,7 @@ export class UsersData {
         to.id = from.id;
         to.photo = from.photo;
         to.name = from.name;
+        to.login = from.login
         to.many = from.many;
         to.birthday = from.birthday;
         to.phonenomber = from.phonenomber;

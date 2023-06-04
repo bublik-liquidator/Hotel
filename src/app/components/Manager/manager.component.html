@@ -1,0 +1,52 @@
+<div class="container">
+    <table class="tablica" class="Perenos">
+        <tr>
+            <th height="40">id </th>
+            <th>name</th>
+            <th>login</th>
+            <th>IMG</th>
+
+            <th colspan="2" class="lastTh">button</th>
+        </tr>
+        <tr *ngFor="let user of users">
+            <td>
+                <div class="tablic">{{user.id}}
+                </div>
+            </td>
+            <td>
+                <div>{{user.name}}</div>
+                
+            </td>
+            <td>
+                <div class="tablic" class="thImg">
+                    {{user.login}}</div>
+            </td>
+            <td>   <div class="tablic" class="thImg"><img class="pictur" src={{user.photo}}><br>
+                {{user.photo}}</div>             
+               
+            </td>
+
+            <td class="lastTh">
+                <button class="btn btn-warning btn-sm" (click)="EditUser(user)">Edit user</button>
+            </td>
+            <td class="lastTh">
+                <button class="btn btn-sm btn-danger" (click)="deleteUser(user.id)">Del user</button>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <div class="centr">
+        <button class="Addhotel" (click)="AddButtonUser()">Хочу добавить юзера</button>
+        <form *ngIf="isEdit">
+            <input type="text" placeholder="Name user" class="form-control" [(ngModel)]="user.name" name="name"><br>
+            <input type="text" placeholder="Login user" class="form-control" [(ngModel)]="user.login"
+                name="people"><br>
+            <input type="text" placeholder="Password user" class="form-control" [(ngModel)]="user.password"
+                name="people"><br>
+
+            <button class="btn btn-warning btn-sm" (click)="AddUser()">Добавить</button>
+        </form>
+    </div>
+</div>

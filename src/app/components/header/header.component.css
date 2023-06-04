@@ -15,6 +15,7 @@
     color: rgb(27, 35, 42);
     scale: 1;
   }
+
   .loginBtnn {
     display: block;
     padding: 0 20px;
@@ -36,6 +37,7 @@
     margin-left: 540px;
   }
 }
+
 @media (max-width: 800px) and (min-width: 770px) {
   .kursachWortt {
     font-size: 30pt;
@@ -51,6 +53,7 @@
     color: rgb(27, 35, 42);
     scale: 1;
   }
+
   .loginBtnn {
     display: block;
     padding: 0 20px;
@@ -71,6 +74,7 @@
     margin-left: 100px;
   }
 }
+
 @media (max-width: 2000px) and (min-width: 770px) {
   .kursachWortt {
     font-size: 30pt;
@@ -86,6 +90,7 @@
     color: rgb(27, 35, 42);
     scale: 1;
   }
+
   .loginBtnn {
     display: block;
     padding: 0 20px;
@@ -107,12 +112,18 @@
   }
 }
 
+.manager {
+  left: 320px;
+  transition: transform 0.25s;
+}
+
 .infText {
   position: absolute;
   font-size: 15px;
   top: 20px;
   color: rgb(78, 78, 78);
 }
+
 .animaite:hover {
   transform: scale(0.9);
 }
@@ -122,23 +133,28 @@
   margin-right: auto;
   position: absolut;
 }
+
 .main {
   left: 10px;
   transition: transform 0.25s;
 }
+
 .contacts {
   left: 80px;
   transition: transform 0.25s;
 }
+
 .admin {
   left: 200px;
   transition: transform 0.25s;
 }
-acount{
+
+acount {
   left: 160px;
   transition: transform 0.25s;
 
 }
+
 .kursachWort {
   font-size: 30pt;
   margin-top: 10px;
@@ -148,6 +164,7 @@ acount{
   transition: all 1s;
   font-family: "Fascinate", sans-serif;
 }
+
 .loginBtn {
   display: block;
   padding: 0 20px;
@@ -171,9 +188,9 @@ acount{
 
 .kursachWort {
   font-size: 30pt;
-  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
-  text-align: center; 
-  color: rgb(78, 78, 78); 
+  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  color: rgb(78, 78, 78);
   transition: all 1s;
   font-family: "Fascinate", sans-serif;
 
@@ -183,41 +200,47 @@ acount{
   color: rgb(27, 35, 42);
   scale: 1;
 }
+
 .loginBtn {
-    display: inline-block;	
-    box-sizing: border-box;
-    padding: 0 20px;
-    outline: none;
-    border: none;  
-    border-radius: 6px;
-    height: 40px;
-    line-height: 40px;
-    font-size: 15px;
-    font-weight: 600;
-    text-decoration: none;
-    color: rgb(78, 78, 78);     
-    background-color: #e7f3ff;
-    cursor: pointer;
-    user-select: none;
-    appearance: none;
-    touch-action: manipulation;
-  }
-  .loginBtn:focus-visible {
-    box-shadow: 0 0 0 2px #666;
-  }
-  .loginBtn:hover {
-    color: #385898;
-  }
-  .loginBtn:active {
-    transform: scale(0.96);
-  }
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0 20px;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  color: rgb(78, 78, 78);
+  background-color: #e7f3ff;
+  cursor: pointer;
+  user-select: none;
+  appearance: none;
+  touch-action: manipulation;
+}
 
 .loginBtn:focus-visible {
   box-shadow: 0 0 0 2px #666;
 }
+
 .loginBtn:hover {
   color: #385898;
 }
+
+.loginBtn:active {
+  transform: scale(0.96);
+}
+
+.loginBtn:focus-visible {
+  box-shadow: 0 0 0 2px #666;
+}
+
+.loginBtn:hover {
+  color: #385898;
+}
+
 .loginBtn:active {
   transform: scale(0.96);
 }
@@ -225,15 +248,16 @@ acount{
 
 
 
-.acount{
+.acount {
   left: 160px;
   transition: transform 0.25s;
 }
 
-.admin{
+.admin {
   left: 260px;
   transition: transform 0.25s;
 }
-.home{
-  left:320px;
+
+.home {
+  left: 320px;
 }
