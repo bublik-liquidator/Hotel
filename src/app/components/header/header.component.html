@@ -7,19 +7,12 @@
       <a class="p-2 contacts infText animaite" routerLink="/about">Контакты</a>
       <a  *ngIf="isEdit" class="p-2 acount infText animaite" routerLink="/account">Мой аккаунт</a>
       <a   *ngIf="isEditAdmin" class="p-2 admin infText animaite" routerLink="/admin">Админ</a>
-      <a   *ngIf="isEditAdmin" class="p-2 manager infText animaite" routerLink="/manager">Менеджер</a>
+      <a   *ngIf="isEditManager" class="p-2 manager infText animaite" routerLink="/manager">Менеджер</a>
 
 <!-- так а на каой менять инфу просто скрфть показать др кнопку -->
     </nav>
 
       <button class="loginBtn" (click)="loginBtn()">{{buttonInfo}}</button>
-      <!-- <button class="loginBtn" (click)="loginBtn()">{{buttonInfo}}</button> 
-       <button [disabled]="sharedService.buttonDisabled$ | async">Кнопка</button
-
-       <button *ngIf="!false" (click)="log()">ВходЫ</button>
-       <button *ngIf="!true" (click)="Exit()">Выходы</button>>-->
-
-       
-       <!-- <app-login (onChanged)="onChanged($event)"></app-login> -->
+     
   </div>
 </div>

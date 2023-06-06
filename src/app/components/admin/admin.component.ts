@@ -32,7 +32,6 @@ export class AdminComponent implements OnInit {
   GetHotel() {
     this.sharedService.getAll().subscribe((data: any) => {
       this.hotels = data;
-      console.log("aaaaa"+data)
     });
   }
 

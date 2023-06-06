@@ -28,6 +28,8 @@ const getUserById = (request, response) => {
     response.status(200).json(results.rows[0])   
 })
 }
+
+////////////
 const getCpechUserById = async (request, response) => {
   {
     const result = await pool.query('SELECT * FROM useriid ORDER BY id ASC',(error, result) => {
@@ -39,14 +41,18 @@ const getCpechUserById = async (request, response) => {
   }
 }
 const putUser = async (request,response )=>{
-  const { id, name } = request.body
-    pool.query('UPDATE useriid SET id_user = $1, name_user = $2 WHERE id = $3', [id, name,1], (error, w) => {
+  const { id, rol,vhod } = request.body
+    pool.query('UPDATE useriid SET id_user = $1, rol = $2, vhod = $3 WHERE id = $4', [id, rol,vhod,1], (error, w) => {
     if (error) {
       throw error
     }
     response.status(200).json('user modified with id_user: '+{id})
-})
+}) 
 }
+
+////////////
+
+
 const createUser = async (request, response) => {
   const { login, password, rol, photo, name, many, birthday, phonenomber, email, bronirovhotel} = request.body
   pool.query('INSERT INTO public."user" (login, password, rol, photo, name, many, birthday, phonenomber, email, bronirovhotel) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [login, password, rol, photo, name, many, birthday, phonenomber, email, bronirovhotel], (error, results) => {

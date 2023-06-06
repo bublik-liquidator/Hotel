@@ -26,14 +26,12 @@ export class ManagerComponent implements OnInit {
 
   ngOnInit(): void {
     this.GetUser();
-    //  this.hotels=this.sharedService.getAll();
   }
 
   GetUser() {
     this.sharedService.getAll().subscribe((data: any) => {
       this.users = data;
      });
-     //window.location.reload();
   }
 
 

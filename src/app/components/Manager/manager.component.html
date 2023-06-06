@@ -2,24 +2,28 @@
     <table class="tablica" class="Perenos">
         <tr>
             <th height="40">id </th>
-            <th>name</th>
-            <th>login</th>
+            <th>Name</th>
+            <th>Login</th>
+            <th>Password</th>
             <th>IMG</th>
 
             <th colspan="2" class="lastTh">button</th>
         </tr>
         <tr *ngFor="let user of users">
             <td>
-                <div class="tablic">{{user.id}}
+                <div class="tablic tex">{{user.id}}
                 </div>
             </td>
             <td>
-                <div>{{user.name}}</div>
-                
+                <div class="tablic tex">{{user.name}}</div>                
             </td>
             <td>
-                <div class="tablic" class="thImg">
+                <div class="tablic tex" >
                     {{user.login}}</div>
+            </td>
+            <td>
+                <div class="tablic tex">
+                    {{user.password}}</div>
             </td>
             <td>   <div class="tablic" class="thImg"><img class="pictur" src={{user.photo}}><br>
                 {{user.photo}}</div>             
@@ -41,11 +45,8 @@
         <button class="Addhotel" (click)="AddButtonUser()">Хочу добавить юзера</button>
         <form *ngIf="isEdit">
             <input type="text" placeholder="Name user" class="form-control" [(ngModel)]="user.name" name="name"><br>
-            <input type="text" placeholder="Login user" class="form-control" [(ngModel)]="user.login"
-                name="people"><br>
-            <input type="text" placeholder="Password user" class="form-control" [(ngModel)]="user.password"
-                name="people"><br>
-
+            <input type="text" placeholder="Login user" class="form-control" [(ngModel)]="user.login" name="people"><br>
+            <input type="text" placeholder="Password user" class="form-control" [(ngModel)]="user.password" name="people"><br>
             <button class="btn btn-warning btn-sm" (click)="AddUser()">Добавить</button>
         </form>
     </div>

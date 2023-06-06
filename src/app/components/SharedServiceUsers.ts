@@ -23,24 +23,21 @@ export class SharedServiceUsers {
   edituser(user: UsersData) {
     UsersData.copyFieldsValuesTo(user, this.user);
   }
-  getspechBYID(){
+  getSpecialUser(){
     return this.http.get(`http://localhost:3003/useriid/`);
   }
-  PUTBYID(user: UsersData){
+  putSpecialUser(user: UsersData){
     return this.http.put('http://localhost:3003/useriid/' + 1, user).subscribe(data=>console.log(data));
-
   }
   getAll(): Observable<any> {
     return this.http.get('http://localhost:3003/user');
   }
   getById(id: bigint):Observable<UsersData>{
-    console.log("ID в шейд сервисе"+id)
-    return this.http.get<UsersData>(`http://localhost:3003/user/${id}`);
+       return this.http.get<UsersData>(`http://localhost:3003/user/${id}`);
 }
 
   create(user: UsersData) {
     this.http.post('http://localhost:3003/user', user).subscribe((user: Object) => {
-      console.log(user);
     });
 
   }
@@ -50,7 +47,6 @@ export class SharedServiceUsers {
   }
   delete(id: bigint) {
     this.http.delete('http://localhost:3003/user/' + id).subscribe((data: Object) => {
-      console.log(data);
     });
   }
 

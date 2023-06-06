@@ -46,7 +46,7 @@ export class StartLoginComponent implements OnInit {
           }
           localStorage.setItem('Activleusers', JSON.stringify(user));      
   
-          this.header.ChekButton();
+          //this.header.ChekButton();
           this.isEdit = !this.isEdit;
           localStorage.setItem('Esidit', JSON.stringify(this.isEdit));      
           this.sharedService.initUser(user);

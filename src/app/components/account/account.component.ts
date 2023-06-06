@@ -25,21 +25,16 @@ export class AccountComponent {
 
   ngOnInit() {
     this.nachalo()
-   
-
   }
-  nachalo(){
-    
-    this.sharedService.getspechBYID().subscribe((data: any) => {
+  nachalo() {
+    this.sharedService.getSpecialUser().subscribe((data: any) => {
       this.sharedService.getById(data.id_user).subscribe((data: UsersData) => {
         this.user = data;
-        console.log("data "+data.name)
-        console.log("this.user "+this.user)
-      });      
+        console.log("data " + data.name)
+        console.log("this.user " + this.user.vhod)
+      });
     });
-    
-      
-  console.log("aaaaaaaaaaaaaa"+this.user.name)
+
   }
   EditButtonInfo() {
     this.isEdit = !this.isEdit;
