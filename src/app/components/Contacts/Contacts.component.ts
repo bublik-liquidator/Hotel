@@ -8,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class ContactsComponent implements OnInit {
 
   constructor() { }
-
+  cat: boolean = false;
   ngOnInit(): void {
+  }
+  ChecCat(){
+    this.cat=!this.cat;
+    console.log(this.cat)
   }
 
 }

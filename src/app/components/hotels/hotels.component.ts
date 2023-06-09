@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { HotelData } from '../hotel-data';
 import { SharedService } from '../SharedService';
+import { SharedServiceUsers } from '../SharedServiceUsers';
+import { UsersData } from '../users-data';
 
 
 @Component({
@@ -19,60 +21,82 @@ export class HotelsComponent implements OnInit {
   hotels2: HotelData[] = [];
 
   newHotel = new HotelData();
-  constructor(private http: HttpClient, private sharedService: SharedService) { }
+  constructor(private sharedServiceUsers: SharedServiceUsers, private sharedService: SharedService) { }
 
   today: string;
   leaveDay: string;
   inf_err: string = "";
-
+  user: UsersData
+  checkLogin: boolean;
   ngOnInit(): void {
-    this.today = this.date_time();    
+    this.today = this.date_time();
     this.GetHotel();
-    console.log(this.hotels)   
+    this.GetInfo()
    
-  }
-    //this.http.get(this.path_json_with_opisaniem).subscribe({ next: (data: any) => this.user = new User(data.specification) });
-    //console.log(this.path_json_with_opisaniem);
 
- 
+  }
+  GetInfo() {
+    this.sharedServiceUsers.getSpecialUser().subscribe((data: any) => {
+      this.user = data;
+      if (this.user.vhod == "Выход") {
+        this.checkLogin = true;
+      }
+      else{
+        this.checkLogin = false;
+      }
+      if(this.checkLogin == false){
+        this.deistveSnomerom = "Выполните вход чтобы забронировать номер";
+      }
+      else{
+        this.deistveSnomerom = "Забронироватьссс";
+      }
+    });
+  }
   GetHotel() {
     this.sharedService.getAll().subscribe((data: any) => {
-      this.hotels = data;     
-      this.newHotel=this.hotels[0];
+      this.hotels = data;
+      this.newHotel = this.hotels[0];
     });
-    
   }
 
   hotelselect(hotelName: string) {
     for (let i = 0; i < this.hotels.length; i++) {
       if (hotelName == this.hotels[i].name) {
         this.newHotel = this.hotels[i];
-       // this.http.get(this.newHotel.path_json).subscribe({ next: (data: any) => this.user = new User(data.specification) });
+        // this.http.get(this.newHotel.path_json).subscribe({ next: (data: any) => this.user = new User(data.specification) });
 
       }
     }
 
   }
   toBook(hotel: HotelData) {
-
-    this.isEdit = !this.isEdit;
-    this.isEditNomer = !this.isEditNomer;
-    this.deistveSnomerom = "Отменить бронь";
-    if (this.deistveSnomerom == "Отменить бронь" && this.isEditNomer == true) {
-      this.deistveSnomerom = "Забронировать";
+    if (this.checkLogin == true) {
+      this.isEdit = !this.isEdit;
+      this.isEditNomer = !this.isEditNomer;
+      this.deistveSnomerom = "Отменить бронь";
+      if (this.deistveSnomerom == "Отменить бронь" && this.isEditNomer == true) {
+        this.deistveSnomerom = "Забронировать";
+      }
     }
+    else {
+      this.deistveSnomerom = "Выполните вход чтобы забронировать номер";
+    }
+
 
   }
 
-  Come(Indey: any, leaveDay2: any) {
-    if (leaveDay2 == undefined || leaveDay2[3] + leaveDay2[4] <= Indey[3] + Indey[4] || (leaveDay2[3] + leaveDay2[4] <= Indey[3] + Indey[4] && leaveDay2[0] + leaveDay2[1] <= Indey[0] + Indey[1])) {
+  Come(Indey: any, leaveDay2: any,newHotel:HotelData) {
+    if (leaveDay2 == undefined ) {
+      //leaveDay2[3] + leaveDay2[4] <= Indey[3] + Indey[4] || (leaveDay2[3] + leaveDay2[4] <= Indey[3] + Indey[4] && leaveDay2[0] + leaveDay2[1] <= Indey[0] + Indey[1])
       this.inf_err = "Ввод некорректных данных!";
       console.log("ЧЕЛ что ты творищь");
 
     }
-    else{
+    else {
       this.inf_err = "ok"
-
+      this.user.bronirovhotel_id=newHotel.id
+      console.log(this.user.bronirovhotel_id)
+      this.sharedServiceUsers.save(this.user)
     }
     console.log(this.today + this.leaveDay);
     console.log(typeof this.today);

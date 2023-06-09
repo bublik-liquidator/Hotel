@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ContactsComponent } from './components/Contacts/kontakti.component';
+import { ContactsComponent } from './components/Contacts/Contacts.component';
 import { HeaderComponent } from './components//header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 
@@ -24,7 +24,6 @@ import { HttpClientModule }   from '@angular/common/http';
 import { AccountComponent } from './components/account/account.component';
 import { HotelsComponent } from './components/hotels/hotels.component';
 import { SharedServiceUsers } from './components/SharedServiceUsers';
-import { StartLoginComponent } from './components/start-login/start-login.component';
 import { ManagerComponent } from './components/Manager/manager.component';
 import { EditManagerComponent } from './components/edit-manager/edit-manager.component';
 
@@ -52,7 +51,6 @@ const appRoutes: Routes = [
     RegistrationComponent,
     AccountComponent,
     HotelsComponent,
-    StartLoginComponent,
     ManagerComponent,
     EditManagerComponent
     

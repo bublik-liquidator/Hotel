@@ -22,6 +22,10 @@ export class HeaderComponent implements OnInit {
   user: UsersData
 
   ngOnInit(): void {
+    this.GetInfo();
+  }
+
+  GetInfo(){
     this.sharedService.getSpecialUser().subscribe((data: any) => {
       this.user = data;
       this.buttonInfo = this.user.vhod
@@ -38,7 +42,6 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-
   Reload() {
     document.location.reload();
   }
@@ -51,6 +54,7 @@ export class HeaderComponent implements OnInit {
     this.user.vhod = "Вход";
     this.buttonInfo = this.user.vhod
     this.sharedService.putSpecialUser(this.user)
+    this.Reload()
   }
   loginBtn() {
     if (this.user.vhod == "Вход") {

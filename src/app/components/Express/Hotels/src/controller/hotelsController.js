@@ -32,8 +32,6 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", (req, res) => {
   return res.json(hotelService.create(req.body));
-  const { error } = schema.validate(req.body);
-  if (error) return res.status(400).send(error.details[0].message); //подключить файл
 });
 
 router.put("/:id", async (req, res) => {
