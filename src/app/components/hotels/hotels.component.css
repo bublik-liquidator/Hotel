@@ -1,88 +1,109 @@
+
+
+/* .auto {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 5px;
+} */
+
 .btn {
-    margin-right: 10px;
-    background-color: rgb(102, 102, 175);
-    border: none;
-    outline: none;
-  }
-  
-  .btn:hover {
-    background-color: rgb(36, 36, 125);
-  
-  }
-  
-  .btn-sss {
-    margin-bottom: 20px;
-  }
-  
-  .bk {
-    color: rgb(255, 255, 255);
-  }
-  
-  .btn-sm {
-    font-size: 0.8em;
-    padding: 5px;
-    line-height: 8px;
-  }
-  
-  .container {
-    margin-bottom: 50px;
-  }
-  
-  .auto {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-    height: 50%;
-    border-radius: 5px;
-  }
-  
-  .hotelName {
-    display: inline-block;
-  }
-  
-  .autoPhotos {
-    overflow: hidden;
-  
-  }
-  
-  .stillInfAto {
-    text-align: center;
-  }
-  
-  .Haracteristik {
-    font-size: 15px;
-  }
-  
-  .imgMini {
-    width: 40%;
-  }
-  
-  .toBook {
-    text-align: center;
-  }
-  
-  input {
-  
-    margin: 5px;
-    border-radius: 5px;
-    background-color: rgb(243, 245, 248); /* Цвет фона */
-    color: rgb(8, 3, 0); /* Цвет текста */
-   outline: none !important;
-  }
-  input:active, :hover, :focus {
-      outline: 0;
-      outline-offset: 0;
-  }
-  
-  .infErr{
-    color: rgb(46, 63, 50); /* Цвет текста */
-    font-size: 16px;
-  }
-  .test:active, .example:hover, .example:focus {
-  
-    outline: 0;
-    
-    outline-offset: 0;
-    
-    }
+  margin-right: 10px;
+  background-color: rgb(102, 102, 175);
+  border: none;
+  outline: none;
+}
+
+.btn:hover {
+  background-color: rgb(36, 36, 125);
+
+}
+
+.btn-sss {
+  margin-bottom: 20px;
+}
+
+.bk {
+  color: rgb(255, 255, 255);
+}
+
+.btn-sm {
+  font-size: 0.8em;
+  padding: 5px;
+  line-height: 8px;
+}
+
+.container {
+  margin-bottom: 50px;
+}
+
+.auto {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 50%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.hotelName {
+  display: inline-block;
+}
+
+.HotelPhotos {
+  overflow: hidden;
+}
+
+.stillInfAto {
+  text-align: center;
+}
+
+.Haracteristik {
+  font-size: 15px;
+}
+
+.imgMini {
+  width: 40%;
+}
+
+.toBook {
+  text-align: center;
+}
+
+input {
+
+  margin: 5px;
+  border-radius: 5px;
+  background-color: rgb(243, 245, 248);
+  /* Цвет фона */
+  color: rgb(8, 3, 0);
+  /* Цвет текста */
+  outline: none !important;
+}
+
+input:active,
+:hover,
+:focus {
+  outline: 0;
+  outline-offset: 0;
+}
+
+.infErr {
+  color: rgb(46, 63, 50);
+  /* Цвет текста */
+  font-size: 16px;
+}
+
+.test:active,
+.example:hover,
+.example:focus {
+
+  outline: 0;
+
+  outline-offset: 0;
+
+}

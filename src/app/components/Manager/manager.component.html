@@ -15,7 +15,7 @@
                 </div>
             </td>
             <td>
-                <div class="tablic tex">{{user.name}}</div>                
+                <div class="tablic tex">{{user.username}}</div>                
             </td>
             <td>
                 <div class="tablic tex" >
@@ -44,9 +44,9 @@
     <div class="centr">
         <button class="Addhotel" (click)="AddButtonUser()">Хочу добавить юзера</button>
         <form *ngIf="isEdit">
-            <input type="text" placeholder="Name user" class="form-control" [(ngModel)]="user.name" name="name"><br>
-            <input type="text" placeholder="Login user" class="form-control" [(ngModel)]="user.login" name="people"><br>
-            <input type="text" placeholder="Password user" class="form-control" [(ngModel)]="user.password" name="people"><br>
+            <input type="text" placeholder="Name user" class="form-control" [(ngModel)]="user.username" name="username"><br>
+            <input type="text" placeholder="Login user" class="form-control" [(ngModel)]="user.login" name="login"><br>
+            <input type="text" placeholder="Password user" class="form-control" [(ngModel)]="user.password" name="password"><br>
             <button class="btn btn-warning btn-sm" (click)="AddUser()">Добавить</button>
         </form>
     </div>

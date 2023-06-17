@@ -26,16 +26,20 @@ import { HotelsComponent } from './components/hotels/hotels.component';
 import { SharedServiceUsers } from './components/SharedServiceUsers';
 import { ManagerComponent } from './components/Manager/manager.component';
 import { EditManagerComponent } from './components/edit-manager/edit-manager.component';
+import { StartComponent } from './components/start/start.component';
+import { RoomComponent } from './components/room/room.component';
+import { SharedServiceRoomBooking } from './components/SharedServiceRoomBooking';
 
 const appRoutes: Routes = [
    {path:'',component:HotelsComponent},//HotelsComponent StartLoginComponent
-  {path:'home',component:HotelsComponent},
+  {path:'room',component:RoomComponent},
   {path:'about',component:ContactsComponent},
   {path:'admin',component:AdminComponent},
   {path:'manager',component:ManagerComponent},
   {path:'login',component:LoginComponent},
   {path:'registration',component:RegistrationComponent},
-  {path:'account',component:AccountComponent}
+  {path:'account',component:AccountComponent},
+  {path:'start',component:StartComponent}
 ]
 
 @NgModule({
@@ -52,7 +56,9 @@ const appRoutes: Routes = [
     AccountComponent,
     HotelsComponent,
     ManagerComponent,
-    EditManagerComponent
+    EditManagerComponent,
+    StartComponent,
+    RoomComponent
     
   ],
   imports: [
@@ -66,7 +72,7 @@ const appRoutes: Routes = [
     
     
   ],
-  providers: [CookieService,SharedService,SharedServiceUsers,HeaderComponent],
+  providers: [CookieService,SharedService,SharedServiceUsers,SharedServiceRoomBooking,HeaderComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

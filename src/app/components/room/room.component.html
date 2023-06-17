@@ -1,0 +1,29 @@
+<div class="container">
+    <br>
+    <br><br>
+    <div class="alert alert-success"> <!--alert-success alert-dark -->
+        Информация об номере:
+        <ul class="Haracteristik">
+            <img class="RoomlPhotos" src="{{room.path_picture}}" class="auto" alt="Photo">
+            <li>ID отеля: <strong>{{room.hotel_id}}</strong></li>
+            <li>number: <strong>{{room.number}}</strong></li>
+            <li>description: <strong>{{room.description}}</strong> </li>
+            <li>price: <strong>{{room.price}}</strong> </li>
+            <div class="toBook">
+                <button class="btn bk" (click)="toBook(room)">{{info}} {{room.name}}</button>
+                <!-- <a routerLink="/toBook"></a> -->
+            </div>
+        </ul>
+    </div>
+
+    <h5>Выберите номер</h5>
+    <div class="hotelName" *ngFor="let room of rooms">
+        <button class="btn btn-danger" (click)="Roomselect(room.name)">{{room.name}}</button>
+    </div>
+    <br><br>
+
+
+
+
+
+</div>

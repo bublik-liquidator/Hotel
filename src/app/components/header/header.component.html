@@ -5,6 +5,7 @@
       <a class="p-2 main infText animaite" routerLink="/" >Главная</a>
       <!-- <a class="p-2 home infText animaite" routerLink="/home" >Hotels</a> -->
       <a class="p-2 contacts infText animaite" routerLink="/about">Контакты</a>
+      <a class="p-2 room infText animaite" routerLink="/room">Номера</a>
       <a  *ngIf="isEdit" class="p-2 acount infText animaite" routerLink="/account">Мой аккаунт</a>
       <a   *ngIf="isEditAdmin" class="p-2 admin infText animaite" routerLink="/admin">Админ</a>
       <a   *ngIf="isEditManager" class="p-2 manager infText animaite" routerLink="/manager">Менеджер</a>
@@ -12,7 +13,10 @@
 <!-- так а на каой менять инфу просто скрфть показать др кнопку -->
     </nav>
 
-      <button class="loginBtn" (click)="loginBtn()">{{buttonInfo}}</button>
-     
+      <button class="loginBtn" (click)="ButtonText()">{{authorizationButtonText}}</button>
+      <!-- <button #button (click)="changeButton(button)">Редактировать</button> -->
+
+
+
   </div>
 </div>

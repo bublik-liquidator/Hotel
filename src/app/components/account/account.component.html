@@ -5,7 +5,7 @@
         Характеристики пользователя {{user.login}}: 
         <div >  <img class="photoUser"  src= {{user.photo}} > </div>
        
-        <div  class="pading">Имя: {{user.name}}</div>
+        <div  class="pading">Имя: {{user.username}}</div>
         <div  class="pading">День рождения: {{user.birthday}}</div>
         <div  class="pading">Почта: {{user.email}}</div>
         <div  class="pading">Деньги: {{user.many}}</div>
@@ -22,7 +22,7 @@
     <form *ngIf="isEdit">
     <body>
         <div>Имя</div>
-        <input type="text" placeholder="Имя" class="form-control" [(ngModel)]="user.name" name="name"><br>
+        <input type="text" placeholder="Имя" class="form-control" [(ngModel)]="user.username" name="username"><br>
         <div>Ваш день рождения</div>
         <input type="text" placeholder="день рождения" class="form-control" [(ngModel)]="user.birthday"  name="birthday"><br>
         <div>Ваша почта</div>

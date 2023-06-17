@@ -34,23 +34,23 @@ export class SharedService {
   // } }
 
   getAll(): Observable<any> {
-    return this.http.get('http://localhost:3000/hotel');
+    return this.http.get('http://localhost:3000/api/hotel');
   }
   getById(id: string) {
-    return this.http.get(`http://localhost:3000/hotel/${id}`);
+    return this.http.get(`http://localhost:3000/api/hotel/${id}`);
   }
 
   create(hotel: HotelData) {
-    this.http.post('http://localhost:3000/hotel', hotel).subscribe((hotel: Object) => {
+    this.http.post('http://localhost:3000/api/hotel', hotel).subscribe((hotel: Object) => {
     });
 
   }
 
   save(hotel: HotelData) {
-    return this.http.put('http://localhost:3000/hotel/' + hotel.id, hotel).subscribe(data=>console.log(data));
+    return this.http.put('http://localhost:3000/api/hotel/' + hotel.id, hotel).subscribe(data=>console.log(data));
   }
   delete(id: bigint) {
-    this.http.delete('http://localhost:3000/hotel/' + id).subscribe((data: Object) => {
+    this.http.delete('http://localhost:3000/api/hotel/' + id).subscribe((data: Object) => {
     });
   }
 

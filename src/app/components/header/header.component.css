@@ -116,7 +116,14 @@
   left: 320px;
   transition: transform 0.25s;
 }
-
+/* .hotel{
+  left: 160px;
+  transition: transform 0.25s;
+} */
+.room{
+  left: 80px;
+  transition: transform 0.25s;
+}
 .infText {
   position: absolute;
   font-size: 15px;
@@ -140,20 +147,10 @@
 }
 
 .contacts {
-  left: 80px;
+  left: 145px;
   transition: transform 0.25s;
 }
 
-.admin {
-  left: 200px;
-  transition: transform 0.25s;
-}
-
-acount {
-  left: 160px;
-  transition: transform 0.25s;
-
-}
 
 .kursachWort {
   font-size: 30pt;
@@ -246,15 +243,13 @@ acount {
 }
 
 
-
-
-.acount {
-  left: 160px;
+.admin {
+  left: 260px;
   transition: transform 0.25s;
 }
 
-.admin {
-  left: 260px;
+.acount {
+  left: 225px;
   transition: transform 0.25s;
 }
 

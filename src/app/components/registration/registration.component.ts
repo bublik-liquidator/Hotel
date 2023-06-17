@@ -20,7 +20,7 @@ export class RegistrationComponent implements OnInit {
     this.GetUsers()
     this.user.login="";
     this.user.password="";
-    this.user.rol="";
+    //this.user.rol="";
   }
 
   GetUsers() {
@@ -34,7 +34,7 @@ export class RegistrationComponent implements OnInit {
   this.matdialog.open(LoginComponent);
 
   }
-Registration(userLogin:string,userPassword:string,userRol:string){
+Registration(userLogin:string,userPassword:string){
     if(userLogin!=""&&userPassword!=""){
       this.GetUsers()
       if (this.users.find(({ login }) => login === userLogin)) {
@@ -45,9 +45,8 @@ Registration(userLogin:string,userPassword:string,userRol:string){
       else{
       this.user.login=userLogin;
       this.user.password=userPassword;
-      this.user.rol=userRol;
+      //!!this.user.rol=userRol;
 
-      //this.users.push(this.user);
       this.sharedService.create(this.user);
       
       //localStorage.setItem('users', JSON.stringify(this.users));

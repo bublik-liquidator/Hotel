@@ -12,20 +12,16 @@ import { AccountComponent } from '../account/account.component';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private sharedService: SharedServiceUsers,private router: Router, private header: HeaderComponent, public matdialog: MatDialog, private _router: Router
+  constructor(private sharedService: SharedServiceUsers,private router: Router, private header: HeaderComponent, public matdialog: MatDialog
   ) { }
 
   informationError: string = 'Войдите в систему, пожалуйста)';
   user = new UsersData();
   test:UsersData;
-  users: UsersData[] = [];
+  users: UsersData[] = [new UsersData()];
   isEdit: boolean;
   initChekButton:true
-  @Output() onChanged = new EventEmitter<boolean>();
  
-  change(increased:any) {
-      this.onChanged.emit(increased);
-  }
 
   ngOnInit(): void {
     this.GetUsers();
@@ -35,32 +31,21 @@ export class LoginComponent implements OnInit {
   GetUsers() {
     this.sharedService.getAll().subscribe((data: any) => {
       this.users = data;
+      console.log(this.users)
     });
   }
 
   Loginnn(user: UsersData) {
-    //this.log = this.users[0].login
-    console.log(this.users.find(({ login }) => login == user.login));
-    if (this.users.find(({ login }) => login === user.login)) {
-      if (this.users.find(({ password }) => password === user.password)) {
-        if(this.users.find(({ login }) => login === user.login)!==undefined){
-          const foundUser = this.users.find(({ login }) => login === user.login);
-          if (foundUser) {
-            this.user = foundUser;
-          }
-        }
-        if(user.rol=="admin"){
-          localStorage.setItem('isEditAdmin', JSON.stringify(true));
-        }
-             
-        this.user.vhod="Выход";
-        this.sharedService.putSpecialUser(this.user)       
-        this.header.Reload();    
-        //////////////////////////////////////////this.sharedService.inituser(user);
-        this.matdialog.closeAll();      
-
-      }
-    }
+    this.GetUsers()
+    // if ( !this.users) {
+    // this.user = this.users.find((u: { login: string; }) => u.login === user.login);
+    // }
+        this.sharedService.putTokenUser(this.user)       
+        setTimeout(() => {
+          this.header.checLogin();
+        }, 1000); // Вызов метода через 2 секунды
+        document.location.reload();
+        this.matdialog.closeAll(); 
 
     if ((user.password == '' && user.login == '') || (user.password != '' && user.login != '')) {
       this.informationError = 'Некорректный Password и Login';

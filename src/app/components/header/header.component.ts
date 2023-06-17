@@ -4,7 +4,6 @@ import { LoginComponent } from '../login/login.component';
 import { SharedServiceUsers } from '../SharedServiceUsers';
 import { Router } from '@angular/router';
 import { UsersData } from '../users-data';
-import { AccountComponent } from '../account/account.component';
 
 
 @Component({
@@ -18,53 +17,78 @@ export class HeaderComponent implements OnInit {
   isEdit: boolean = false;
   isEditAdmin: boolean = false;
   isEditManager: boolean = false;
-  buttonInfo: string = " ";
+  authorizationButtonText: string = " ";
+  loggedInButtonText: string = "Выход";
+  notLoggedInButtonText: string = "Вход";
   user: UsersData
+  Data: object;
+  hotelLink:string;
+  roomLink :string;
+
 
   ngOnInit(): void {
-    this.GetInfo();
+    this.checLogin();
+
   }
 
-  GetInfo(){
-    this.sharedService.getSpecialUser().subscribe((data: any) => {
-      this.user = data;
-      this.buttonInfo = this.user.vhod
-      if (this.user.rol == "admin" && this.buttonInfo == "Выход") {
-        this.isEditManager = true;
-        this.isEditAdmin = true;
-      }
-      if (this.user.rol == "manager" && this.buttonInfo == "Выход") {
-        this.isEditManager = true;
-      }
-      if (this.buttonInfo == "Выход") {
-        this.isEdit = true;
-      }
-    });
+
+  checLogin() {
+    this.Data = JSON.parse(localStorage.getItem('activleUser') || '[]');
+    if (localStorage.getItem('activleUser') == null) {      
+      this.userLoggedOut();
+    }
+    if (localStorage.getItem('activleUser') != null) {
+      this.isEdit=true;
+
+      this.userLoggedIn();
+    }
+    
   }
 
-  Reload() {
-    document.location.reload();
-  }
 
-  Exit() {
-    this.router.navigate(['/']);
-    this.isEdit = false;
-    this.isEditManager = false;
-    this.isEditAdmin = false;
-    this.user.vhod = "Вход";
-    this.buttonInfo = this.user.vhod
-    this.sharedService.putSpecialUser(this.user)
-    this.Reload()
-  }
-  loginBtn() {
-    if (this.user.vhod == "Вход") {
+  ButtonText() {
+    if (localStorage.getItem('activleUser') == null) {
       this.matdialog.open(LoginComponent);
     }
     else {
-      this.Exit()
+      this.router.navigate(['/']);
+      localStorage.removeItem('activleUser');
+      localStorage.removeItem('room');
+      localStorage.removeItem('hotel');
+      this.checLogin();
+      setTimeout(() => {
+        document.location.reload();
+      }, 500); // Вызов метода через 2 секунды
+     
+
     }
   }
 
+  userLoggedIn() {
+    this.authorizationButtonText = this.loggedInButtonText;
+    // console.log("loggedIn");
+  }
+
+  userLoggedOut() {    
+    this.authorizationButtonText = this.notLoggedInButtonText;
+    // console.log("loggedOut");
+
+  }
+
+
+
+  // this.isEdit = false;
+  // this.isEditManager = false;
+  // this.isEditAdmin = false;
+  // //this.user.vhod = "Вход";
+  // changeButton(button: { innerText: string; }) {
+  //   if (localStorage.getItem('activleUser') != null) {
+  //     button.innerText = "ВЫХОД2";
+  //   }
+  //   else {
+  //     button.innerText = "ВХОД2";
+  //   }
+  // }
 
 
 }

@@ -22,7 +22,7 @@ export class EditManagerComponent implements OnInit {
   
 
   savehotelsToStorage() {
-    if(this.edituser.name==null||this.edituser.login ==null){
+    if(this.edituser.username==null||this.edituser.login ==null){
       alert("Некоректный ввод данны");
       return 0;
      } 
@@ -37,7 +37,7 @@ export class EditManagerComponent implements OnInit {
     }
   }
   Cancel() {    
-    this.edituser.name = this.user.name;
+    this.edituser.username = this.user.username;
     this.edituser.login = this.user.login;
     this.edituser.photo  = this.user.photo ;
     this.matdialog.closeAll();

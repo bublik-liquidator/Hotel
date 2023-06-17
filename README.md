@@ -1,5 +1,7 @@
 # App
 
+Это HOTEL проект написанный  на Angular, в данном репозитории присутствует( а может уже и нет) код бэкенда - это не правильно, но мне так удобно!
+То что у коммитов странные названия - это тоже так надо, да, неправильно, но это личный проект, так что творю что хочу)))
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
 
 ## Development server

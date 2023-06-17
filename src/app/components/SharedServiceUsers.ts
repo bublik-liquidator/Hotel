@@ -26,9 +26,17 @@ export class SharedServiceUsers {
   getSpecialUser(){
     return this.http.get(`http://localhost:3003/useriid/`);
   }
-  putSpecialUser(user: UsersData){
-    return this.http.put('http://localhost:3003/useriid/' + 1, user).subscribe(data=>console.log(data));
+  putTokenUser(user: UsersData){
+    return this.http.post('http://localhost:3000/api/login', user).subscribe((data: Object) => {
+      localStorage.setItem('activleUser', JSON.stringify(data));
+    });
   }
+  putUser(user: UsersData){
+    return this.http.post('http://localhost:3000/api/user', user).subscribe((data: Object) => {
+      localStorage.setItem('activleUser', JSON.stringify(data));
+    });
+  }
+
   getAll(): Observable<any> {
     return this.http.get('http://localhost:3003/user');
   }
