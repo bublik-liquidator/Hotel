@@ -13,10 +13,6 @@ export class AccountComponent {
 
   constructor(private http: HttpClient, private sharedService: SharedServiceUsers) { }
 
-  // user: User;
-  // session: string;
-  // test:string;
-  // Activleuser = new UserInfo(); 
   user = new UsersData(); // оригинальная пользователь
   users: UsersData[] = [];
   editedUser = new UsersData(); // это редактируем
@@ -24,17 +20,14 @@ export class AccountComponent {
   isEdit: boolean = false;
 
   ngOnInit() {
-    this.nachalo()
+    this.getInfo()
   }
-  nachalo() {
-    this.sharedService.getSpecialUser().subscribe((data: any) => {
-      this.sharedService.getById(data.id_user).subscribe((data: UsersData) => {
+  getInfo() {
+    this.user.id = JSON.parse(localStorage.getItem('activleUser') || '[]').id;
+      this.sharedService.getById(this.user.id).subscribe((data: UsersData) => {
         this.user = data;
-        console.log("data " + data.username)
-        //console.log("this.user " + this.user.vhod)
       });
-    });
-
+  
   }
   EditButtonInfo() {
     this.isEdit = !this.isEdit;

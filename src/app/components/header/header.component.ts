@@ -46,21 +46,26 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  ButtonText() {
+  ButtonText() {  
+
     if (localStorage.getItem('activleUser') == null) {
-      this.matdialog.open(LoginComponent);
+      const dialogRef = this.matdialog.open(LoginComponent);
+      this.sharedService.initdialogRef(dialogRef)
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.checLogin();
+          console.log('Dialog was closed with result:', result);
+        } else {
+          console.log('Dialog was closed with no result.');
+        }
+      });
     }
     else {
       this.router.navigate(['/']);
       localStorage.removeItem('activleUser');
       localStorage.removeItem('room');
       localStorage.removeItem('hotel');
-      this.checLogin();
-      setTimeout(() => {
-        document.location.reload();
-      }, 500); // Вызов метода через 2 секунды
-     
-
+      this.checLogin(); 
     }
   }
 

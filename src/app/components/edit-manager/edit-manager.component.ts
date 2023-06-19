@@ -27,7 +27,7 @@ export class EditManagerComponent implements OnInit {
       return 0;
      } 
      else{
-    console.log(this.edituser instanceof UsersData);
+   // console.log(this.edituser instanceof UsersData);
     UsersData.copyFieldsValuesTo(this.edituser, this.user);
     this.sharedService.inituser(this.edituser);
    

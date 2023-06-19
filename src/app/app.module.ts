@@ -29,6 +29,8 @@ import { EditManagerComponent } from './components/edit-manager/edit-manager.com
 import { StartComponent } from './components/start/start.component';
 import { RoomComponent } from './components/room/room.component';
 import { SharedServiceRoomBooking } from './components/SharedServiceRoomBooking';
+import { ShowInfoComponent } from './components/show-info/show-info.component';
+import { SharedServiceShowInfo } from './components/SharedServiceShowInfo';
 
 const appRoutes: Routes = [
    {path:'',component:HotelsComponent},//HotelsComponent StartLoginComponent
@@ -58,7 +60,8 @@ const appRoutes: Routes = [
     ManagerComponent,
     EditManagerComponent,
     StartComponent,
-    RoomComponent
+    RoomComponent,
+    ShowInfoComponent
     
   ],
   imports: [
@@ -72,7 +75,7 @@ const appRoutes: Routes = [
     
     
   ],
-  providers: [CookieService,SharedService,SharedServiceUsers,SharedServiceRoomBooking,HeaderComponent],
+  providers: [CookieService,SharedService,SharedServiceUsers,SharedServiceRoomBooking,SharedServiceShowInfo,HeaderComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

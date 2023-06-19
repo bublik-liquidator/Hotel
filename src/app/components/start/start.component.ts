@@ -27,7 +27,7 @@ export class StartComponent implements OnInit {
   leaveDay: string;
   inf_err: string = "";
   user: UsersData
-  checkLogin: boolean;
+  checkLogin: boolean=true;
   ngOnInit(): void {
     this.today = this.date_time();
     this.GetHotel();

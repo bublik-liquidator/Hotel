@@ -1,6 +1,9 @@
 <div class="container">
     <br>
     <br><br>
+    <!-- <div *ngIf="checkBookingBoolean" class="error">
+        <div >ЗАНЯТО</div>
+      </div> -->
     <div class="alert alert-success"> <!--alert-success alert-dark -->
         Информация об номере:
         <ul class="Haracteristik">
@@ -9,6 +12,8 @@
             <li>number: <strong>{{room.number}}</strong></li>
             <li>description: <strong>{{room.description}}</strong> </li>
             <li>price: <strong>{{room.price}}</strong> </li>
+            <li>available: <strong>{{checkBookingBoolean ? 'No' : 'Yes'}}</strong> </li>
+            <div *ngIf="checkBookingBoolean">Номер забронирова с {{roomBooking.date_from}} по {{roomBooking.date_to}}</div>
             <div class="toBook">
                 <button class="btn bk" (click)="toBook(room)">{{info}} {{room.name}}</button>
                 <!-- <a routerLink="/toBook"></a> -->

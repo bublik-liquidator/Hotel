@@ -13,7 +13,7 @@ export class ContactsComponent implements OnInit {
   }
   ChecCat(){
     this.cat=!this.cat;
-    console.log(this.cat)
+    //console.log(this.cat)
   }
 
 }

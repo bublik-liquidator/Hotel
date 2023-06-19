@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Injectable()
 export class SharedServiceUsers {
@@ -12,7 +13,14 @@ export class SharedServiceUsers {
   users: UsersData[] = [];
   ChekButton: string;
   editeduser = new UsersData();
+  dialogRef: MatDialogRef<any>
   constructor(private http: HttpClient, private router: Router) {
+  }
+  initdialogRef(dialogRef:any){
+    this.dialogRef=dialogRef
+  }
+  getdialogRef(){
+    return this.dialogRef
   }
   inituser(user: UsersData) {
     this.user = user;
@@ -23,38 +31,40 @@ export class SharedServiceUsers {
   edituser(user: UsersData) {
     UsersData.copyFieldsValuesTo(user, this.user);
   }
-  getSpecialUser(){
-    return this.http.get(`http://localhost:3003/useriid/`);
-  }
+  
   putTokenUser(user: UsersData){
     return this.http.post('http://localhost:3000/api/login', user).subscribe((data: Object) => {
       localStorage.setItem('activleUser', JSON.stringify(data));
     });
   }
-  putUser(user: UsersData){
+  puttTokenUser(user: UsersData){
+    return this.http.post('http://localhost:3000/api/login', user);
+  }
+  putUser(user: UsersData) {
     return this.http.post('http://localhost:3000/api/user', user).subscribe((data: Object) => {
       localStorage.setItem('activleUser', JSON.stringify(data));
     });
   }
 
   getAll(): Observable<any> {
-    return this.http.get('http://localhost:3003/user');
+    return this.http.get('http://localhost:3000/api/user');
   }
-  getById(id: bigint):Observable<UsersData>{
-       return this.http.get<UsersData>(`http://localhost:3003/user/${id}`);
-}
+
+  getById(id: bigint): Observable<UsersData> {
+    return this.http.get<UsersData>(`http://localhost:3000/api/user/${id}`);
+  }
 
   create(user: UsersData) {
-    this.http.post('http://localhost:3003/user', user).subscribe((user: Object) => {
+    this.http.post('http://localhost:3000/api/user', user).subscribe((user: Object) => {
     });
 
   }
 
   save(user: UsersData) {
-    return this.http.put('http://localhost:3003/user/' + user.id, user).subscribe(data=>console.log(data));
+    return this.http.put('http://localhost:3000/api/user/' + user.id, user).subscribe(data => console.log(data));
   }
   delete(id: bigint) {
-    this.http.delete('http://localhost:3003/user/' + id).subscribe((data: Object) => {
+    this.http.delete('http://localhost:3000/api/user/' + id).subscribe((data: Object) => {
     });
   }
 
@@ -69,19 +79,19 @@ export class SharedServiceUsers {
     }
     if (isEdit == true) {
       this.ChekButton = "Выход";
-     // localStorage.setItem('vhod', JSON.stringify(this.ChekButton));  
+      // localStorage.setItem('vhod', JSON.stringify(this.ChekButton));  
 
-      
+
     }
-   
+
   }
-  getChekButton() {  
+  getChekButton() {
     return this.ChekButton;
   }
   initUser(user: UsersData) {
-    this.user=user
+    this.user = user
   }
-  getUsera() {  
+  getUsera() {
     return this.user;
   }
 }
