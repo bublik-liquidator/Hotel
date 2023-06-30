@@ -31,6 +31,7 @@ import { RoomComponent } from './components/room/room.component';
 import { SharedServiceRoomBooking } from './components/SharedServiceRoomBooking';
 import { ShowInfoComponent } from './components/show-info/show-info.component';
 import { SharedServiceShowInfo } from './components/SharedServiceShowInfo';
+import { BookingComponent } from './components/booking/booking.component';
 
 const appRoutes: Routes = [
    {path:'',component:HotelsComponent},//HotelsComponent StartLoginComponent
@@ -61,7 +62,8 @@ const appRoutes: Routes = [
     EditManagerComponent,
     StartComponent,
     RoomComponent,
-    ShowInfoComponent
+    ShowInfoComponent,
+    BookingComponent
     
   ],
   imports: [

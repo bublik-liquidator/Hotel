@@ -22,8 +22,8 @@ export class HeaderComponent implements OnInit {
   notLoggedInButtonText: string = "Вход";
   user: UsersData
   Data: object;
-  hotelLink:string;
-  roomLink :string;
+  hotelLink: string;
+  roomLink: string;
 
 
   ngOnInit(): void {
@@ -34,26 +34,39 @@ export class HeaderComponent implements OnInit {
 
   checLogin() {
     this.Data = JSON.parse(localStorage.getItem('activleUser') || '[]');
-    if (localStorage.getItem('activleUser') == null) {      
+    if (localStorage.getItem('activleUser') == null) {
       this.userLoggedOut();
     }
     if (localStorage.getItem('activleUser') != null) {
-      this.isEdit=true;
+      this.isEdit = true;
 
+      if (JSON.parse(localStorage.getItem('activleUser') || '[]').login == "admin") {
+        this.isEditAdmin = true;
+        this.isEditManager = true;
+
+      }
+      if (JSON.parse(localStorage.getItem('activleUser') || '[]').login == "manager") {
+        this.isEditManager = true;
+      }
+      if (JSON.parse(localStorage.getItem('activleUser') || '[]').login == "user") {
+        this.isEdit = true;
+      }
       this.userLoggedIn();
     }
-    
+
   }
 
 
-  ButtonText() {  
+  ButtonText() {
 
     if (localStorage.getItem('activleUser') == null) {
       const dialogRef = this.matdialog.open(LoginComponent);
       this.sharedService.initdialogRef(dialogRef)
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
+
           this.checLogin();
+
           console.log('Dialog was closed with result:', result);
         } else {
           console.log('Dialog was closed with no result.');
@@ -65,7 +78,11 @@ export class HeaderComponent implements OnInit {
       localStorage.removeItem('activleUser');
       localStorage.removeItem('room');
       localStorage.removeItem('hotel');
-      this.checLogin(); 
+      this.isEditManager = false;
+      this.isEditAdmin = false;
+      this.isEdit = false;
+
+      this.checLogin();
     }
   }
 
@@ -74,7 +91,7 @@ export class HeaderComponent implements OnInit {
     // console.log("loggedIn");
   }
 
-  userLoggedOut() {    
+  userLoggedOut() {
     this.authorizationButtonText = this.notLoggedInButtonText;
     // console.log("loggedOut");
 

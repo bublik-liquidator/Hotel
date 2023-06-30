@@ -321,3 +321,6 @@ input {
     word-wrap :break-word;
     text-align: center;
 }
+.thImg {
+  margin: 10px;
+}

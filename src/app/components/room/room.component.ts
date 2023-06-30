@@ -4,7 +4,7 @@ import { HotelRoom } from '../hotel-room';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { LoginComponent } from '../login/login.component';
+import { BookingComponent } from '../booking/booking.component';
 import { SharedServiceUsers } from '../SharedServiceUsers';
 import { UsersData } from '../users-data';
 import { SharedServiceRoomBooking } from '../SharedServiceRoomBooking';
@@ -37,13 +37,10 @@ export class RoomComponent implements OnInit {
   checkBookingBoolean: boolean;
   booking: boolean
   ngOnInit(): void {
-    this.today = this.date_time();
     this.getRooms();
-    this.checLogin();
-    //this.getRoomBooking();
-
-
+    this.checLogin();    
   }
+
   checLogin() {
     this.Data = JSON.parse(localStorage.getItem('activleUser') || '[]');
     if (localStorage.getItem('activleUser') == null) {
@@ -56,6 +53,7 @@ export class RoomComponent implements OnInit {
       this.info = "Забронировать";
     }
   }
+  
   converData(str: string) {
     const date = new Date(str);
     const hours = date.getUTCHours();
@@ -76,10 +74,9 @@ export class RoomComponent implements OnInit {
           return item.room_id == roomID;
         });
       }
-
       this.roomBooking = this.roomBookings[0]
-      this.roomBooking.date_from=this.converData(this.roomBooking.date_from)
-     this.roomBooking.date_to=this.converData(this.roomBooking.date_to)
+      this.roomBooking.date_from = this.converData(this.roomBooking.date_from)
+      this.roomBooking.date_to = this.converData(this.roomBooking.date_to)
     });
 
   }
@@ -98,11 +95,9 @@ export class RoomComponent implements OnInit {
       this.room = this.rooms[0]
       this.checkBooking(this.room)
     });
-
-
   }
 
-  checkBooking(room: HotelRoom) {    
+  checkBooking(room: HotelRoom) {
     this.SharedServiceRoomBooking.getById(room).subscribe((value: object) => {
       if (value != null) {
         var str = JSON.stringify(value).replace(/"/g, '');
@@ -110,30 +105,32 @@ export class RoomComponent implements OnInit {
           this.checkBookingBoolean = true;
           this.getRoomBooking(room.id)
           this.error = "ЗАНЯТ"
-          console.log("ЗАНЯТ");
+          //console.log("ЗАНЯТ");
         }
         if (str == "false") {
-          console.log("Свободен");
+          //console.log("Свободен");
           this.checkBookingBoolean = false;
         }
       }
     });
   }
 
-
   toBook(room: HotelRoom) {
     this.roomBooking.room_id = room.id;
-    this.roomBooking.booked_by_user_id = this.user.id;
-    this.roomBooking.date_from = "2031-10-11T21:00:00.000Z "
-    this.roomBooking.date_to = "2033-10-11T21:00:00.000Z "
+    this.roomBooking.booked_by_user_id = this.user.id;    
     this.roomBooking.payed = false;
+    this.roomBooking.name = room.name;
 
     if (this.checkLogin == true) {
       this.user = JSON.parse(localStorage.getItem('hotel') || '[]')
       localStorage.setItem('room', JSON.stringify(room));
       this.checkBooking(room);
       if (!this.checkBookingBoolean) {
-        this.SharedServiceRoomBooking.post(this.roomBooking)
+        //+вызов сервиса
+        this.SharedServiceRoomBooking.initRoom(this.room);
+        this.SharedServiceRoomBooking.initRoomBooking(this.roomBooking);
+        this.matdialog.open(BookingComponent);
+        //this.SharedServiceRoomBooking.post(this.roomBooking)
       }
       else {
         this.sharedServiceInfo.initErrorInformation("Этот номер занят пожалуйста выберете другой")
@@ -156,44 +153,5 @@ export class RoomComponent implements OnInit {
     }
 
   }
-
-
-
-
-  Come(Indey: any, leaveDay2: any, room: HotelRoom) {
-    if (leaveDay2 == undefined) {
-      //leaveDay2[3] + leaveDay2[4] <= Indey[3] + Indey[4] || (leaveDay2[3] + leaveDay2[4] <= Indey[3] + Indey[4] && leaveDay2[0] + leaveDay2[1] <= Indey[0] + Indey[1])
-      this.inf_err = "Ввод некорректных данных!";
-      console.log("ЧЕЛ что ты творищь");
-
-    }
-    // else {
-    //   this.inf_err = "ok"
-    //   this.user.bronirovhotel_id = newHotel.id
-    //   console.log(this.user.bronirovhotel_id)
-    //   this.sharedServiceUsers.save(this.user)
-    // }
-    console.log(this.today + this.leaveDay);
-    console.log(typeof this.today);
-    console.log(typeof this.leaveDay);
-  }
-
-
-
-  date_time() {
-    var current_datetime = new Date();
-    var day = this.zero_first_format(current_datetime.getDate());
-    var month = this.zero_first_format(current_datetime.getMonth() + 1);
-    var year = current_datetime.getFullYear();
-
-    return year + "-" + month + "-" + day;
-  }
-  zero_first_format(value: string | number) {
-    if (+value < 10) {
-      value = '0' + value;
-    }
-    return value;
-  }
-  sesion: any;
 
 }

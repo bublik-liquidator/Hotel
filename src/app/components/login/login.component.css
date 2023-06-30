@@ -2,8 +2,12 @@
   width: 300px;
   height: 250px;
 }
+.brt {
+  display: flex;
+  justify-content: space-between;
+}
 .informationError {
-  color: rgb(85, 103, 192);
+  color: #1d2331;
   font-size: 20px;
   position: absolute;
 }
@@ -21,12 +25,11 @@ button {
   font-size: 16px;
 }
 .logBtn {
-  margin-left: 0px;
-  background: #3c62e0;
+  color: rgb(255, 255, 255);
+  background-color: #485c81;
 }
 .regBtn {
-  margin-left: 130px;
-  background: #143295;
+  background-color: #394967;
 }
 
 .formRegistration {

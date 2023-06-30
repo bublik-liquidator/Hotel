@@ -1,27 +1,38 @@
 <div class="container">
     <br>
     <br><br>
-     <div class="alert alert-success"> <!--alert-success alert-dark -->
+    <div class="alert alert-success"> <!--alert-success alert-dark -->
+        <div class="inf"><p>Welcome to our hospitable {{newHotel.name}}</p></div>        
         Информация об отеля:
         <ul class="Haracteristik">
-            <img class="HotelPhotos" src="{{newHotel.path_picture}}" class="auto" alt="Photo">
-            <li>ID отеля: <strong>{{newHotel.id}}</strong></li>
-            <li>Имя отеля: <strong>{{newHotel.name}}</strong></li>
-            <li>ID менеджера: <strong>{{newHotel.manager_id}}</strong> </li>
+           <div class="polaroid"> 
+                <img class="HotelPhotos" src="{{newHotel.path_picture[0]}}" class="phot" alt="Photo">
+                <img class="HotelPhotos" src="{{newHotel.path_picture[1]}}" class="phot" alt="Photo">
+           </div>
+            
+         
+            <div style="float:left">
+                <li>ID отеля: <strong>{{newHotel.id}}</strong></li>
+                <li>Имя отеля: <strong>{{newHotel.name}}</strong></li>
+                <li>ID менеджера: <strong>{{newHotel.manager_id}}</strong> </li>
+
+                <br>
+            </div>
             <div class="toBook">
-            <button class="btn bk" (click)="toBook(newHotel)">{{deistveSnomerom}} {{newHotel.name}}</button> <!-- <a routerLink="/toBook"></a> -->
+                <button class="btn bk" (click)="toBook(newHotel)">{{deistveSnomerom}} {{newHotel.name}}</button>
+                <!-- <a routerLink="/toBook"></a> -->
             </div>
         </ul>
     </div>
 
-<div *ngIf="isEditNomer">
-    <h5>Выберите отель</h5>
-    <div class="hotelName" *ngFor="let hotel of hotels">
-        <button class="btn btn-danger" (click)="hotelselect(hotel.name)">{{hotel.name}}</button>
+    <div *ngIf="isEditNomer">
+        <h5>Выберите отель</h5>
+        <div class="hotelName" *ngFor="let hotel of hotels">
+            <button class="btn btn-danger" (click)="hotelselect(hotel.name)">{{hotel.name}}</button>
+        </div>
+        <br><br>
     </div>
-    <br><br>
-</div>
- 
+
 
 
 

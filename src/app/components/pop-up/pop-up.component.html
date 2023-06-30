@@ -1,14 +1,12 @@
 <body>
 <div>Название</div>
 <input type="text" placeholder="Название номера" class="form-control" [(ngModel)]="editedHotel.name" name="name"><br>
-<div>Колличесво людей</div>
-<input type="text" placeholder="Колличесво людей" class="form-control" [(ngModel)]="editedHotel.people"><br>
-<div>path_picturs </div>
-<input type="text" placeholder="path_picturs " class="form-control" [(ngModel)]="editedHotel.path_picturs "><br>
-<div>Path_icons</div>
-<input type="text" placeholder="Path_icons" class="form-control" [(ngModel)]="editedHotel.path_icons"><br>
-<div>Cost</div>
-<input type="text" placeholder="cost" class="form-control" [(ngModel)]="editedHotel.cost"><br>
+<div>ID менеджера</div>
+<input type="text" placeholder="Колличесво людей" class="form-control" [(ngModel)]="editedHotel.manager_id"><br>
+<div>Путь картинки</div>
+<input type="text" placeholder="path_picturs " class="form-control" [(ngModel)]="editedHotel.path_picture "><br>
+
+
 <button class="Cancel" (click)="Cancel()">Cancel</button>
 <button class="save" (click)="savehotelsToStorage()">Save</button>
 </body>

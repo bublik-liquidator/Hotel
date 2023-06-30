@@ -1,14 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Fascinate&family=Rajdhani:wght@300;400&display=swap");
 
-@media (max-width: 770px) and (min-width: 600px) {
-  .kursachWortt {
-    font-size: 30pt;
+@media (max-width: 767px) {
+  .kursachWort {
+    font-size: 15pt;
     margin-top: 10px;
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
     text-align: center;
     color: rgb(78, 78, 78);
     transition: all 1s;
     font-family: "Fascinate", sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
 
   .kursachWort:hover {
@@ -38,15 +41,17 @@
   }
 }
 
-@media (max-width: 800px) and (min-width: 770px) {
-  .kursachWortt {
-    font-size: 30pt;
+@media (min-width: 768px) and (max-width: 991px) {
+  .kursachWort {
+    font-size: 20pt;
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
     text-align: center;
     color: rgb(78, 78, 78);
     transition: all 1s;
     font-family: "Fascinate", sans-serif;
-    margin-left: 540px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
 
   .kursachWort:hover {
@@ -75,15 +80,16 @@
   }
 }
 
-@media (max-width: 2000px) and (min-width: 770px) {
-  .kursachWortt {
+@media (min-width: 992px) and (max-width: 1199px) {
+  .kursachWort {
     font-size: 30pt;
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
-    text-align: center;
     color: rgb(78, 78, 78);
     transition: all 1s;
     font-family: "Fascinate", sans-serif;
-    margin-left: 540px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
 
   .kursachWort:hover {
@@ -102,8 +108,8 @@
     font-size: 15px;
     font-weight: 600;
     text-decoration: none;
-    color: rgb(78, 78, 78);
-    background-color: #e7f3ff;
+    color: #394967;
+    background-color: #394967;
     cursor: pointer;
     user-select: none;
     appearance: none;
@@ -111,11 +117,26 @@
     margin-left: 400px;
   }
 }
+@media (min-width: 1200px){
+  .kursachWort {
+    font-size: 30pt;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    color: rgb(78, 78, 78);
+    transition: all 1s;
+    font-family: "Fascinate", sans-serif;
+    margin-left: auto;
+    margin-right: auto;    
+    text-align: center;
+  }
 
-.manager {
-  left: 320px;
-  transition: transform 0.25s;
+  .kursachWort:hover {
+    color: rgb(27, 35, 42);
+    scale: 1;
+  }
+
+  
 }
+
 /* .hotel{
   left: 160px;
   transition: transform 0.25s;
@@ -152,52 +173,6 @@
 }
 
 
-.kursachWort {
-  font-size: 30pt;
-  margin-top: 10px;
-  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  color: rgb(78, 78, 78);
-  transition: all 1s;
-  font-family: "Fascinate", sans-serif;
-}
-
-.loginBtn {
-  display: block;
-  padding: 0 20px;
-  outline: none;
-  border: none;
-  border-radius: 6px;
-  height: 40px;
-  line-height: 40px;
-  font-size: 15px;
-  font-weight: 600;
-  text-decoration: none;
-  color: rgb(78, 78, 78);
-  background-color: #e7f3ff;
-  cursor: pointer;
-  user-select: none;
-  appearance: none;
-  touch-action: manipulation;
-}
-
-
-
-.kursachWort {
-  font-size: 30pt;
-  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  color: rgb(78, 78, 78);
-  transition: all 1s;
-  font-family: "Fascinate", sans-serif;
-
-}
-
-.kursachWort:hover {
-  color: rgb(27, 35, 42);
-  scale: 1;
-}
-
 .loginBtn {
   display: inline-block;
   box-sizing: border-box;
@@ -207,11 +182,9 @@
   border-radius: 6px;
   height: 40px;
   line-height: 40px;
-  font-size: 15px;
-  font-weight: 600;
-  text-decoration: none;
-  color: rgb(78, 78, 78);
-  background-color: #e7f3ff;
+  font-size: 17px;
+  color: rgb(255, 255, 255);
+  background-color: #485c81;
   cursor: pointer;
   user-select: none;
   appearance: none;
@@ -223,7 +196,7 @@
 }
 
 .loginBtn:hover {
-  color: #385898;
+  background-color: #d1d5dc;
 }
 
 .loginBtn:active {
@@ -235,7 +208,7 @@
 }
 
 .loginBtn:hover {
-  color: #385898;
+  color: #212223;
 }
 
 .loginBtn:active {
@@ -244,10 +217,13 @@
 
 
 .admin {
-  left: 260px;
+  left: 410px;
   transition: transform 0.25s;
 }
-
+.manager {
+  left: 325px;
+  transition: transform 0.25s;
+}
 .acount {
   left: 225px;
   transition: transform 0.25s;

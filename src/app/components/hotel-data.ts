@@ -3,7 +3,7 @@ export class HotelData {
     public id: bigint;
     public name: string;
     public people: string;
-    public path_picturs: string;
+    public path_picturs: string[];
     public path_icons: string;
     public path_json: string;
     public cost: string;

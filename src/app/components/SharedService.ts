@@ -5,23 +5,24 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { Hotel } from './hotel';
 
 @Injectable()
 export class SharedService {
-  hotel = new HotelData();
-  hotels: HotelData[] = [];
+  hotel = new Hotel();
+  hotels: Hotel[] = [];
 
-  editedHotel = new HotelData();
+  editedHotel = new Hotel();
   constructor(private http: HttpClient, private router: Router) {
   }
-  inithotel(hotel: HotelData) {
+  inithotel(hotel: Hotel) {
     this.hotel = hotel;
   }
-  gethotel(): HotelData {
+  gethotel(): Hotel {
     return this.hotel;
   }
-  edithotel(hotel: HotelData) {
-    HotelData.copyFieldsValuesTo(hotel, this.hotel);
+  edithotel(hotel: Hotel) {
+    Hotel.copyFieldsValuesTo(hotel, this.hotel);
   }
 
   //{ getAll(): Observable<HotelData[]> {
@@ -37,16 +38,17 @@ export class SharedService {
     return this.http.get('http://localhost:3000/api/hotel');
   }
   getById(id: string) {
+    console.log(id+"getByIdgetByIdgetByIdgetByIdgetByIdgetByIdgetByIdgetByIdgetById")
     return this.http.get(`http://localhost:3000/api/hotel/${id}`);
   }
 
-  create(hotel: HotelData) {
+  create(hotel: Hotel) {
     this.http.post('http://localhost:3000/api/hotel', hotel).subscribe((hotel: Object) => {
     });
 
   }
 
-  save(hotel: HotelData) {
+  save(hotel: Hotel) {
     return this.http.put('http://localhost:3000/api/hotel/' + hotel.id, hotel).subscribe(data=>console.log(data));
   }
   delete(id: bigint) {

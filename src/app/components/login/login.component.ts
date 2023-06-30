@@ -41,20 +41,40 @@ export class LoginComponent implements OnInit {
     this.sharedService.putTokenUser(this.user);
     this.sharedService.puttTokenUser(this.user).subscribe((data: Object) => {
       this.Data = JSON.stringify(data);
-      console.log(this.Data)
       if (this.Data == null) {
         this.informationError = 'Вы не зарегестирирвоаны';
       }
       if (this.Data != null) {
-        dialogRef.close('Pizza!');
+        if(user.login=="admin"){
+          //localStorage.setItem('rol', JSON.stringify("admin"));
+          dialogRef.close('admin');
+        }
+        else if(user.login=="manager"){
+         // localStorage.setItem('rol', JSON.stringify("manager"));
+          dialogRef.close('manager');
+        }
+        else if(user.login=="user"){
+        //  dialogRef.close('user');
+        dialogRef.close('user');
+
+          localStorage.setItem('rol', JSON.stringify("user"));
+
+        }
+        
         this.router.navigate(['/account']);
       }
 
-    });
+    },
+      error => {
+        if (error.status === 401) {
+          this.informationError = 'Вы не подтверждены';
+        } 
+      });
 
 
 
   }
+
   Registration() {
     this.matdialog.closeAll();
     this.matdialog.open(RegistrationComponent);//   this._router.navigate(['/registration']);

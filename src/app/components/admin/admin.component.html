@@ -2,12 +2,10 @@
     <table class="tablica" class="Perenos">
         <tr>
             <th height="40">id </th>
-            <th>name</th>
-            <th>man</th>
+            <th>Имя</th>
+            <th>ID менеджера</th>
             <th>IMG</th>
-            <th>Icons</th>
-            <th>Json</th>
-            <th>Cost</th>
+            
             <th colspan="2" class="lastTh">button</th>
         </tr>
         <tr *ngFor="let hotel of hotels">
@@ -21,21 +19,15 @@
                     (ngModelChange)="savehotelsToStorage()"><br> -->
             </td>
             <td>
-                <div class="tablic">{{hotel.people}}
+                <div class="tablic">{{hotel.manager_id}}
                 </div>
             </td>
             <td>
-                <div class="tablic" class="thImg"><img class="imgTabel" src={{hotel.path_picturs}}>
-                    {{hotel.path_picturs}}</div>
+                <div class="tablic" class="thImg"><img class="imgTabel" src={{hotel.path_picture[0]}}></div>
+                    <div class="tablic" class="thImg"><img class="imgTabel" src={{hotel.path_picture[1]}}></div>
             </td>
-            <td>
-                <div class="tablic">{{hotel.path_icons}}
-                </div>
-            </td>           
-            <td>
-                <div class="tablic">{{hotel.cost}}
-                </div>
-            </td>
+                  
+           
             <td class="lastTh">
                 <button class="btn btn-warning btn-sm" (click)="Edithotel(hotel)">Edit hotel</button>
             </td>
@@ -49,17 +41,16 @@
 
     <div class="centr">
         <button class="Addhotel" (click)="AddButtonhotel()">Хочу добавить новый номер</button>
-        <form *ngIf="isEdit">
+        <form *ngIf="isEdit" #myForm="ngForm">
             <input type="text" placeholder="Название отеля" class="form-control" [(ngModel)]="newHotel.name"
                 name="name"><br>
-            <input type="text" placeholder="Количество человек" class="form-control" [(ngModel)]="newHotel.people"
+            <input type="text" placeholder="Id менеджера" class="form-control" [(ngModel)]="newHotel.manager_id"
                 name="people"><br>
-            <input type="text" placeholder="path_picturs" class="form-control" [(ngModel)]="newHotel.path_picturs"
-                name="path_picturs"><br>
-            <input type="text" placeholder="path_icons" class="form-control" [(ngModel)]="newHotel.path_icons"
-                name="path_icons"><br>            
-            <input type="text" placeholder="cost" class="form-control" [(ngModel)]="newHotel.cost" name="cost"><br>
-            <button class="btn btn-warning btn-sm" (click)="Addhotel()">Добавить</button>
+            <input type="text" placeholder="hotel.path_picture" class="form-control" [(ngModel)]="newHotel.path_picture"
+                name="hotel.path_picture"><br>
+            
+            <button class="btn btn-warning btn-sm" (click)="Addhotel(newHotel)">Добавить</button>
         </form>
+        
     </div>
 </div>

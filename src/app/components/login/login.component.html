@@ -1,21 +1,19 @@
 <body>
     <div class="formRegistration">
         <div class="informationError">{{informationError}} </div><br>
-            <div class="inputPlusLabels">
-                <div>Login</div>
-                <input [(ngModel)]="user.login" type="text" placeholder="Ваш login" class="form-control" name="name"><br>
-                <div>Password</div>
-                <input type="password" [(ngModel)]="user.password" placeholder="name" placeholder="Ваш password"
-                    class="form-control"><br>
-    
-                <button class="logBtn" (click)="Loginnn(user)">LOGIN</button>
-    
-                <button class="regBtn" (click)="Registration()">Registration</button>
-             </div>
-    
+        <div class="inputPlusLabels">
+            <div>Логин</div>
+            <input [(ngModel)]="user.login" type="text" placeholder="Ваш логин" class="form-control" name="name"><br>
+            <div>Пароль</div>
+            <input type="password" [(ngModel)]="user.password" placeholder="name" placeholder="Ваш пароль"
+                class="form-control"><br>
+            <div class="brt">
+                <button class="logBtn" (click)="Loginnn(user)">Вход</button>
+                <button class="regBtn" (click)="Registration()">Регистрация</button>
+            </div>
+        </div>
+
     </div>
     <!-- <button (click)="change(true)">+</button>
                <button (click)="change(false)">-</button> -->
 </body>
-
-
