@@ -82,7 +82,7 @@ export class BookingComponent implements OnInit {
                 this.matdialog.closeAll();
                 this.matdialog.open(ShowInfoComponent);
                 this.SharedServiceRoomBooking.post(this.editedRoomBoking);
-                this.user.many=(+this.user.many-(this.room.price)*+this.editedRoomBoking.number).toString();
+                this.user.many=(+this.user.many-(this.room.price)).toString();
                 this.SharedServiceUsers.save(this.user)
                 this.router.navigate(['/account']);
 

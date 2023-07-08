@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { Hotel } from '../hotel';
 import { ShowInfoComponent } from '../show-info/show-info.component';
 import { SharedServiceShowInfo } from '../SharedServiceShowInfo';
+import { EditRoomComponent } from '../edit-room/edit-room.component';
 
 @Component({
   selector: 'app-admin',
@@ -42,14 +43,18 @@ export class AdminComponent implements OnInit {
     this.matdialog.open(PopUpComponent);
     this.sharedService.inithotel(hotel);
   }
+  EditRoom(hotel: Hotel) {
+    localStorage.setItem('hotel', JSON.stringify(hotel));
+    this.router.navigate(['/EditRoomComponent']);
 
+  }
   AddButtonhotel() {
     this.isEdit = !this.isEdit;
   }
 
   Addhotel(newHotel:any) {
     if(newHotel.name==undefined){
-      this.sharedServiceInfo.initErrorInformation("Вы не ввели имя юзера")
+      this.sharedServiceInfo.initErrorInformation("Вы не ввели имя отеля")
       this.matdialog.open(ShowInfoComponent);
     }
     else{
@@ -64,7 +69,7 @@ export class AdminComponent implements OnInit {
         }
         else{
 
-          //this.sharedService.create(newHotel);
+          this.sharedService.create(newHotel);
           window.location.reload();
 
         }

@@ -6,7 +6,7 @@
             <th>ID менеджера</th>
             <th>IMG</th>
             
-            <th colspan="2" class="lastTh">button</th>
+            <th colspan="3" class="lastTh">button</th>
         </tr>
         <tr *ngFor="let hotel of hotels">
             <td>
@@ -31,6 +31,9 @@
             <td class="lastTh">
                 <button class="btn btn-warning btn-sm" (click)="Edithotel(hotel)">Edit hotel</button>
             </td>
+            <td >
+                <button class="btn btn-warning btn-sm" (click)="EditRoom(hotel)">Edit room</button>
+            </td>
             <td class="lastTh">
                 <button class="btn btn-sm btn-danger" (click)="deletehotel(hotel.id)">Del hotel</button>
             </td>
@@ -40,7 +43,7 @@
     <br>
 
     <div class="centr">
-        <button class="Addhotel" (click)="AddButtonhotel()">Хочу добавить новый номер</button>
+        <button class="Addhotel" (click)="AddButtonhotel()">Хочу добавить новый отель</button>
         <form *ngIf="isEdit" #myForm="ngForm">
             <input type="text" placeholder="Название отеля" class="form-control" [(ngModel)]="newHotel.name"
                 name="name"><br>

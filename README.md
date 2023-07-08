@@ -1,29 +1,25 @@
-# App
+# Описание проекта HOTEL
+Это проект "Бронирование отелей". Есть объект отель, у этого объекта есть номера, а у номеров в свою очередь есть описание.
 
-Это HOTEL проект написанный  на Angular, в данном репозитории присутствует( а может уже и нет) код бэкенда - это не правильно, но мне так удобно!
-То что у коммитов странные названия - это тоже так надо, да, неправильно, но это личный проект, так что творю что хочу)))
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
+Для взаимодейсвия с отелем и номерами есть разные сущности: user, admin, manager.
 
-## Development server
+User может: забронировать номера на определённый срок.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Manager может: забронировать номера на определённый срок, удалить/добавить новою сущность: отель и номера в этом отеле.
 
-## Code scaffolding
+Admin может: забронировать номера на определённый срок, удалить/добавить новою сущность: отель и номера в этом отеле, также admin может добавить нового пользователя и назанчить ему роль: user, manager.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Используемые технологии:
+- Angular
+- Node.js
+- Express
+- PostgreSQL 14
+- Typescript
+- Pino
 
-## Build
+## Запуск 
+-Скомпилировать и запустить [сервер ](https://github.com/bublik-liquidator/backend-for-Hotel): файл index.ts, в консоле `npx tsc` затем `npm run dev`.  
+-Запуск клиентской части: в консоле `ng serve`. Перейдите к `http://localhost:4200 /`. Приложение автоматически перезагрузится, если вы измените какой-либо из исходных файлов.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## ВАЖНОЕ
+Проект модернизируется поэтому возможны разлчие баги, в случае обнаружения таковых просьба пнуть меня

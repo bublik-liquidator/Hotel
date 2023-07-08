@@ -1,0 +1,77 @@
+<div class="container">
+    <table class="tablica" class="Perenos">
+        <tr>
+            <th height="40">id </th>
+            <th>Имя</th>
+            <th>ID отеля</th>
+            <th>IMG</th>
+            <th>number</th>
+            <th>description</th>
+            <!-- <th>infoRoom</th> -->
+            <th>price</th>
+            <th colspan="2" class="lastTh">button</th>
+        </tr>
+        <tr *ngFor="let room of rooms">
+            <td>
+                <div class="tablic">{{room.id}}
+                </div>
+            </td>
+            <td>
+                <div>{{room.name}}</div>
+                <!-- <input type="text" placeholder="Название машины" class="form-control" [(ngModel)]="hotel.name" name="name"
+                    (ngModelChange)="savehotelsToStorage()"><br> -->
+            </td>
+            <td>
+                <div class="tablic">{{room.hotel_id}}
+                </div>
+            </td>
+            <td>
+                <div class="tablic" class="thImg"><img class="imgTabel" src={{room.path_picture}}></div>
+            </td>
+            <td>
+                <div class="tablic">{{room.number}}
+                </div>
+            </td>
+            <td>
+                <div class="tablic">{{room.description}}
+                </div>
+            </td>
+            <!-- <td>
+                <div class="tablic">{{infoRoom}}
+                </div>
+            </td> -->
+            <td>
+                <div class="tablic">{{room.price}}
+                </div>
+            </td>
+            <td class="lastTh">
+                <button class="btn btn-warning btn-sm" (click)="Edithotel(room)">Edit room</button>
+            </td>
+            <td class="lastTh">
+                <button class="btn btn-sm btn-danger" (click)="deletehotel(room.id)">Del room</button>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <div class="centr">
+        <button class="Addhotel" (click)="AddButtonhotel()">Хочу добавить новый номер</button>
+        <form *ngIf="isEdit" #myForm="ngForm">
+            <input type="text" placeholder="Название номера" class="form-control" [(ngModel)]="newRoom.name"
+                name="name"><br>
+            <input type="text" placeholder="Id отеля" class="form-control" [(ngModel)]="newRoom.hotel_id"
+                name="people"><br>
+            <input type="text" placeholder="path_picture" class="form-control" [(ngModel)]="newRoom.path_picture"
+                name="people"><br>
+            <input type="text" placeholder="hotel.numbere" class="form-control" [(ngModel)]="newRoom.number"
+                name="hotel.path_picture"><br>
+            <input type="text" placeholder="hotel.description" class="form-control" [(ngModel)]="newRoom.description"
+                name="hotel.path_picture"><br>
+            <input type="text" placeholder="hotel.price" class="form-control" [(ngModel)]="newRoom.price"
+                name="hotel.path_picture"><br>
+            <button class="btn btn-warning btn-sm" (click)="Addhotel(newRoom)">Добавить</button>
+        </form>
+
+    </div>
+</div>

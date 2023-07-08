@@ -32,6 +32,8 @@ import { SharedServiceRoomBooking } from './components/SharedServiceRoomBooking'
 import { ShowInfoComponent } from './components/show-info/show-info.component';
 import { SharedServiceShowInfo } from './components/SharedServiceShowInfo';
 import { BookingComponent } from './components/booking/booking.component';
+import { EditRoomComponent } from './components/edit-room/edit-room.component';
+import { EditInfoRoomComponent } from './components/edit-info-room/edit-info-room.component';
 
 const appRoutes: Routes = [
    {path:'',component:HotelsComponent},//HotelsComponent StartLoginComponent
@@ -42,7 +44,10 @@ const appRoutes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'registration',component:RegistrationComponent},
   {path:'account',component:AccountComponent},
-  {path:'start',component:StartComponent}
+  {path:'start',component:StartComponent},
+  {path:'EditRoomComponent',component:EditRoomComponent},
+
+  
 ]
 
 @NgModule({
@@ -63,7 +68,9 @@ const appRoutes: Routes = [
     StartComponent,
     RoomComponent,
     ShowInfoComponent,
-    BookingComponent
+    BookingComponent,
+    EditRoomComponent,
+    EditInfoRoomComponent
     
   ],
   imports: [

@@ -52,7 +52,7 @@ export class SharedService {
     return this.http.put('http://localhost:3000/api/hotel/' + hotel.id, hotel).subscribe(data=>console.log(data));
   }
   delete(id: bigint) {
-    this.http.delete('http://localhost:3000/api/hotel/' + id).subscribe((data: Object) => {
+    this.http.delete(`http://localhost:3000/api/hotel/${id}`).subscribe((data: Object) => {
     });
   }
 

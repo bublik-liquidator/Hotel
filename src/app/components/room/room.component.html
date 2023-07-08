@@ -14,6 +14,7 @@
             <li>price: <strong>{{room.price}}</strong> </li>
             <li>available: <strong>{{checkBookingBoolean ? 'No' : 'Yes'}}</strong> </li>
             <div *ngIf="checkBookingBoolean">Номер забронирова с {{roomBooking.date_from}} по {{roomBooking.date_to}}</div>
+            <br>
             <div class="toBook">
                 <button class="btn bk" (click)="toBook(room)">{{info}} {{room.name}}</button>
                 <!-- <a routerLink="/toBook"></a> -->
