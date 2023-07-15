@@ -18,8 +18,8 @@ export class EditInfoRoomComponent implements OnInit {
     HotelRoom.copyFieldsValuesTo(this.room, this.editedRoom);
   }
 
-  room = new HotelRoom(); // оригинальная машина
-  editedRoom = new HotelRoom(); // это редактируем
+  room = new HotelRoom(); 
+  editedRoom = new HotelRoom(); 
 
 
   savehotelsToStorage() {

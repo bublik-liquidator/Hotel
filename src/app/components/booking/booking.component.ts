@@ -55,7 +55,7 @@ export class BookingComponent implements OnInit {
       this.sharedServiceInfo.initErrorInformation("У вас мало денег")
       this.matdialog.open(ShowInfoComponent);
     }
-    else {     
+    else {
       if (this.editedRoomBoking.date_from == this.editedRoomBoking.date_to) {
         this.sharedServiceInfo.initErrorInformation("Вы выбрали сегоднящний день как день выезда, к сожалению мы не можем предоставить бронь на промежуток меньше чем один день, но мы работаем над этим")
         this.matdialog.open(ShowInfoComponent);
@@ -82,7 +82,7 @@ export class BookingComponent implements OnInit {
                 this.matdialog.closeAll();
                 this.matdialog.open(ShowInfoComponent);
                 this.SharedServiceRoomBooking.post(this.editedRoomBoking);
-                this.user.many=(+this.user.many-(this.room.price)).toString();
+                this.user.many = (+this.user.many - (this.room.price)).toString();
                 this.SharedServiceUsers.save(this.user)
                 this.router.navigate(['/account']);
 
@@ -99,19 +99,7 @@ export class BookingComponent implements OnInit {
 
 
   }
-  //  else{
-  //   RoomBooking.copyFieldsValuesTo(this.editedRoomBoking, this.roomBoking);
-  //   HotelRoom.copyFieldsValuesTo(this.room, this.editedRoom);
 
-  //   this.sharedService.initRoomBooking(this.editedRoomBoking);
-  //   this.sharedService.initRoom(this.editedRoom);
-  //   ////я думаю это лучше///this.sharedService.put(this.roomBoking);
-
-  //   /////////////////this.sharedService.post(this.roomBoking);
-  //   this.matdialog.closeAll();
-  //   return true;
-  //   }
-  // }
   Cancel() {
     this.editedRoomBoking.room_id = this.roomBoking.room_id;
     this.editedRoomBoking.booked_by_user_id = this.roomBoking.booked_by_user_id;

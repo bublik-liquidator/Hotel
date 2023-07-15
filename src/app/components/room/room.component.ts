@@ -53,16 +53,16 @@ export class RoomComponent implements OnInit {
       this.info = "Забронировать";
     }
   }
-  
-  converData(str: string) {
-    const date = new Date(str);
-    const hours = date.getUTCHours();
-    const minutes = date.getUTCMinutes().toString().padStart(2, '0');
-    const day = date.getUTCDate();
-    const month = date.getUTCMonth() + 1;
-    const year = date.getUTCFullYear();
-    return `${hours}:${minutes} ${day}.${month}.${year}`;
-  }
+  //лучше использовать Pipes
+  // converData(str: string) {
+  //   const date = new Date(str);
+  //   const hours = date.getUTCHours();
+  //   const minutes = date.getUTCMinutes().toString().padStart(2, '0');
+  //   const day = date.getUTCDate();
+  //   const month = date.getUTCMonth() + 1;
+  //   const year = date.getUTCFullYear();
+  //   return `${hours}:${minutes} ${day}.${month}.${year}`;
+  // }
   getRoomBooking(roomID: bigint) {
     this.SharedServiceRoomBooking.getAll().subscribe((data: any) => {
       if (data != null) {
@@ -75,8 +75,8 @@ export class RoomComponent implements OnInit {
         });
       }
       this.roomBooking = this.roomBookings[0]
-      this.roomBooking.date_from = this.converData(this.roomBooking.date_from)
-      this.roomBooking.date_to = this.converData(this.roomBooking.date_to)
+      this.roomBooking.date_from 
+      this.roomBooking.date_to 
     });
 
   }

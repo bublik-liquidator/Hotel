@@ -43,14 +43,14 @@ export class AccountComponent {
     const date1: any = new Date(this.roomBooking.date_to);
     const date2: any = new Date();
     const diffTime = Math.abs(date2 - date1);
-const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-console.log(diffDays);
+    console.log(diffDays);
     if (date1.getDate() === date2.getDate() && date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear()) {
       this.sharedServiceInfo.initErrorInformation("Срок вашей аренды подошёл к концу")
       this.matdialog.open(ShowInfoComponent);
     } else {
-      this.sharedServiceInfo.initErrorInformation("Вы можете прибывать в номере"+diffDays)
+      this.sharedServiceInfo.initErrorInformation("Вы можете прибывать в номере" + diffDays)
       this.matdialog.open(ShowInfoComponent);
 
     }
@@ -80,10 +80,6 @@ console.log(diffDays);
     for (let i = 0; i < this.roomBookings.length; i++) {
       if (lol == this.roomBookings[i].name) {
         this.roomBooking = this.roomBookings[i];
-      //  this.checDate();
-
-        // this.roomBooking.date_from = this.converData(this.roomBooking.date_from)
-        // this.roomBooking.date_to = this.converData(this.roomBooking.date_to)
       }
     }
 

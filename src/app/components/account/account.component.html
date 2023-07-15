@@ -40,7 +40,7 @@
                 <li>number: <strong>{{roomBooking.number}}</strong></li>
                 <li>payed: <strong>{{roomBooking.payed}}</strong> </li>
                 
-                <div>Номер забронирова с {{roomBooking.date_from}} по {{roomBooking.date_to}}</div>
+                <div>Номер забронирова с {{roomBooking.date_from| date:'HH:mm dd.MM.yyyy'}} по {{roomBooking.date_to| date:'HH:mm dd.MM.yyyy'}}</div>
                 
             </ul>
         </div ><div *ngIf="roomBooking !== null && roomBooking !== undefined">

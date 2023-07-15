@@ -26,7 +26,6 @@ import { HotelsComponent } from './components/hotels/hotels.component';
 import { SharedServiceUsers } from './components/SharedServiceUsers';
 import { ManagerComponent } from './components/Manager/manager.component';
 import { EditManagerComponent } from './components/edit-manager/edit-manager.component';
-import { StartComponent } from './components/start/start.component';
 import { RoomComponent } from './components/room/room.component';
 import { SharedServiceRoomBooking } from './components/SharedServiceRoomBooking';
 import { ShowInfoComponent } from './components/show-info/show-info.component';
@@ -35,8 +34,9 @@ import { BookingComponent } from './components/booking/booking.component';
 import { EditRoomComponent } from './components/edit-room/edit-room.component';
 import { EditInfoRoomComponent } from './components/edit-info-room/edit-info-room.component';
 
+
 const appRoutes: Routes = [
-   {path:'',component:HotelsComponent},//HotelsComponent StartLoginComponent
+  {path:'',component:HotelsComponent},//HotelsComponent StartLoginComponent
   {path:'room',component:RoomComponent},
   {path:'about',component:ContactsComponent},
   {path:'admin',component:AdminComponent},
@@ -44,7 +44,6 @@ const appRoutes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'registration',component:RegistrationComponent},
   {path:'account',component:AccountComponent},
-  {path:'start',component:StartComponent},
   {path:'EditRoomComponent',component:EditRoomComponent},
 
   
@@ -65,12 +64,11 @@ const appRoutes: Routes = [
     HotelsComponent,
     ManagerComponent,
     EditManagerComponent,
-    StartComponent,
     RoomComponent,
     ShowInfoComponent,
     BookingComponent,
     EditRoomComponent,
-    EditInfoRoomComponent
+    EditInfoRoomComponent    
     
   ],
   imports: [
