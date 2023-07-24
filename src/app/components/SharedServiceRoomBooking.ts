@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { RoomBooking } from './room-booking';
 import { Observable } from 'rxjs/internal/Observable';
 import { HotelRoom } from './hotel-room';
+import { FormGroup } from '@angular/forms';
 
 @Injectable()
 export class SharedServiceRoomBooking {
@@ -40,7 +41,10 @@ export class SharedServiceRoomBooking {
     });
 
   }
-
+  // async postReactiveForm(roomBooking: FormGroup) {
+  //   const formValue = roomBooking.value;
+  //   await this.http.post('http://localhost:3000/api/room_booking', formValue).toPromise();
+  // }
   delete(id: bigint) {
     this.http.delete('http://localhost:3000/api/room_booking/' + id).subscribe((data: Object) => {
     });

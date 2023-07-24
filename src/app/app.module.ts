@@ -33,6 +33,7 @@ import { SharedServiceShowInfo } from './components/SharedServiceShowInfo';
 import { BookingComponent } from './components/booking/booking.component';
 import { EditRoomComponent } from './components/edit-room/edit-room.component';
 import { EditInfoRoomComponent } from './components/edit-info-room/edit-info-room.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 const appRoutes: Routes = [
@@ -78,7 +79,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes), // forRoot какие юрд адреса отслеживаем
     MatDialogModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
     
     
   ],
