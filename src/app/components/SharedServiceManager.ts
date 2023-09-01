@@ -41,7 +41,8 @@ export class SharedService {
   }
 
   create(hotel: HotelData) {
-    this.http.post('http://localhost:3000/user', hotel).subscribe((hotel: Object) => {
+    const subscription =this.http.post('http://localhost:3000/user', hotel).subscribe((hotel: Object) => {
+      subscription.unsubscribe();
     });
 
   }
@@ -50,7 +51,8 @@ export class SharedService {
     return this.http.put('http://localhost:3000/user/' + hotel.id, hotel).subscribe(data=>console.log(data));
   }
   delete(id: bigint) {
-    this.http.delete('http://localhost:3000/user/' + id).subscribe((data: Object) => {
+    const subscription =this.http.delete('http://localhost:3000/user/' + id).subscribe((data: Object) => {
+      subscription.unsubscribe();
     });
   }
 

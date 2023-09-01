@@ -121,8 +121,10 @@ export class EditRoomComponent implements OnInit {
                 this.matdialog.open(ShowInfoComponent);
               } 
               else{
-                this.SharedServiceHotelRoom.create(newRoom);
-                window.location.reload();
+                this.SharedServiceHotelRoom.create(newRoom).subscribe(() => {
+                  this.getRooms();
+                  this.newRoom=new HotelRoom();
+                });
               }
             }
           }
@@ -162,9 +164,9 @@ export class EditRoomComponent implements OnInit {
     return `${hours}:${minutes} ${day}.${month}.${year}`;
   }
   deletehotel(id: bigint) {
-    this.SharedServiceHotelRoom.delete(id);
-    this.ngOnInit();
-    window.location.reload();
+    this.SharedServiceHotelRoom.delete(id).subscribe(() => {
+      this.getRooms();
+    });
 
   }
 

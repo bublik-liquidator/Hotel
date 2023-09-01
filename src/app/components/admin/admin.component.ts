@@ -1,15 +1,11 @@
-
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { HotelData } from '../hotel-data';
 import { MatDialog } from '@angular/material/dialog';
-import { PopUpComponent } from '../pop-up/pop-up.component';
-import { SharedService } from '../SharedService';
+import { SharedServiceUsers } from '../SharedServiceUsers';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Hotel } from '../hotel';
-import { ShowInfoComponent } from '../show-info/show-info.component';
-import { SharedServiceShowInfo } from '../SharedServiceShowInfo';
-import { EditRoomComponent } from '../edit-room/edit-room.component';
+import { UsersData } from '../users-data';
+import { EditManagerComponent } from '../edit-manager/edit-manager.component';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-admin',
@@ -17,76 +13,54 @@ import { EditRoomComponent } from '../edit-room/edit-room.component';
   styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent implements OnInit {
-  hotels: Hotel[] = [];
-  newHotel = new Hotel();
+  user = new UsersData();
+  newuser = new UsersData();
+  users: UsersData[] = [];
   isEdit: boolean = false;
 
   person: { id: string; age?: number };
-  constructor(private sharedServiceInfo: SharedServiceShowInfo,private matdialog: MatDialog, private sharedService: SharedService, private http: HttpClient, private router: Router) {
+  constructor(private matdialog: MatDialog, private sharedService: SharedServiceUsers, private http: HttpClient, private router: Router) {
   }
 
   isResultLoaded = false;
   StudentArray: string[] = [];
 
   ngOnInit(): void {
-    this.GetHotel(); 
-    //  this.hotels=this.sharedService.getAll();
+    this.GetUser();
   }
 
-  GetHotel() {
-    this.sharedService.getAll().subscribe((data: any) => {
-      this.hotels = data;
+  GetUser() {
+    const subscription = this.sharedService.getAll().subscribe((data: any) => {
+      this.users = data;
+      subscription.unsubscribe();
     });
   }
 
-  Edithotel(hotel: Hotel) {
-    this.matdialog.open(PopUpComponent);
-    this.sharedService.inithotel(hotel);
-  }
-  EditRoom(hotel: Hotel) {
-    localStorage.setItem('hotel', JSON.stringify(hotel));
-    this.router.navigate(['/EditRoomComponent']);
 
-  }
-  AddButtonhotel() {
+
+  AddButtonUser() {
     this.isEdit = !this.isEdit;
   }
-
-  Addhotel(newHotel:any) {
-    if(newHotel.name==undefined){
-      this.sharedServiceInfo.initErrorInformation("Вы не ввели имя отеля")
-      this.matdialog.open(ShowInfoComponent);
-    }
-    else{
-      if(newHotel.manager_id==undefined){
-        this.sharedServiceInfo.initErrorInformation("Вы не ввели manager_id")
-        this.matdialog.open(ShowInfoComponent);
-      }
-      else{
-        if(newHotel.path_picture==undefined){
-          this.sharedServiceInfo.initErrorInformation("Вы не ввели path_picture")
-          this.matdialog.open(ShowInfoComponent);
-        }
-        else{
-
-          this.sharedService.create(newHotel);
-          window.location.reload();
-
-        }
-      }
-    }
-  
-
-  this.GetHotel();
+  EditUser(user: UsersData) {
+    this.matdialog.open(EditManagerComponent);
+    this.sharedService.inituser(user);
+  }
+  AddUser() {
+    this.sharedService.create(this.user).pipe(
+      switchMap(() => this.sharedService.getAll())
+    ).subscribe((data: any) => {
+      this.users = data;
+    });
   }
 
-  deletehotel(id: bigint) {
-    this.sharedService.delete(id);
-    this.ngOnInit();
-    window.location.reload();
-
-    this.GetHotel();
+  deleteUser(id: bigint) {
+    this.sharedService.delete(id).pipe(
+      switchMap(() => this.sharedService.getAll())
+    ).subscribe((data: any) => {
+      this.users = data;
+    });
   }
 
 
 }
+

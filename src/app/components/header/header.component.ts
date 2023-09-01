@@ -62,7 +62,7 @@ export class HeaderComponent implements OnInit {
     if (localStorage.getItem('activleUser') == null) {
       const dialogRef = this.matdialog.open(LoginComponent);
       this.sharedService.initdialogRef(dialogRef)
-      dialogRef.afterClosed().subscribe(result => {
+      const subscription = dialogRef.afterClosed().subscribe(result => {
         if (result) {
 
           this.checLogin();
@@ -71,6 +71,8 @@ export class HeaderComponent implements OnInit {
         } else {
           console.log('Dialog was closed with no result.');
         }
+        // Отписываемся от Observable
+        subscription.unsubscribe();
       });
     }
     else {

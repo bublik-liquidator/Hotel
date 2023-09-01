@@ -87,7 +87,9 @@ export class AccountComponent {
 
   Departure(id: bigint) {
     this.SharedServiceRoomBooking.delete(id);
-    window.location.reload()
+    //this.getInfo();
+
+    //window.location.reload()
   }
   converData(str: string) {
     const date = new Date(str);

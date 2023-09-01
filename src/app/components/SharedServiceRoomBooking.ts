@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { RoomBooking } from './room-booking';
-import { Observable } from 'rxjs/internal/Observable';
 import { HotelRoom } from './hotel-room';
-import { FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Injectable()
 export class SharedServiceRoomBooking {
@@ -15,6 +14,8 @@ export class SharedServiceRoomBooking {
   editeduser = new RoomBooking();
   checkBooking: boolean;
   res: object
+  deleteSubscription: Subscription;
+
   constructor(private http: HttpClient, private router: Router) {
   }
   initRoomBooking(room: RoomBooking) {
@@ -23,6 +24,11 @@ export class SharedServiceRoomBooking {
   initRoom(room: HotelRoom) {
     this.room = room
   }
+
+  initBookingRooms(user: object) {
+    return this.http.post('http://localhost:3000/api/room_booking/account', user)
+  }
+  
   getRoom() {
     return this.room
   }
@@ -46,18 +52,10 @@ export class SharedServiceRoomBooking {
   //   await this.http.post('http://localhost:3000/api/room_booking', formValue).toPromise();
   // }
   delete(id: bigint) {
-    this.http.delete('http://localhost:3000/api/room_booking/' + id).subscribe((data: Object) => {
+    this.deleteSubscription = this.http.delete('http://localhost:3000/api/room_booking/' + id).subscribe((data: Object) => {
     });
+    
   }
 
-
-
-  initBookingRooms(user: object) {
-    return this.http.post('http://localhost:3000/api/room_booking/account', user)
-
-  }
-  getBookingRooms() {
-    return this.roomBookings
-  }
 
 }
