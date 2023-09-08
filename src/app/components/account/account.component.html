@@ -2,32 +2,32 @@
     <br>
     <br><br>
     <div class="alert alert-success"> <!--alert-success alert-dark -->
-        Характеристики пользователя {{user.login}}:
+        User Characteristics {{user.login}}:
         <div> <img class="photoUser" src={{user.photo}}> </div>
 
-        <div class="pading">Имя: {{user.username}}</div>
-        <div class="pading">День рождения: {{user.birthday}}</div>
-        <div class="pading">Почта: {{user.email}}</div>
-        <div class="pading">Деньги: {{user.many}}</div>
-        <div class="pading">Номер телефона: {{user.phonenomber}}</div>
+        <div class="pading">Name: {{user.username}}</div>
+        <div class="pading">Birthday: {{user.birthday}}</div>
+        <div class="pading">Mail: {{user.email}}</div>
+        <div class="pading">Money: {{user.many}}</div>
+        <div class="pading">Phone number: {{user.phonenomber}}</div>
     </div>
-    <button class="IdetInfo" (click)="EditButtonInfo()">Хочу изменить информацию</button>
+    <button class="IdetInfo" (click)="EditButtonInfo()">I want to change the information</button>
     <form *ngIf="isEdit">
-        <div>Имя</div>
-        <input type="text" placeholder="Имя" class="form-control" [(ngModel)]="user.username" name="username"><br>
-        <div>Ваш день рождения</div>
-        <input type="text" placeholder="день рождения" class="form-control" [(ngModel)]="user.birthday"
+        <div>Name</div>
+        <input type="text" placeholder="Name" class="form-control" [(ngModel)]="user.username" name="username"><br>
+        <div>Birthday</div>
+        <input type="text" placeholder="Birthday" class="form-control" [(ngModel)]="user.birthday"
             name="birthday"><br>
-        <div>Ваша почта</div>
-        <input type="text" placeholder="Почта" class="form-control" [(ngModel)]="user.email" name="email"><br>
-        <div>Доступные фингансы</div>
-        <input type="text" placeholder="Деньги" class="form-control" [(ngModel)]="user.many" name="many"><br>
-        <div>Ваш номер телефона</div>
-        <input type="text" placeholder="Телефон" class="form-control" [(ngModel)]="user.phonenomber"
+        <div>Mail</div>
+        <input type="text" placeholder="Mail" class="form-control" [(ngModel)]="user.email" name="email"><br>
+        <div>Available finance</div>
+        <input type="text" placeholder="Available finance" class="form-control" [(ngModel)]="user.many" name="many"><br>
+        <div>Your phone number</div>
+        <input type="text" placeholder="phone number" class="form-control" [(ngModel)]="user.phonenomber"
             name="phonenomber"><br>
-        <div>Ваше фото</div>
-        <input type="text" placeholder="Фото" class="form-control" [(ngModel)]="user.photo" name="photo"><br>
-        <button class="IdetInfo" (click)="Save()">Сохранить</button>
+        <div>Your photo</div>
+        <input type="text" placeholder="Your photo" class="form-control" [(ngModel)]="user.photo" name="photo"><br>
+        <button class="IdetInfo" (click)="Save()">Save</button>
         <!--           
         <button class="Cancel" (click)="Cancel()">Cancel</button>
         <button class="save" (click)="savehotelsToStorage()">Save</button> -->
@@ -38,18 +38,18 @@
         <br>
         <div *ngIf="roomBooking !== null && roomBooking !== undefined" class="alert alert-success">
             <!--alert-success alert-dark -->
-            Информация об номере:
+            Room Information:
             <ul class="Haracteristik">
                 <!-- <img class="RoomlPhotos" src="{{roomBooking.path_picture}}" class="auto" alt="Photo"> -->
-                <li>ID отеля: <strong>{{roomBooking.id}}</strong></li>
-                <li>number: <strong>{{roomBooking.number}}</strong></li>
-                <li>payed: <strong>{{roomBooking.payed}}</strong> </li>
+                <li>Hotel ID: <strong>{{roomBooking.id}}</strong></li>
+                <li>Number: <strong>{{roomBooking.number}}</strong></li>
+                <li>Payed: <strong>{{roomBooking.payed}}</strong> </li>
 
-                <div>Номер забронирова с {{roomBooking.date_from| date:'HH:mm dd.MM.yyyy'}} по {{roomBooking.date_to|
+                <div>Room booked from {{roomBooking.date_from| date:'HH:mm dd.MM.yyyy'}} to {{roomBooking.date_to|
                     date:'HH:mm dd.MM.yyyy'}}</div>
             </ul>
         </div>
         
-        <button class="btn departure" (click)="Departure(roomBooking.id)">Отменить бронь на
+        <button class="btn departure" (click)="Departure(roomBooking.id)">Cancel a reservation for a 
             {{roomBooking.name}}</button>
     </div>

@@ -58,39 +58,39 @@ export class BookingComponent implements OnInit {
 
   savehotelsToStorage() {
     if ( !this.bookingForm.value.payed ) {
-      this.sharedServiceInfo.initErrorInformation( "Вы не оплатили номер" )
+      this.sharedServiceInfo.initErrorInformation( "You didn't pay for the number" )
       this.matdialog.open( ShowInfoComponent );
     } else if ( +this.user.many < +this.room.price ) {
-      this.sharedServiceInfo.initErrorInformation( "У вас мало денег" )
+      this.sharedServiceInfo.initErrorInformation( "You don't have enough money" )
       this.matdialog.open( ShowInfoComponent );
     }
     else {
       if ( this.bookingForm.value.date_from == this.bookingForm.value.date_to ) {
-        this.sharedServiceInfo.initErrorInformation( "Вы выбрали один и тот же день для вьезда и выезда, к сожалению мы не можем предоставить бронь на промежуток меньше чем один день, но мы работаем над этим" )
+        this.sharedServiceInfo.initErrorInformation( "You have chosen the same day for entry and exit, unfortunately we cannot provide a reservation for a period of less than one day, but we are working on it" )
         this.matdialog.open( ShowInfoComponent );
       }
       else {
         if ( this.bookingForm.value.number == undefined || this.bookingForm.value.number < 0 ) {
-          this.sharedServiceInfo.initErrorInformation( "Вы выбрали некорректное значение относительно количество людей, въезжающих в номер" )
+          this.sharedServiceInfo.initErrorInformation("You have chosen an incorrect value regarding the number of people entering the room" )
           this.matdialog.open( ShowInfoComponent );
         }
 
         else {
           if ( +this.bookingForm.value.number <= 0 ) {
-            this.sharedServiceInfo.initErrorInformation( "Количество заезжающих людей должно быть больше 0 человек и не больше чем :" + this.room.number + " человек" )
+            this.sharedServiceInfo.initErrorInformation( "The number of people visiting must be more than 0 people and no more than :" + this.room.number + " person" )
             this.matdialog.open( ShowInfoComponent );
           } else {
             if ( this.bookingForm.value.number > this.room.number ) {
-              this.sharedServiceInfo.initErrorInformation( "Вы выбрали количество людей, заезжающих в номер:" + this.bookingForm.value.number + ".Но в этом номере ограничени в:" + this.room.number + " человек" )
+              this.sharedServiceInfo.initErrorInformation( "You have selected the number of people coming to the room:" + this.bookingForm.value.number + ".But in this room there are restrictions in:" + this.room.number + "person" )
               this.matdialog.open( ShowInfoComponent );
             }
             else {
               if ( this.bookingForm.value.date_to == undefined ) {
-                this.sharedServiceInfo.initErrorInformation( "Вы не выбрабли день отъезда из номера" )
+                this.sharedServiceInfo.initErrorInformation("You didn't choose the day of departure from the room")
                 this.matdialog.open( ShowInfoComponent );
               } else {
 
-                this.sharedServiceInfo.initErrorInformation( "Номер забронирован на вас)" )
+                this.sharedServiceInfo.initErrorInformation( "The room is booked for you)")
                 this.matdialog.closeAll();
                 this.matdialog.open( ShowInfoComponent );
 

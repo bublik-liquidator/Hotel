@@ -34,7 +34,6 @@ export class EditRoomComponent implements OnInit {
   StudentArray: string[] = [];
 
 
-  infoRoom: string = "";//!!!!!
 
   roomBooking = new RoomBooking()
   roomBookings: RoomBooking[] = [new RoomBooking()];
@@ -67,13 +66,8 @@ export class EditRoomComponent implements OnInit {
         if (str == "true") {
           this.checkBookingBoolean = true;
           this.getRoomBooking(room.id)
-          this.infoRoom = "ЗАНЯТ"
-          //console.log("ЗАНЯТ");
         }
         if (str == "false") {
-          this.infoRoom = "Свободен"
-
-          //console.log("Свободен");
           this.checkBookingBoolean = false;
         }
       }
@@ -93,31 +87,31 @@ export class EditRoomComponent implements OnInit {
 
   Addhotel(newRoom: HotelRoom) {
     if (newRoom.name == undefined) {
-      this.sharedServiceInfo.initErrorInformation("Вы не ввели имя номера")
+      this.sharedServiceInfo.initErrorInformation("You didn't enter the number name")
       this.matdialog.open(ShowInfoComponent);
     }
     else {
       if (newRoom.hotel_id == undefined) {
-        this.sharedServiceInfo.initErrorInformation("Вы не ввели hotel_id")
+        this.sharedServiceInfo.initErrorInformation("You didn't enter hotel_id")
         this.matdialog.open(ShowInfoComponent);
       }
       else {
         if (newRoom.number == undefined) {
-          this.sharedServiceInfo.initErrorInformation("Вы не ввели number")
+          this.sharedServiceInfo.initErrorInformation("You didn't enter a number")
           this.matdialog.open(ShowInfoComponent);
         }
         else {
           if (newRoom.description == undefined) {
-            this.sharedServiceInfo.initErrorInformation("Вы не ввели description")
+            this.sharedServiceInfo.initErrorInformation("You didn't enter a description")
             this.matdialog.open(ShowInfoComponent);
           }
           else {
             if (newRoom.path_picture == undefined) {
-              this.sharedServiceInfo.initErrorInformation("Вы не ввели path_picture")
+              this.sharedServiceInfo.initErrorInformation("You didn't enter path_picture")
               this.matdialog.open(ShowInfoComponent);
             } else {
               if (newRoom.price == undefined) {
-                this.sharedServiceInfo.initErrorInformation("Вы не ввели price")
+                this.sharedServiceInfo.initErrorInformation("You have not entered a price")
                 this.matdialog.open(ShowInfoComponent);
               } 
               else{

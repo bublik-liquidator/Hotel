@@ -2,8 +2,8 @@
     <table class="tablica" class="Perenos">
         <tr>
             <th height="40">id </th>
-            <th>Имя</th>
-            <th>ID менеджера</th>
+            <th>Name</th>
+            <th>Manager ID</th>
             <th>IMG</th>
             
             <th colspan="3" class="lastTh">button</th>
@@ -15,8 +15,7 @@
             </td>
             <td>
                 <div>{{hotel.name}}</div>
-                <!-- <input type="text" placeholder="Название машины" class="form-control" [(ngModel)]="hotel.name" name="name"
-                    (ngModelChange)="savehotelsToStorage()"><br> -->
+             
             </td>
             <td>
                 <div class="tablic">{{hotel.manager_id}}
@@ -43,16 +42,16 @@
     <br>
 
     <div class="centr">
-        <button class="Addhotel" (click)="AddButtonhotel()">Хочу добавить новый отель</button>
+        <button class="Addhotel" (click)="AddButtonhotel()">I want to add a new hotel</button>
         <form *ngIf="isEdit" #myForm="ngForm">
-            <input type="text" placeholder="Название отеля" class="form-control" [(ngModel)]="newHotel.name"
+            <input type="text" placeholder="Name of the hotel" class="form-control" [(ngModel)]="newHotel.name"
                 name="name"><br>
-            <input type="text" placeholder="Id менеджера" class="form-control" [(ngModel)]="newHotel.manager_id"
+            <input type="text" placeholder="Manager's ID" class="form-control" [(ngModel)]="newHotel.manager_id"
                 name="people"><br>
-            <input type="text" placeholder="hotel.path_picture" class="form-control" [(ngModel)]="newHotel.path_picture"
+            <input type="text" placeholder="picture of the hotel" class="form-control" [(ngModel)]="newHotel.path_picture"
                 name="hotel.path_picture"><br>
             
-            <button class="btn btn-warning btn-sm" (click)="Addhotel(newHotel)">Добавить</button>
+            <button class="btn btn-warning btn-sm" (click)="Addhotel(newHotel)">Add</button>
         </form>
         
     </div>

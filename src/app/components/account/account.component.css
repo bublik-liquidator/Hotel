@@ -80,7 +80,6 @@
   display: block;
   top: 5px;
   border-radius: 10px 10px 10px 10px;
-  /*Закругляем уголки*/
   appearance: none;
   border: 0;
   border-radius: 5px;
@@ -92,9 +91,9 @@
 
 .photoUser {
   width: 100px;
-  height: 100px; /* Добавьте высоту, чтобы создать квадратный контейнер */
+  height: 100px; 
   border-radius: 50%;
-  object-fit: cover; /* Изображение будет масштабироваться так, чтобы его ширина или высота полностью заполнили элемент, сохраняя при этом пропорции */
+  object-fit: cover;
 }
 
 

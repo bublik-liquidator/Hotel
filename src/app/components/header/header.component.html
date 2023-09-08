@@ -1,20 +1,20 @@
 <div class="allInformation">
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
     <h5 class="kursachWort">HOTELFORYOU</h5>
     <nav class="my-2 my-md-0 mr-md-3">
-      <a class="p-2 main infText animaite" routerLink="/" >Home</a>
+      <a class="p-2 main infText animaite" routerLink="/">Home</a>
       <!-- <a class="p-2 home infText animaite" routerLink="/home" >Hotels</a> -->
       <a class="p-2 contacts infText animaite" routerLink="/about">Contacts</a>
       <a class="p-2 room infText animaite" routerLink="/room">Rooms</a>
-      <a  *ngIf="isEdit" class="p-2 acount infText animaite" routerLink="/account">My account</a>
-      <a   *ngIf="isEditAdmin" class="p-2 admin infText animaite" routerLink="/admin">Admin</a>
-      <a   *ngIf="isEditManager" class="p-2 manager infText animaite" routerLink="/manager">Manager</a>
+      <a *ngIf="isEdit" class="p-2 acount infText animaite" routerLink="/account">My account</a>
+      <a *ngIf="isEditAdmin" class="p-2 admin infText animaite" routerLink="/admin">Admin</a>
+      <a *ngIf="isEditManager" class="p-2 manager infText animaite" routerLink="/manager">Manager</a>
 
-<!-- так а на каой менять инфу просто скрфть показать др кнопку -->
+      <!-- so why change the info just hide show the other button -->
     </nav>
 
-      <button class="loginBtn" (click)="ButtonText()">{{authorizationButtonText}}</button>
-      <!-- <button #button (click)="changeButton(button)">Редактировать</button> -->
+    <button class="loginBtn" (click)="ButtonText()">{{authorizationButtonText}}</button>
+    <!-- <button #button (click)="changeButton(button)">Edit</button> -->
 
 
 

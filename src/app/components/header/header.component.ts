@@ -6,14 +6,14 @@ import { Router } from '@angular/router';
 import { UsersData } from '../users-data';
 
 
-@Component({
+@Component( {
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
-})
+  styleUrls: [ './header.component.css' ]
+} )
 export class HeaderComponent implements OnInit {
 
-  constructor(private sharedService: SharedServiceUsers, public matdialog: MatDialog, private router: Router, private cdRef: ChangeDetectorRef) { }
+  constructor( private sharedService: SharedServiceUsers, public matdialog: MatDialog, private router: Router, private cdRef: ChangeDetectorRef ) { }
   isEdit: boolean = false;
   isEditAdmin: boolean = false;
   isEditManager: boolean = false;
@@ -33,22 +33,22 @@ export class HeaderComponent implements OnInit {
 
 
   checLogin() {
-    this.Data = JSON.parse(localStorage.getItem('activleUser') || '[]');
-    if (localStorage.getItem('activleUser') == null) {
+    this.Data = JSON.parse( localStorage.getItem( 'activleUser' ) || '[]' );
+    if ( localStorage.getItem( 'activleUser' ) == null ) {
       this.userLoggedOut();
     }
-    if (localStorage.getItem('activleUser') != null) {
+    if ( localStorage.getItem( 'activleUser' ) != null ) {
       this.isEdit = true;
 
-      if (JSON.parse(localStorage.getItem('activleUser') || '[]').login == "admin") {
+      if ( JSON.parse( localStorage.getItem( 'activleUser' ) || '[]' ).login == "admin" ) {
         this.isEditAdmin = true;
         this.isEditManager = true;
 
       }
-      if (JSON.parse(localStorage.getItem('activleUser') || '[]').login == "manager") {
+      if ( JSON.parse( localStorage.getItem( 'activleUser' ) || '[]' ).login == "manager" ) {
         this.isEditManager = true;
       }
-      if (JSON.parse(localStorage.getItem('activleUser') || '[]').login == "user") {
+      if ( JSON.parse( localStorage.getItem( 'activleUser' ) || '[]' ).login == "user" ) {
         this.isEdit = true;
       }
       this.userLoggedIn();
@@ -59,27 +59,27 @@ export class HeaderComponent implements OnInit {
 
   ButtonText() {
 
-    if (localStorage.getItem('activleUser') == null) {
-      const dialogRef = this.matdialog.open(LoginComponent);
-      this.sharedService.initdialogRef(dialogRef)
-      const subscription = dialogRef.afterClosed().subscribe(result => {
-        if (result) {
+    if ( localStorage.getItem( 'activleUser' ) == null ) {
+      const dialogRef = this.matdialog.open( LoginComponent );
+      this.sharedService.initdialogRef( dialogRef )
+      const subscription = dialogRef.afterClosed().subscribe( result => {
+        if ( result ) {
 
           this.checLogin();
 
-          console.log('Dialog was closed with result:', result);
+          console.log( 'Dialog was closed with result:', result );
         } else {
-          console.log('Dialog was closed with no result.');
+          console.log( 'Dialog was closed with no result.' );
         }
-        // Отписываемся от Observable
+        // Unsubscribe from Observable
         subscription.unsubscribe();
-      });
+      } );
     }
     else {
-      this.router.navigate(['/']);
-      localStorage.removeItem('activleUser');
-      localStorage.removeItem('room');
-      localStorage.removeItem('hotel');
+      this.router.navigate( [ '/' ] );
+      localStorage.removeItem( 'activleUser' );
+      localStorage.removeItem( 'room' );
+      localStorage.removeItem( 'hotel' );
       this.isEditManager = false;
       this.isEditAdmin = false;
       this.isEdit = false;
@@ -98,21 +98,6 @@ export class HeaderComponent implements OnInit {
     // console.log("loggedOut");
 
   }
-
-
-
-  // this.isEdit = false;
-  // this.isEditManager = false;
-  // this.isEditAdmin = false;
-  // //this.user.vhod = "Вход";
-  // changeButton(button: { innerText: string; }) {
-  //   if (localStorage.getItem('activleUser') != null) {
-  //     button.innerText = "ВЫХОД2";
-  //   }
-  //   else {
-  //     button.innerText = "ВХОД2";
-  //   }
-  // }
 
 
 }

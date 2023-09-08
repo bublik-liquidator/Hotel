@@ -1,52 +1,58 @@
 .formRegistration {
-    width: 300px;
-    height: 250px;
-  }
-  .brt {
-    display: flex;
-    justify-content: space-between;
-  }
-  .informationError {
-    color: #1d2331;
-    font-size: 20px;
-    position: absolute;
-  }
-  .inputPlusLabels {
-    margin-top: 20px;
-  }
-  button {
-    border-radius: 10px 10px 10px 10px; /*Закругляем уголки*/
-    position: relative;
-    appearance: none;
-    border: 0;
-    border-radius: 5px;
-    color: #fff;
-    padding: 8px;
-    font-size: 16px;
-  }
-  .logBtn {
-    color: rgb(255, 255, 255);
-    background-color: #485c81;
-  }
-  .regBtn {
-    background-color: #394967;
-  }
-  
-  .formRegistration {
-    padding: 0;
-  }
-  
-  body {
-    width: 100%;
-    max-width: 100%;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    /* то что ниже можно удалить */
-    overflow-x: hidden;
-    overflow-y: hidden;
-  }
-  .informationError {
-    flex-grow: 1;
-  }
-  
+  width: 300px;
+  height: 250px;
+}
+
+.brt {
+  display: flex;
+  justify-content: space-between;
+}
+
+.informationError {
+  color: #1d2331;
+  font-size: 20px;
+  position: absolute;
+}
+
+.inputPlusLabels {
+  margin-top: 20px;
+}
+
+button {
+  border-radius: 10px 10px 10px 10px;
+  position: relative;
+  appearance: none;
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.logBtn {
+  color: rgb(255, 255, 255);
+  background-color: #485c81;
+}
+
+.regBtn {
+  background-color: #394967;
+}
+
+.formRegistration {
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  max-width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  /* what is below can be deleted */
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.informationError {
+  flex-grow: 1;
+}

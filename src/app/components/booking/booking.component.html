@@ -1,13 +1,13 @@
 <body>
     <form [formGroup]="bookingForm" (ngSubmit)="savehotelsToStorage()">
-        <div>Выберетите дату с:</div>
-        <input type="date" formControlName="date_from" min="{{editedRoomBoking.date_from}}" max="2023-12-31"><br>
-        <div>По:</div>
-        <input type="date" formControlName="date_to" min="{{editedRoomBoking.date_from}}" max="2023-12-31"><br>
+        <div>Select a date from:</div>
+        <input type="date" formControlName="date_from" min="{{editedRoomBoking.date_from}}" max="2024-12-31"><br>
+        <div>to:</div>
+        <input type="date" formControlName="date_to" min="{{editedRoomBoking.date_from}}" max="2024-12-31"><br>
 
-        <div><strong>Стоимость: {{room.price}} </strong></div>
-        <strong>Оплатить номер: <input type="checkbox" formControlName="payed"></strong>
-        <div>Сколько людей заезжает в номер:</div>
+        <div><strong>Cost: {{room.price}} </strong></div>
+        <strong>Pay for a room: <input type="checkbox" formControlName="payed"></strong>
+        <div>the number of people coming into the room:</div>
         <input type="number" step="1" class="form-control" formControlName="number" min="0" max="{{room.number}}">
         <br>
         <div class="brt">

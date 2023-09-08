@@ -122,9 +122,7 @@ input {
   margin: 5px;
   border-radius: 5px;
   background-color: rgb(243, 245, 248);
-  /* Цвет фона */
   color: rgb(8, 3, 0);
-  /* Цвет текста */
   outline: none !important;
 }
 
@@ -137,7 +135,6 @@ input:active,
 
 .infErr {
   color: rgb(46, 63, 50);
-  /* Цвет текста */
   font-size: 16px;
 }
 

@@ -24,7 +24,7 @@ export class EditInfoRoomComponent implements OnInit {
 
   savehotelsToStorage() {
     // if(+this.editedHotel.people <=0||+this.editedHotel.people >400||/[qwertyuiopasdfghjklzxcvbnm]/.test(this.editedHotel.people)||/[йцукенгшщзхъфывапролджэячсмитьбю]/.test(this.editedHotel.people)||this.editedHotel.people==null||this.editedHotel.name==null||this.editedHotel.path_picturs ==null){
-    //   alert("Некоректный ввод данны");
+    //   alert("Incorrect data entry");
     //   return 0;
     //  } 
     // else{
@@ -33,7 +33,6 @@ export class EditInfoRoomComponent implements OnInit {
     this.sharedService.initRoom(this.editedRoom);
    // console.log('edited:' + this.editedHotel.name);
     this.sharedService.save(this.room).subscribe( response => {
-      // Обработка ответа от сервера прямо здесь
     } );;
     this.matdialog.closeAll();
     return true;

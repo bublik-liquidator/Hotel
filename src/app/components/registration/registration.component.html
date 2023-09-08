@@ -3,13 +3,14 @@
         <div class="informationError">{{informationError}} </div><br>
         <div class="inputPlusLabels">
             <div>Login</div>
-            <input [(ngModel)]="user.login" type="text" placeholder="Ваш будущий логин" class="form-control" name="name"><br>
+            <input [(ngModel)]="user.login" type="text" placeholder="Your future login" class="form-control"
+                name="name"><br>
             <div>Password</div>
-            <input type="password" [(ngModel)]="user.password" placeholder="name" placeholder="Ваш будущий пароль"
+            <input type="password" [(ng Model)]="user.password" placeholder="name" placeholder="Your future password"
                 class="form-control"><br>
             <div class="brt">
-                <button class="logBtn" (click)="Cancel()">Отмена</button>
-                <button class="regBtn" (click)="Registration(user.login,user.password)">Зарегестрироваться</button>
+                <button class="logBtn" (click)="Cancel()">Cancel</button>
+                <button class="regBtn" (click)="Registration(user.login,user.password)">Register</button>
             </div>
         </div>
 

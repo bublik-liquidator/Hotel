@@ -289,8 +289,7 @@
    margin: auto;
    display: block;
    top: 5px;
-   border-radius: 10px 10px 10px 10px; /*Закругляем уголки*/
-   appearance: none;
+   border-radius: 10px 10px 10px 10px;   appearance: none;
    border: 0;
    border-radius: 5px;
    background: #4676d7;
@@ -311,9 +310,8 @@
  }
  
  .inputtext {
-   background-color: #f6f6f6; /*Цвет текстового поля*/
-   border-radius: 10px 10px 10px 10px; /*Закругляем уголки*/
-   width: 95%;
+   background-color: #f6f6f6;
+   border-radius: 10px 10px 10px 10px;   width: 95%;
  }
  
  .Perenos{

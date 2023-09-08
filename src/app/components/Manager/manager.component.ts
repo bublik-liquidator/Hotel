@@ -54,12 +54,12 @@ export class ManagerComponent implements OnInit {
 
   Addhotel(newHotel:any) {
     if(newHotel.name==undefined){
-      this.sharedServiceInfo.initErrorInformation("Вы не ввели имя отеля")
+      this.sharedServiceInfo.initErrorInformation("You didn't enter the name of the hotel")
       this.matdialog.open(ShowInfoComponent);
     }
     else{
       if(newHotel.manager_id==undefined){
-        this.sharedServiceInfo.initErrorInformation("Вы не ввели manager_id")
+        this.sharedServiceInfo.initErrorInformation("You didn't enter manager_id")
         this.matdialog.open(ShowInfoComponent);
       }
       else{

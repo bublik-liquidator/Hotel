@@ -38,12 +38,12 @@
     <br>
 
     <div class="centr">
-        <button class="Addhotel" (click)="AddButtonUser()">Хочу добавить юзера</button>
+        <button class="Addhotel" (click)="AddButtonUser()">I want to add a user</button>
         <form *ngIf="isEdit">
             <input type="text" placeholder="Name user" class="form-control" [(ngModel)]="user.username" name="username"><br>
             <input type="text" placeholder="Login user" class="form-control" [(ngModel)]="user.login" name="login"><br>
             <input type="text" placeholder="Password user" class="form-control" [(ngModel)]="user.password" name="password"><br>
-            <button class="btn btn-warning btn-sm" (click)="AddUser()">Добавить</button>
+            <button class="btn btn-warning btn-sm" (click)="AddUser()">Add</button>
         </form>
     </div>
 </div>

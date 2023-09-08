@@ -8,8 +8,8 @@ import { UsersData } from '../users-data';
   styleUrls: ['./edit-manager.component.css']
 })
 export class EditManagerComponent implements OnInit {
-  user = new UsersData(); // оригинальная юзер
-  edituser = new UsersData(); // это редактируем
+  user = new UsersData(); 
+  edituser = new UsersData(); 
   users: UsersData[] = [];
   isEdit: boolean = false;
 
@@ -23,7 +23,7 @@ export class EditManagerComponent implements OnInit {
 
   savehotelsToStorage() {
     if(this.edituser.username==null||this.edituser.login ==null){
-      alert("Некоректный ввод данны");
+      alert("Incorrect data");
       return 0;
      } 
      else{

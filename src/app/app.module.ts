@@ -11,7 +11,6 @@ import { FooterComponent } from './components/footer/footer.component';
 
 
 import { CookieService } from 'ngx-cookie-service';
-//import { VhodComponent } from './components/vhod/vhod.component';
 import { AdminComponent } from './components/admin/admin.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
@@ -76,7 +75,7 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes), // forRoot какие юрд адреса отслеживаем
+    RouterModule.forRoot(appRoutes), // forRoot which URK addresses are we tracking
     MatDialogModule,
     BrowserAnimationsModule,
     HttpClientModule,
