@@ -18,8 +18,8 @@ export class HeaderComponent implements OnInit {
   isEditAdmin: boolean = false;
   isEditManager: boolean = false;
   authorizationButtonText: string = " ";
-  loggedInButtonText: string = "Выход";
-  notLoggedInButtonText: string = "Вход";
+  loggedInButtonText: string = "Exit";
+  notLoggedInButtonText: string = "Login";
   user: UsersData
   Data: object;
   hotelLink: string;

@@ -1,39 +1,34 @@
 <div class="container">
     <br>
     <br><br>
-    <div class="alert alert-success"> <!--alert-success alert-dark -->
-        <div class="inf"><p>Welcome to our hospitable {{newHotel.name}}</p></div>        
-        Информация об отеля:
-        <ul class="Haracteristik">
-           <div class="polaroid"> 
-                <img class="HotelPhotos" src="{{newHotel.path_picture[0]}}" class="phot" alt="Photo">
-                <img class="HotelPhotos" src="{{newHotel.path_picture[1]}}" class="phot" alt="Photo">
-           </div>
-            
-         
-            <div style="float:left">
-                <li>ID отеля: <strong>{{newHotel.id}}</strong></li>
-                <li>Имя отеля: <strong>{{newHotel.name}}</strong></li>
-                <li>ID менеджера: <strong>{{newHotel.manager_id}}</strong> </li>
-
-                <br>
+    <div class="hotelName" *ngFor="let hotel of hotels">
+        <div class="alert alert-success"> <!--alert-success alert-dark -->
+            <div class="inf">
+                <p>Welcome to our hospitable {{hotel.name}}</p>
             </div>
-            <div class="toBook">
-                <button class="btn bk" (click)="toBook(newHotel)">{{deistveSnomerom}} {{newHotel.name}}</button>
-                <!-- <a routerLink="/toBook"></a> -->
-            </div>
-        </ul>
-    </div>
+            Hotel information:
+            <ul class="Haracteristik">
+                <div class="polaroid">
+                    <img class="HotelPhotos" src="{{hotel.path_picture[0]}}" class="phot" alt="Photo">
+                    <img class="HotelPhotos" src="{{hotel.path_picture[1]}}" class="phot" alt="Photo">
+                </div>
 
-    <div *ngIf="isEditNomer">
-        <h5>Выберите отель</h5>
-        <div class="hotelName" *ngFor="let hotel of hotels">
-            <button class="btn btn-danger" (click)="hotelselect(hotel.name)">{{hotel.name}}</button>
+                <div style="float:left">
+                    <li>Hotel ID: <strong>{{hotel.id}}</strong></li>
+                    <li>Hotel name: <strong>{{hotel.name}}</strong></li>
+                    <li>Manager ID: <strong>{{hotel.manager_id}}</strong> </li>
+                    <li>Location: <strong>{{hotel.location}}</strong> </li>
+                    <li>Services: <strong>{{hotel.services}}</strong> </li>
+
+                    <br>
+                    
+                </div>
+                <div class="toBook">
+                    <button class="btn bk" (click)="toBook(hotel)">{{deistveSnomerom}} {{hotel.name}}</button>
+                    <!-- <a routerLink="/toBook"></a> -->
+                </div>
+            </ul>
+            <br>
         </div>
-        <br><br>
     </div>
-
-
-
-
 </div>

@@ -97,23 +97,17 @@ export class RoomComponent implements OnInit {
     });
   }
 
-  checkBooking(room: HotelRoom) {
+checkBooking(room: HotelRoom) {
     this.SharedServiceRoomBooking.getById(room).subscribe((value: object) => {
-      if (value != null) {
-        var str = JSON.stringify(value).replace(/"/g, '');
-        if (str == "true") {
-          this.checkBookingBoolean = true;
-          this.getRoomBooking(room.id)
-          this.error = "ЗАНЯТ"
-          //console.log("ЗАНЯТ");
+        if (value) {
+            this.checkBookingBoolean = true;
+            this.getRoomBooking(room.id)
+            this.error = "ЗАНЯТ"
+        } else {
+            this.checkBookingBoolean = false;
         }
-        if (str == "false") {
-          //console.log("Свободен");
-          this.checkBookingBoolean = false;
-        }
-      }
     });
-  }
+}
 
   toBook(room: HotelRoom) {
     this.roomBooking.room_id = room.id;
@@ -144,14 +138,6 @@ export class RoomComponent implements OnInit {
     }
 
   }
-  Roomselect(lol: string) {
-    for (let i = 0; i < this.rooms.length; i++) {
-      if (lol == this.rooms[i].name) {
-        this.room = this.rooms[i];
-        this.checkBooking(this.room);
-      }
-    }
 
-  }
 
 }

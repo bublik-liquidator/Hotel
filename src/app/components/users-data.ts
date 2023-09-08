@@ -4,7 +4,7 @@ export class UsersData {
     public password: string;
     public username: string;
     public photo: string;
-    public many: string;
+    public many: number;
     public birthday: string;
     public phonenomber: string;
     public email: string;

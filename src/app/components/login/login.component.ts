@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(private sharedService: SharedServiceUsers, private router: Router, private header: HeaderComponent, public matdialog: MatDialog
   ) { }
 
-  informationError: string = 'Войдите в систему, пожалуйста)';
+  informationError: string = 'Sign in please)';
   user = new UsersData();
   test: UsersData;
   users: UsersData[] = [new UsersData()];
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     this.sharedService.puttTokenUser(this.user).subscribe((data: Object) => {
       this.Data = JSON.stringify(data);
       if (this.Data == null) {
-        this.informationError = 'Вы не зарегестирирвоаны';
+        this.informationError = 'You are not registered';
       }
       if (this.Data != null) {
         if(user.login=="admin"){
@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
     },
       error => {
         if (error.status === 401) {
-          this.informationError = 'Вы не подтверждены';
+          this.informationError = 'You are not verified';
         } 
       });
 

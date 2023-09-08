@@ -32,7 +32,9 @@ export class EditInfoRoomComponent implements OnInit {
     HotelRoom.copyFieldsValuesTo(this.editedRoom, this.room);
     this.sharedService.initRoom(this.editedRoom);
    // console.log('edited:' + this.editedHotel.name);
-    this.sharedService.save(this.room);
+    this.sharedService.save(this.room).subscribe( response => {
+      // Обработка ответа от сервера прямо здесь
+    } );;
     this.matdialog.closeAll();
     return true;
     

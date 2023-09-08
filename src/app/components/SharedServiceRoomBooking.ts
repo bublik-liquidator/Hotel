@@ -52,10 +52,9 @@ export class SharedServiceRoomBooking {
   //   await this.http.post('http://localhost:3000/api/room_booking', formValue).toPromise();
   // }
   delete(id: bigint) {
-    this.deleteSubscription = this.http.delete('http://localhost:3000/api/room_booking/' + id).subscribe((data: Object) => {
-    });
-    
-  }
+    console.log("ID"+id)
+    return this.http.delete('http://localhost:3000/api/room_booking/' + id)
+}
 
 
 }

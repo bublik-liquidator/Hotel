@@ -142,7 +142,7 @@
   transition: transform 0.25s;
 } */
 .room{
-  left: 80px;
+  left: 60px;
   transition: transform 0.25s;
 }
 .infText {
@@ -168,7 +168,7 @@
 }
 
 .contacts {
-  left: 145px;
+  left: 115px;
   transition: transform 0.25s;
 }
 
@@ -217,15 +217,15 @@
 
 
 .admin {
-  left: 410px;
+  left: 340px;
   transition: transform 0.25s;
 }
 .manager {
-  left: 325px;
+  left: 272px;
   transition: transform 0.25s;
 }
 .acount {
-  left: 225px;
+  left: 185px;
   transition: transform 0.25s;
 }
 

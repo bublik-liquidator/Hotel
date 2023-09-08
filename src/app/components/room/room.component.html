@@ -1,30 +1,31 @@
 <div class="container">
     <br>
     <br><br>
-    <!-- <div *ngIf="checkBookingBoolean" class="error">
+    <div class="hotelName" *ngFor="let room of rooms">
+
+        <!-- <div *ngIf="checkBookingBoolean" class="error">
         <div >ЗАНЯТО</div>
       </div> -->
-    <div class="alert alert-success"> <!--alert-success alert-dark -->
-        Информация об номере:
-        <ul class="Haracteristik">
-            <img class="RoomlPhotos" src="{{room.path_picture}}" class="auto" alt="Photo">
-            <li>ID отеля: <strong>{{room.hotel_id}}</strong></li>
-            <li>number: <strong>{{room.number}}</strong></li>
-            <li>description: <strong>{{room.description}}</strong> </li>
-            <li>price: <strong>{{room.price}}</strong> </li>
-            <li>available: <strong>{{checkBookingBoolean ? 'No' : 'Yes'}}</strong> </li>
-            <div *ngIf="checkBookingBoolean">Номер забронирова с {{roomBooking.date_from| date:'HH:mm dd.MM.yyyy'}} по {{roomBooking.date_to| date:'HH:mm dd.MM.yyyy'}}</div>
-            <br>
-            <div class="toBook">
-                <button class="btn bk" (click)="toBook(room)">{{info}} {{room.name}}</button>
-                <!-- <a routerLink="/toBook"></a> -->
-            </div>
-        </ul>
-    </div>
+        <div class="alert alert-success"> <!--alert-success alert-dark -->
+            Информация об номере:
+            <ul class="Haracteristik">
+                <img class="RoomlPhotos" src="{{room.path_picture}}" class="auto" alt="Photo">
+                <li>ID отеля: <strong>{{room.hotel_id}}</strong></li>
+                <li>number: <strong>{{room.number}}</strong></li>
+                <li>description: <strong>{{room.description}}</strong> </li>
+                <li>price: <strong>{{room.price}}</strong> </li>
+                <li>available: <strong>{{checkBookingBoolean ? 'No' : 'Yes'}}</strong> </li>
+                <div *ngIf="checkBookingBoolean">Номер забронирова с {{roomBooking.date_from| date:'HH:mm dd.MM.yyyy'}}
+                    по
+                    {{roomBooking.date_to| date:'HH:mm dd.MM.yyyy'}}</div>
+                <br>
+                <div class="toBook">
+                    <button class="btn bk" (click)="toBook(room)">{{info}} {{room.name}}</button>
+                    <!-- <a routerLink="/toBook"></a> -->
+                </div>
+            </ul>
+        </div>
 
-    <h5>Выберите номер</h5>
-    <div class="hotelName" *ngFor="let room of rooms">
-        <button class="btn btn-danger" (click)="Roomselect(room.name)">{{room.name}}</button>
     </div>
     <br><br>
 

@@ -39,6 +39,6 @@ export class SharedServiceHotelRoom {
   }
 
   save( room: HotelRoom ) {
-    return this.http.put( `http://localhost:3000/api/hotel_room/${ room.id }`, room ).subscribe( data => console.log( data ) );
+    return this.http.put( `http://localhost:3000/api/hotel_room/${ room.id }`, room )
   }
 }

@@ -44,7 +44,7 @@ export class SharedService {
   }
 
   save(hotel: Hotel) {
-    return this.http.put('http://localhost:3000/api/hotel/' + hotel.id, hotel).subscribe(data=>console.log(data));
+    return this.http.put('http://localhost:3000/api/hotel/' + hotel.id, hotel)
     
   }
   delete(id: bigint) {
