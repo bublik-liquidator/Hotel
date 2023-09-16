@@ -33,7 +33,8 @@ import { BookingComponent } from './components/booking/booking.component';
 import { EditRoomComponent } from './components/edit-room/edit-room.component';
 import { EditInfoRoomComponent } from './components/edit-info-room/edit-info-room.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 const appRoutes: Routes = [
   {path:'',component:HotelsComponent},//HotelsComponent StartLoginComponent
@@ -79,8 +80,9 @@ const appRoutes: Routes = [
     MatDialogModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ReactiveFormsModule
-    
+    ReactiveFormsModule,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
+
     
   ],
   providers: [CookieService,SharedService,SharedServiceUsers,SharedServiceRoomBooking,SharedServiceShowInfo,HeaderComponent],
