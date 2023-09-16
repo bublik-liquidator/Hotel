@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Fascinate&family=Rajdhani:wght@300;400&display=swap");
+@media (max-width: 472px) {
 
+
+}
 @media (max-width: 767px) {
   .kursachWort {
     font-size: 15pt;
@@ -12,6 +15,7 @@
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    display: none;
   }
 
   .kursachWort:hover {
@@ -19,7 +23,7 @@
     scale: 1;
   }
 
-  .loginBtnn {
+  .loginBtn {
     display: block;
     padding: 0 20px;
     outline: none;
@@ -28,16 +32,13 @@
     height: 40px;
     line-height: 40px;
     font-size: 15px;
-    font-weight: 600;
-    text-decoration: none;
     color: rgb(78, 78, 78);
     background-color: #e7f3ff;
     cursor: pointer;
     user-select: none;
     appearance: none;
     touch-action: manipulation;
-    margin-top: -60px;
-    margin-left: 540px;
+    margin-left: 90%
   }
 }
 
@@ -52,6 +53,7 @@
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    display: none;
   }
 
   .kursachWort:hover {
@@ -59,7 +61,7 @@
     scale: 1;
   }
 
-  .loginBtnn {
+  .loginBtn {
     display: block;
     padding: 0 20px;
     outline: none;
@@ -68,16 +70,15 @@
     height: 40px;
     line-height: 40px;
     font-size: 15px;
-    font-weight: 600;
-    text-decoration: none;
     color: rgb(78, 78, 78);
     background-color: #e7f3ff;
     cursor: pointer;
     user-select: none;
     appearance: none;
     touch-action: manipulation;
-    margin-left: 100px;
+    margin-left: 90%
   }
+ 
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -90,6 +91,7 @@
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    display: none;
   }
 
   .kursachWort:hover {
@@ -124,7 +126,7 @@
     color: rgb(78, 78, 78);
     transition: all 1s;
     font-family: "Fascinate", sans-serif;
-    margin-left: auto;
+    margin-left: 43%;
     margin-right: auto;    
     text-align: center;
   }
@@ -133,7 +135,24 @@
     color: rgb(27, 35, 42);
     scale: 1;
   }
-
+  .loginBtn {
+    box-sizing: border-box;
+    padding: 0 20px;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 17px;
+    color: rgb(255, 255, 255);
+    background-color: #485c81;
+    cursor: pointer;
+    user-select: none;
+    appearance: none;
+    touch-action: manipulation;
+    margin-left: 400px;
+  
+  }
   
 }
 
@@ -174,7 +193,6 @@
 
 
 .loginBtn {
-  display: inline-block;
   box-sizing: border-box;
   padding: 0 20px;
   outline: none;

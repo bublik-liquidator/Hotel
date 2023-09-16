@@ -6,6 +6,8 @@ export class HotelRoom {
     description :string;
     price: number;
     path_picture:string;
+    isBooked: boolean; 
+
     public static copyFieldsValuesTo(from: HotelRoom, to: HotelRoom): void {
         to.id = from.id;
         to.name = from.name;
@@ -14,5 +16,7 @@ export class HotelRoom {
         to.description = from.description;
         to.price = from.price;
         to.path_picture = from.path_picture;
+        to.isBooked = from.isBooked;
+
     }
 }

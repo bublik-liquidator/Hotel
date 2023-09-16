@@ -3,20 +3,12 @@
     <h5 class="kursachWort">HOTELFORYOU</h5>
     <nav class="my-2 my-md-0 mr-md-3">
       <a class="p-2 main infText animaite" routerLink="/">Home</a>
-      <!-- <a class="p-2 home infText animaite" routerLink="/home" >Hotels</a> -->
       <a class="p-2 contacts infText animaite" routerLink="/about">Contacts</a>
       <a class="p-2 room infText animaite" routerLink="/room">Rooms</a>
       <a *ngIf="isEdit" class="p-2 acount infText animaite" routerLink="/account">My account</a>
       <a *ngIf="isEditAdmin" class="p-2 admin infText animaite" routerLink="/admin">Admin</a>
       <a *ngIf="isEditManager" class="p-2 manager infText animaite" routerLink="/manager">Manager</a>
-
-      <!-- so why change the info just hide show the other button -->
     </nav>
-
     <button class="loginBtn" (click)="ButtonText()">{{authorizationButtonText}}</button>
-    <!-- <button #button (click)="changeButton(button)">Edit</button> -->
-
-
-
   </div>
 </div>

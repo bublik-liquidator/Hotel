@@ -7,6 +7,8 @@ export class RoomBooking {
     payed: boolean;
     number:string
     name:string;
+    isBooked: boolean; 
+
     
     public static copyFieldsValuesTo(from: RoomBooking, to: RoomBooking): void {
     to.id = from.id;
@@ -17,5 +19,7 @@ export class RoomBooking {
     to.payed = from.payed;
     to.number = from.number;
     to.name = from.name;
+    to.isBooked = from.isBooked;
+
 }
 }

@@ -2,22 +2,19 @@
     <br>
     <br><br>
     <div class="hotelName" *ngFor="let room of rooms">
-
-        <!-- <div *ngIf="checkBookingBoolean" class="error">
-      </div> -->
         <div class="alert alert-success"> <!--alert-success alert-dark -->
             Room Information:
-             <ul class="Haracteristik">
+            <ul class="Haracteristik">
                 <img class="RoomlPhotos" src="{{room.path_picture}}" class="auto" alt="Photo">
                 <li>Hotel ID: <strong>{{room.hotel_id}}</strong></li>
                 <li>number: <strong>{{room.number}}</strong></li>
                 <li>description: <strong>{{room.description}}</strong> </li>
                 <li>price: <strong>{{room.price}}</strong> </li>
-                <li>available: <strong>{{checkBookingBoolean ? 'No' : 'Yes'}}</strong> </li>
-                <div *ngIf="checkBookingBoolean">Room booked from {{roomBooking.date_from| date:'HH:mm dd.MM.yyyy'}}
-                    to
-                    {{roomBooking.date_to| date:'HH:mm dd.MM.yyyy'}}</div>
-                <br>
+                <div *ngFor="let booking of roomBookings">
+                    <div *ngIf="booking.room_id === room.id">Room booked from {{booking.date_from| date:'HH:mm
+                        dd.MM.yyyy'}} to {{booking.date_to| date:'HH:mm dd.MM.yyyy'}} </div>
+                    <br>                    
+                </div>
                 <div class="toBook">
                     <button class="btn bk" (click)="toBook(room)">{{info}} {{room.name}}</button>
                     <!-- <a routerLink="/toBook"></a> -->
@@ -27,9 +24,5 @@
 
     </div>
     <br><br>
-
-
-
-
 
 </div>

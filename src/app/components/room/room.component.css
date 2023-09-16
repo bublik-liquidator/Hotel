@@ -49,7 +49,6 @@
 }
 
 .btn {
-  margin-right: 10px;
   background-color: #394967;
   border: none;
   outline: none;
@@ -79,6 +78,8 @@
 
 .container {
   margin-bottom: 50px;
+  text-align: center;
+  margin-right: auto;
 }
 
 .auto {
@@ -105,6 +106,8 @@
 
 .Haracteristik {
   font-size: 15px;
+  text-align: left;
+
 }
 
 .imgMini {
@@ -113,7 +116,7 @@
 
 .toBook {
   display: block;
-  margin-left: 30%;
+  text-align: center;
   margin-right: auto;
 }
 

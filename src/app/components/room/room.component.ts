@@ -30,6 +30,7 @@ export class RoomComponent implements OnInit {
   leaveDay: string;
   inf_err: string = "";
   roomBooking = new RoomBooking()
+  NewRoomBooking= new RoomBooking()
   roomBookings: RoomBooking[] = [ new RoomBooking() ];
   user = new UsersData()
   ansver = new Object();
@@ -38,6 +39,7 @@ export class RoomComponent implements OnInit {
   ngOnInit(): void {
     this.getRooms();
     this.checLogin();
+    this.getRoomBooking()
   }
 
   checLogin() {
@@ -52,30 +54,13 @@ export class RoomComponent implements OnInit {
       this.info = "Book";
     }
   }
-  //it is better to use Pipes
-  // converData(str: string) {
-  //   const date = new Date(str);
-  //   const hours = date.getUTCHours();
-  //   const minutes = date.getUTCMinutes().toString().padStart(2, '0');
-  //   const day = date.getUTCDate();
-  //   const month = date.getUTCMonth() + 1;
-  //   const year = date.getUTCFullYear();
-  //   return `${hours}:${minutes} ${day}.${month}.${year}`;
-  // }
-  getRoomBooking( roomID: bigint ) {
+
+  getRoomBooking(   ) {
     this.SharedServiceRoomBooking.getAll().subscribe( ( data: any ) => {
       if ( data != null ) {
         this.roomBookings = data;
         this.roomBooking = data[ 0 ]
       }
-      if ( roomID ) {
-        this.roomBookings = this.roomBookings.filter( function ( item ) {
-          return item.room_id == roomID;
-        } );
-      }
-      this.roomBooking = this.roomBookings[ 0 ]
-      this.roomBooking.date_from
-      this.roomBooking.date_to
     } );
 
   }
@@ -85,42 +70,41 @@ export class RoomComponent implements OnInit {
       if ( data != null ) {
         this.rooms = data;
         this.room = data[ 0 ]
+        this.checkBooking(this.room)
       }
       if ( hotelID ) {
         this.rooms = this.rooms.filter( function ( item ) {
           return item.hotel_id == hotelID;
         } );
       }
-      this.room = this.rooms[ 0 ]
-      this.checkBooking( this.room )
     } );
+   
   }
 
   checkBooking( room: HotelRoom ) {
     this.SharedServiceRoomBooking.getById( room ).subscribe( ( value: object ) => {
       if ( value ) {
-        this.checkBookingBoolean = true;
-        this.getRoomBooking( room.id )
+        room.isBooked = true;
+        //this.getRoomBooking( room.id )
       } else {
-        this.checkBookingBoolean = false;
+        room.isBooked = false;
       }
     } );
   }
 
   toBook( room: HotelRoom ) {
-    this.roomBooking.room_id = room.id;
-    this.roomBooking.booked_by_user_id = this.user.id;
-    this.roomBooking.payed = false;
-    this.roomBooking.name = room.name;
+    this.NewRoomBooking.room_id = room.id;
+    this.NewRoomBooking.booked_by_user_id = this.user.id;
+    this.NewRoomBooking.payed = false;
+    this.NewRoomBooking.name = room.name;
 
     if ( this.checkLogin == true ) {
       this.user = JSON.parse( localStorage.getItem( 'hotel' ) || '[]' )
       localStorage.setItem( 'room', JSON.stringify( room ) );
-      this.checkBooking( room );
       if ( !this.checkBookingBoolean ) {
         //+calling the service
         this.SharedServiceRoomBooking.initRoom( this.room );
-        this.SharedServiceRoomBooking.initRoomBooking( this.roomBooking );
+        this.SharedServiceRoomBooking.initRoomBooking( this.NewRoomBooking );
         this.matdialog.open( BookingComponent );
         //this.SharedServiceRoomBooking.post(this.roomBooking)
       }

@@ -26,16 +26,17 @@ export class BookingComponent implements OnInit {
 
   room = new HotelRoom();
   editedRoom = new HotelRoom();
-  roomBoking = new RoomBooking();
+  roomBookings: RoomBooking[] = [ new RoomBooking() ];
+  NewRoomBoking = new RoomBooking();
   editedRoomBoking = new RoomBooking();
 
   user = new UsersData;
 
   ngOnInit(): void {
     this.room = this.SharedServiceRoomBooking.getRoom();
-    this.roomBoking = this.SharedServiceRoomBooking.getRoomBooking();
-    this.roomBoking.number = ""
-    RoomBooking.copyFieldsValuesTo( this.roomBoking, this.editedRoomBoking );
+    this.NewRoomBoking = this.SharedServiceRoomBooking.getRoomBooking();
+    this.NewRoomBoking.number = ""
+    RoomBooking.copyFieldsValuesTo( this.NewRoomBoking, this.editedRoomBoking );
     HotelRoom.copyFieldsValuesTo( this.room, this.editedRoom );
 
     this.today = this.date_time();
@@ -44,7 +45,7 @@ export class BookingComponent implements OnInit {
     this.http.get( `http://localhost:3000/api/user/${ JSON.parse( localStorage.getItem( 'activleUser' ) || '[]' ).id }` ).subscribe( ( answer: any ) => {
       this.user = ( answer )
     } );
-
+    this.getRoomsBookong()
   }
 
   bookingForm = new FormGroup( {
@@ -55,6 +56,14 @@ export class BookingComponent implements OnInit {
 
 
   } );
+
+  getRoomsBookong() {
+    this.SharedServiceRoomBooking.getAll().subscribe( ( data: any ) => {
+      if ( data != null ) {
+        this.roomBookings = data;
+      }
+    } );
+  }
 
   savehotelsToStorage() {
     if ( !this.bookingForm.value.payed ) {
@@ -71,7 +80,7 @@ export class BookingComponent implements OnInit {
       }
       else {
         if ( this.bookingForm.value.number == undefined || this.bookingForm.value.number < 0 ) {
-          this.sharedServiceInfo.initErrorInformation("You have chosen an incorrect value regarding the number of people entering the room" )
+          this.sharedServiceInfo.initErrorInformation( "You have chosen an incorrect value regarding the number of people entering the room" )
           this.matdialog.open( ShowInfoComponent );
         }
 
@@ -86,11 +95,11 @@ export class BookingComponent implements OnInit {
             }
             else {
               if ( this.bookingForm.value.date_to == undefined ) {
-                this.sharedServiceInfo.initErrorInformation("You didn't choose the day of departure from the room")
+                this.sharedServiceInfo.initErrorInformation( "You didn't choose the day of departure from the room" )
                 this.matdialog.open( ShowInfoComponent );
               } else {
 
-                this.sharedServiceInfo.initErrorInformation( "The room is booked for you)")
+                this.sharedServiceInfo.initErrorInformation( "The room is booked for you)" )
                 this.matdialog.closeAll();
                 this.matdialog.open( ShowInfoComponent );
 
@@ -119,12 +128,12 @@ export class BookingComponent implements OnInit {
   }
 
   Cancel() {
-    this.editedRoomBoking.room_id = this.roomBoking.room_id;
-    this.editedRoomBoking.booked_by_user_id = this.roomBoking.booked_by_user_id;
-    this.editedRoomBoking.date_from = this.roomBoking.date_from;
-    this.editedRoomBoking.date_from = this.roomBoking.date_to;
-    this.editedRoomBoking.payed = this.roomBoking.payed;
-    this.editedRoomBoking.number = this.roomBoking.number;
+    this.editedRoomBoking.room_id = this.NewRoomBoking.room_id;
+    this.editedRoomBoking.booked_by_user_id = this.NewRoomBoking.booked_by_user_id;
+    this.editedRoomBoking.date_from = this.NewRoomBoking.date_from;
+    this.editedRoomBoking.date_from = this.NewRoomBoking.date_to;
+    this.editedRoomBoking.payed = this.NewRoomBoking.payed;
+    this.editedRoomBoking.number = this.NewRoomBoking.number;
     this.matdialog.closeAll();
     //!this.editedHotel= this.hotel;
   }
