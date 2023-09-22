@@ -31,7 +31,7 @@ An example of the application, docker files will be added later))
 
 <h3>Main page</h3>
 <figure>
-  <img src="pictures/APP/GIF/1.gif" alt="Main page">
+  <img src="pictures/GIF/1.gif" alt="Main page">
 </figure>
 
 <h3>The moment of booking a room in a hotel</h3>
