@@ -1,29 +1,37 @@
 <div class="container">
-    <br>
-    <br><br>
-    <div class="hotelName" *ngFor="let room of rooms">
-        <div class="alert alert-success"> <!--alert-success alert-dark -->
-            Room Information:
-            <ul class="Haracteristik">
-                <img class="RoomlPhotos" src="{{room.path_picture}}" class="auto" alt="Photo">
-                <li>Hotel ID: <strong>{{room.hotel_id}}</strong></li>
-                <li>number: <strong>{{room.number}}</strong></li>
-                <li>description: <strong>{{room.description}}</strong> </li>
-                <li>price: <strong>{{room.price}}</strong> </li>
-                <div *ngFor="let booking of roomBookings">
-                    <div *ngIf="booking.room_id === room.id">Room booked from {{booking.date_from| date:'HH:mm
-                        dd.MM.yyyy'}} to {{booking.date_to| date:'HH:mm dd.MM.yyyy'}} </div>
-                    <br>                    
-                </div>
-                <div class="toBook">
-                    <button class="btn bk" (click)="toBook(room)">{{info}} {{room.name}}</button>
-                    <!-- <a routerLink="/toBook"></a> -->
-                </div>
-            </ul>
+  <br>
+  <br><br>
+  <div class="hotelName" *ngFor="let room of rooms">
+    <div class="alert alert-success"> <!--alert-success alert-dark -->
+      Room Information:
+      <ul class="Haracteristik">
+        <img class="RoomlPhotos" src="{{room.path_picture}}" class="auto" alt="Photo">
+        <li>Hotel ID: <strong>{{room.hotel_id}}</strong></li>
+        <li>number: <strong>{{room.number}}</strong></li>
+        <li>description: <strong>{{room.description}}</strong> </li>
+        <li>price: <strong>{{room.price}}</strong> </li>
+        <div *ngFor="let booking of roomBookings">
+          <div *ngIf="booking.room_id === room.id">Rааoom booked from {{booking.date_from| date:'HH:mm
+            dd.MM.yyyy'}} toаа {{booking.date_to| date:'HH:mm dd.MM.yyyy'}} </div>
+          <br>
         </div>
-        
-
+        <!-- <mwl-calendar-month-view [viewDate]="viewDate" [events]="events">
+          <ng-template #cellTemplate let-day="day">
+            <div class="cal-cell">
+              {{ day.date | date:'d' }}
+              <div *ngFor="let event of day.events">
+                {{ event.title }}
+              </div>
+            </div>
+          </ng-template>
+        </mwl-calendar-month-view> -->
+        <div class="toBook">
+          <button class="btn bk" (click)="toBook(room)">{{info}} {{room.name}}</button>
+          <!-- <a routerLink="/toBook"></a> -->
+        </div>
+      </ul>
     </div>
-    <br><br>
+  </div>
+  <br><br>
 
 </div>

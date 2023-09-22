@@ -11,6 +11,7 @@ import { SharedServiceRoomBooking } from '../SharedServiceRoomBooking';
 import { RoomBooking } from '../room-booking';
 import { ShowInfoComponent } from '../show-info/show-info.component';
 import { SharedServiceShowInfo } from '../SharedServiceShowInfo';
+import { CalendarEvent } from 'angular-calendar';
 
 @Component( {
   selector: 'app-room',
@@ -35,11 +36,30 @@ export class RoomComponent implements OnInit {
   user = new UsersData()
   ansver = new Object();
   checkBookingBoolean: boolean;
-  booking: boolean
+  booking: boolean;
+  events: CalendarEvent[] = [];
+  viewDate: Date = new Date(); // Добавьте это свойство
+
   ngOnInit(): void {
     this.getRooms();
     this.checLogin();
     this.getRoomBooking()
+
+  }
+
+
+  updateEvents() {
+    const newEvents: CalendarEvent<any>[] | { start: Date; end: Date; title: string; }[] = [];
+    this.roomBookings.forEach(booking => {
+      if (booking.room_id === this.room.id) {
+        newEvents.push({
+          start: new Date(booking.date_from),
+          end: new Date(booking.date_to),
+          title: `Room booked from ${booking.date_from} to ${booking.date_to}`
+        });
+      }
+    });
+    this.events = newEvents;
   }
 
   checLogin() {
@@ -55,15 +75,19 @@ export class RoomComponent implements OnInit {
     }
   }
 
-  getRoomBooking(   ) {
-    this.SharedServiceRoomBooking.getAll().subscribe( ( data: any ) => {
-      if ( data != null ) {
+  getRoomBooking() {
+    this.SharedServiceRoomBooking.getAll().subscribe((data: any) => {
+      if (data != null) {
         this.roomBookings = data;
-        this.roomBooking = data[ 0 ]
+        this.roomBooking = data[0];
+        this.updateEvents();
       }
-    } );
-
+    });
   }
+  
+
+
+
   getRooms() {
     var hotelID = JSON.parse( localStorage.getItem( 'hotel' ) || '[]' ).id;
     this.http.get( 'http://localhost:3000/api/hotel_room' ).subscribe( ( data: any ) => {
