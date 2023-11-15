@@ -12,7 +12,7 @@
         <li>price: <strong>{{room.price}}</strong> </li>
         <div *ngFor="let booking of roomBookings">
           <div *ngIf="booking.room_id === room.id">Rааoom booked from {{booking.date_from| date:'HH:mm
-            dd.MM.yyyy'}} toаа {{booking.date_to| date:'HH:mm dd.MM.yyyy'}} </div>
+            dd.MM.yyyy'}} to а {{booking.date_to| date:'HH:mm dd.MM.yyyy'}} </div>
           <br>
         </div>
         <!-- <mwl-calendar-month-view [viewDate]="viewDate" [events]="events">

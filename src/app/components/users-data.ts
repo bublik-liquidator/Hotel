@@ -8,6 +8,8 @@ export class UsersData {
     public birthday: string;
     public phonenomber: string;
     public email: string;
+    public role: string;
+
 
     public static copyFieldsValuesTo(from: UsersData, to: UsersData): void {
     to.id = from.id;
@@ -18,6 +20,7 @@ export class UsersData {
     to.many = from.many;
     to.birthday = from.birthday;
     to.phonenomber = from.phonenomber;
-    to.email = from.email;   
+    to.email = from.email; 
+    to.role = from.role; 
     }
 }

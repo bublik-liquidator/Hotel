@@ -11,6 +11,8 @@ import { UsersData } from '../users-data';
 import { HttpClient } from '@angular/common/http';
 import { SharedServiceUsers } from '../SharedServiceUsers';
 import { FormGroup, FormControl } from '@angular/forms';// FormsModule
+import jwt_decode from 'jwt-decode';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component( {
   selector: 'app-booking',
@@ -33,6 +35,8 @@ export class BookingComponent implements OnInit {
   user = new UsersData;
 
   ngOnInit(): void {
+    const helper = new JwtHelperService();
+
     this.room = this.SharedServiceRoomBooking.getRoom();
     this.NewRoomBoking = this.SharedServiceRoomBooking.getRoomBooking();
     this.NewRoomBoking.number = ""
@@ -42,9 +46,14 @@ export class BookingComponent implements OnInit {
     this.today = this.date_time();
     this.editedRoomBoking.date_from = this.today;
     this.editedRoomBoking.date_to = this.today;
-    this.http.get( `http://localhost:3000/api/user/${ JSON.parse( localStorage.getItem( 'activleUser' ) || '[]' ).id }` ).subscribe( ( answer: any ) => {
-      this.user = ( answer )
-    } );
+    const activeUser = localStorage.getItem( 'activleUser' );
+    if ( activeUser ) {
+      const decodedToken = helper.decodeToken( activeUser );
+      this.http.get( `http://localhost:3000/api/user/${ decodedToken.id }` ).subscribe( ( answer: any ) => {
+        this.user = ( answer )
+        console.log(answer)
+      } );
+    }
     this.getRoomsBookong()
   }
 
@@ -107,11 +116,12 @@ export class BookingComponent implements OnInit {
                 this.editedRoomBoking.date_to = this.bookingForm.value.date_to ?? '';
                 this.editedRoomBoking.payed = this.bookingForm.value.payed ?? '';
                 this.editedRoomBoking.number = this.bookingForm.value.number ?? '';
+                this.editedRoomBoking.booked_by_user_id = this.user.id
                 this.SharedServiceRoomBooking.post( this.editedRoomBoking );
                 this.user.many = ( this.user.many - ( this.room.price ) );
                 this.SharedServiceUsers.save( this.user ).subscribe( response => {
                 } );
-                this.router.navigate( [ '/account' ] );
+                this.router.navigate( [ '/' ] );
 
               }
             }

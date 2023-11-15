@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
     this.GetUsers()
     const dialogRef = this.sharedService.getdialogRef();
     this.sharedService.putTokenUser(this.user);
+    console.log(this.user)
     this.sharedService.puttTokenUser(this.user).subscribe((data: Object) => {
       this.Data = JSON.stringify(data);
       if (this.Data == null) {

@@ -16,8 +16,7 @@
         <div>Name</div>
         <input type="text" placeholder="Name" class="form-control" [(ngModel)]="user.username" name="username"><br>
         <div>Birthday</div>
-        <input type="text" placeholder="Birthday" class="form-control" [(ngModel)]="user.birthday"
-            name="birthday"><br>
+        <input type="text" placeholder="Birthday" class="form-control" [(ngModel)]="user.birthday" name="birthday"><br>
         <div>Mail</div>
         <input type="text" placeholder="Mail" class="form-control" [(ngModel)]="user.email" name="email"><br>
         <div>Available finance</div>
@@ -25,15 +24,16 @@
         <div>Your phone number</div>
         <input type="text" placeholder="phone number" class="form-control" [(ngModel)]="user.phonenomber"
             name="phonenomber"><br>
-        <div>Your photo</div>
+               <div>Your photo</div>
         <input type="text" placeholder="Your photo" class="form-control" [(ngModel)]="user.photo" name="photo"><br>
         <button class="IdetInfo" (click)="Save()">Save</button>
         <!--           
         <button class="Cancel" (click)="Cancel()">Cancel</button>
         <button class="save" (click)="savehotelsToStorage()">Save</button> -->
-
+    
     </form>
     <br>
+    <div *ngIf="roomBookings"></div>
     <div *ngFor="let roomBooking of roomBookings">
         <br>
         <div *ngIf="roomBooking !== null && roomBooking !== undefined" class="alert alert-success">
@@ -49,7 +49,7 @@
                     date:'HH:mm dd.MM.yyyy'}}</div>
             </ul>
         </div>
-        
-        <button class="btn departure" (click)="Departure(roomBooking.id)">Cancel a reservation for a 
+
+        <button class="btn departure" (click)="Departure(roomBooking.id)">Cancel a reservation for a
             {{roomBooking.name}}</button>
     </div>

@@ -33,13 +33,13 @@
 
 
   putTokenUser(user: UsersData) {
-    this.http.post('http://localhost:3000/api/login', user).subscribe((data: Object) => {
+    this.http.post('http://localhost:3000/api/auth', user).subscribe((data: Object) => {
       localStorage.setItem('activleUser', JSON.stringify(data));
     });
-    return this.http.post('http://localhost:3000/api/login', user)
+    return this.http.post('http://localhost:3000/api/auth', user)
   }
   puttTokenUser(user: UsersData) {
-    return this.http.post('http://localhost:3000/api/login', user);
+    return this.http.post('http://localhost:3000/api/auth', user);
   }
   putUser(user: UsersData) {
     return this.http.post('http://localhost:3000/api/user', user).subscribe((data: Object) => {

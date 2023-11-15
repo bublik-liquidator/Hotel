@@ -7,6 +7,8 @@ import { SharedServiceRoomBooking } from '../SharedServiceRoomBooking';
 import { ShowInfoComponent } from '../show-info/show-info.component';
 import { SharedServiceShowInfo } from '../SharedServiceShowInfo';
 import { MatDialog } from '@angular/material/dialog';
+import jwt_decode from 'jwt-decode';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 @Component( {
@@ -26,73 +28,75 @@ export class AccountComponent {
   isEdit: boolean = false;
 
   ngOnInit() {
-    this.getInfo();
-    this.initRooms();
-    //this.checDate();
-    ////added one day less incorrect date display
-    }
-    initRooms() {
-      this.SharedServiceRoomBooking.initBookingRooms( this.user ).subscribe( ( data: any ) => {
-        if ( data != null ) {
-          this.roomBookings = data;
-          this.roomBooking = this.roomBookings[ 0 ]
-
-        }
-      } );
-    }
-    checDate() {
-      const date1: any = new Date( this.roomBooking.date_to );
-      const date2: any = new Date();
-      const diffTime = Math.abs( date2 - date1 );
-      const diffDays = Math.ceil( diffTime / ( 1000 * 60 * 60 * 24 ) );
-
-      console.log( diffDays );
-      if ( date1.getDate() === date2.getDate() && date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear() ) {
-        this.sharedServiceInfo.initErrorInformation( "Your lease has come to an end" )
-        this.matdialog.open( ShowInfoComponent );
-      } else {
-        this.sharedServiceInfo.initErrorInformation(  "You can stay in the room"  + diffDays )
-        this.matdialog.open( ShowInfoComponent );
-
-      }
-
-    }
-
-
-    getInfo() {
-      this.user.id = JSON.parse( localStorage.getItem( 'activleUser' ) || '[]' ).id;
+    const helper = new JwtHelperService();
+    const activeUser = localStorage.getItem( 'activleUser' );
+    if ( activeUser ) {
+      const decodedToken = helper.decodeToken( activeUser );
+      this.user.id = decodedToken.id;
       this.sharedService.getById( this.user.id ).subscribe( ( data: UsersData ) => {
         this.user = data;
       } );
-
+    } else {
+      console.log( 'No active user found in local storage.' );
     }
-    EditButtonInfo() {
-      this.isEdit = !this.isEdit;
-    }
-
-    Save() {
-      this.users = this.users.filter( ( obj ) => this.user.login != this.user.login );
-      this.sharedService.save( this.user ).subscribe( response => {
-      } );
-      this.isEdit = !this.isEdit;
-      return true;
-
-    }
-
-
-    Departure( id: bigint ) {
-      this.SharedServiceRoomBooking.delete( id ).subscribe( () => {
-        this.initRooms();
-      } );
-    }
-
-    converData( str: string ) {
-      const date = new Date( str );
-      const hours = date.getUTCHours();
-      const minutes = date.getUTCMinutes().toString().padStart( 2, '0' );
-      const day = date.getUTCDate() + 1;
-      const month = date.getUTCMonth() + 1;
-      const year = date.getUTCFullYear();
-      return `${ hours }:${ minutes } ${ day }.${ month }.${ year }`;
-    }
+    
+    this.initRooms();
+    //this.checDate();
+    ////added one day less incorrect date display
   }
+  initRooms() {
+    this.SharedServiceRoomBooking.initBookingRooms( Number( this.user.id ) ).subscribe( ( data: any ) => {
+      if ( data != null ) {
+        this.roomBookings = data;
+        this.roomBooking = this.roomBookings[ 0 ]
+      }
+    } );
+  }
+  checDate() {
+    const date1: any = new Date( this.roomBooking.date_to );
+    const date2: any = new Date();
+    const diffTime = Math.abs( date2 - date1 );
+    const diffDays = Math.ceil( diffTime / ( 1000 * 60 * 60 * 24 ) );
+
+    console.log( diffDays );
+    if ( date1.getDate() === date2.getDate() && date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear() ) {
+      this.sharedServiceInfo.initErrorInformation( "Your lease has come to an end" )
+      this.matdialog.open( ShowInfoComponent );
+    } else {
+      this.sharedServiceInfo.initErrorInformation( "You can stay in the room" + diffDays )
+      this.matdialog.open( ShowInfoComponent );
+    }
+
+  }
+
+
+  EditButtonInfo() {
+    this.isEdit = !this.isEdit;
+  }
+
+  Save() {
+    this.users = this.users.filter( ( obj ) => this.user.login != this.user.login );
+    this.sharedService.save( this.user ).subscribe( response => {
+    } );
+    this.isEdit = !this.isEdit;
+    return true;
+
+  }
+
+
+  Departure( id: bigint ) {
+    this.SharedServiceRoomBooking.delete( id ).subscribe( () => {
+      this.initRooms();
+    } );
+  }
+
+  converData( str: string ) {
+    const date = new Date( str );
+    const hours = date.getUTCHours();
+    const minutes = date.getUTCMinutes().toString().padStart( 2, '0' );
+    const day = date.getUTCDate() + 1;
+    const month = date.getUTCMonth() + 1;
+    const year = date.getUTCFullYear();
+    return `${ hours }:${ minutes } ${ day }.${ month }.${ year }`;
+  }
+}

@@ -25,8 +25,8 @@ export class SharedServiceRoomBooking {
     this.room = room
   }
 
-  initBookingRooms(user: object) {
-    return this.http.post('http://localhost:3000/api/room_booking/account', user)
+  initBookingRooms(id: number) {
+    return this.http.post('http://localhost:3000/api/room_booking/account', {id})
   }
   
   getRoom() {
@@ -43,6 +43,7 @@ export class SharedServiceRoomBooking {
     return this.http.get('http://localhost:3000/api/room_booking/')
   }
   async post(roomBooking: RoomBooking) {
+    console.log(roomBooking)
     this.http.post('http://localhost:3000/api/room_booking', roomBooking).subscribe((answer: Object) => {
     });
 

@@ -4,6 +4,7 @@ import { LoginComponent } from '../login/login.component';
 import { SharedServiceUsers } from '../SharedServiceUsers';
 import { Router } from '@angular/router';
 import { UsersData } from '../users-data';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 @Component( {
@@ -20,7 +21,7 @@ export class HeaderComponent implements OnInit {
   authorizationButtonText: string = " ";
   loggedInButtonText: string = "Exit";
   notLoggedInButtonText: string = "Login";
-  user: UsersData
+  user!: UsersData
   Data: object;
   hotelLink: string;
   roomLink: string;
@@ -39,22 +40,36 @@ export class HeaderComponent implements OnInit {
     }
     if ( localStorage.getItem( 'activleUser' ) != null ) {
       this.isEdit = true;
-
-      if ( JSON.parse( localStorage.getItem( 'activleUser' ) || '[]' ).login == "admin" ) {
-        this.isEditAdmin = true;
-        this.isEditManager = true;
-
-      }
-      if ( JSON.parse( localStorage.getItem( 'activleUser' ) || '[]' ).login == "manager" ) {
-        this.isEditManager = true;
-      }
-      if ( JSON.parse( localStorage.getItem( 'activleUser' ) || '[]' ).login == "user" ) {
-        this.isEdit = true;
-      }
+      const helper = new JwtHelperService();
+      const activeUser = localStorage.getItem( 'activleUser' );
+      if ( activeUser ) {
+        const decodedToken = helper.decodeToken( activeUser );
+       
+        this.sharedService.getById( decodedToken.id ).subscribe( ( data: UsersData ) => {
+          this.user = data;
+          if ( this.user.role === "admin" ) {
+            this.isEditAdmin = true;
+            this.isEditManager = true;
+    
+          }
+          if ( this.user.role  === "manager" ) {
+            this.isEditManager = true;
+          }
+          if ( JSON.parse( localStorage.getItem( 'activleUser' ) || '[]' ).login == "user" ) {
+            this.isEdit = true;
+          }        } );
+      } else {
+        console.log( 'No active user found in local storage.' );
+      }      
       this.userLoggedIn();
     }
 
   }
+
+
+
+
+
 
 
   ButtonText() {
