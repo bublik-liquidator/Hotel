@@ -31,7 +31,7 @@ export class EditManagerComponent implements OnInit {
     UsersData.copyFieldsValuesTo(this.edituser, this.user);
     this.sharedService.inituser(this.edituser);
    
-    this.sharedService.save(this.user).subscribe( data => console.log( data ) );;
+    this.sharedService.save_change_password(this.user).subscribe( data => console.log( data ) );;
     this.matdialog.closeAll();
     return true;
     }

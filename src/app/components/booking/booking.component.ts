@@ -51,7 +51,6 @@ export class BookingComponent implements OnInit {
       const decodedToken = helper.decodeToken( activeUser );
       this.http.get( `http://localhost:3000/api/user/${ decodedToken.id }` ).subscribe( ( answer: any ) => {
         this.user = ( answer )
-        console.log(answer)
       } );
     }
     this.getRoomsBookong()
