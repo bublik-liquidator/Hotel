@@ -63,21 +63,17 @@ export class ManagerComponent implements OnInit {
         this.matdialog.open(ShowInfoComponent);
       }
       else{
-        
-        {
-          newHotel.path_picture="{"+newHotel.path_picture+"}"
-          this.sharedService.create(newHotel).subscribe(() => {
-            this.GetHotel();
-            this.newHotel=new Hotel();
-          });
-                
-        }
+        newHotel.path_picture = [newHotel.path_picture]; // Оберните path_picture в массив
+        newHotel.services = [newHotel.services]; // Оберните services в массив
+        this.sharedService.create(newHotel).subscribe(() => {
+          this.GetHotel();
+          this.newHotel=new Hotel();
+        });
       }
     }
-  
-
-  this.GetHotel();
+    this.GetHotel();
   }
+  
 
   deletehotel(id: bigint) {
     this.sharedService.delete(id).subscribe(() => {

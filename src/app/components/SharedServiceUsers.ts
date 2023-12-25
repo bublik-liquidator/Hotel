@@ -40,6 +40,7 @@ export class SharedServiceUsers {
   }
   puttTokenUser( user: UsersData ) {
     return this.http.post( 'http://localhost:3000/api/auth', user );
+   
   }
   putUser( user: UsersData ) {
     return this.http.post( 'http://localhost:3000/api/user', user ).subscribe( ( data: Object ) => {

@@ -44,15 +44,13 @@
     <div class="centr">
         <button class="Addhotel" (click)="AddButtonhotel()">I want to add a new hotel</button>
         <form *ngIf="isEdit" #myForm="ngForm">
-            <input type="text" placeholder="Name of the hotel" class="form-control" [(ngModel)]="newHotel.name"
-                name="name"><br>
-            <input type="text" placeholder="Manager's ID" class="form-control" [(ngModel)]="newHotel.manager_id"
-                name="people"><br>
-            <input type="text" placeholder="picture of the hotel" class="form-control" [(ngModel)]="newHotel.path_picture"
-                name="hotel.path_picture"><br>
-            
-            <button class="btn btn-warning btn-sm" (click)="Addhotel(newHotel)">Add</button>
-        </form>
+            <input type="text" placeholder="Name of the hotel" class="form-control" [(ngModel)]="newHotel.name" name="name"><br>
+            <input type="text" placeholder="Manager's ID" class="form-control" [(ngModel)]="newHotel.manager_id" name="people"><br>
+            <input type="text" placeholder="picture of the hotel" class="form-control" [(ngModel)]="newHotel.path_picture" name="hotel.path_picture"><br>
+            <input type="text" placeholder="Services of the hotel" class="form-control" [(ngModel)]="newHotel.services" name="hotel.services"><br>
+            <button class="btn btn-warning btn-sm" (click)="Addhotel(newHotel)">Add</button>            
+          </form>
+          
         
     </div>
 </div>

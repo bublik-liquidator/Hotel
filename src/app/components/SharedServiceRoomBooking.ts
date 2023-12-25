@@ -26,7 +26,7 @@ export class SharedServiceRoomBooking {
   }
 
   initBookingRooms(id: number) {
-    return this.http.post('http://localhost:3000/api/room_booking/account', {id})
+    return this.http.get(`http://localhost:3000/api/room_booking/account/${id}`);
   }
   
   getRoom() {

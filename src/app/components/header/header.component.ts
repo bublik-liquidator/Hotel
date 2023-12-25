@@ -34,43 +34,31 @@ export class HeaderComponent implements OnInit {
 
 
   checLogin() {
-    this.Data = JSON.parse( localStorage.getItem( 'activleUser' ) || '[]' );
-    if ( localStorage.getItem( 'activleUser' ) == null ) {
-      this.userLoggedOut();
-    }
-    if ( localStorage.getItem( 'activleUser' ) != null ) {
+    const activeUser = localStorage.getItem('activleUser');
+    if (activeUser) {
       this.isEdit = true;
       const helper = new JwtHelperService();
-      const activeUser = localStorage.getItem( 'activleUser' );
-      if ( activeUser ) {
-        const decodedToken = helper.decodeToken( activeUser );
-       
-        this.sharedService.getById( decodedToken.id ).subscribe( ( data: UsersData ) => {
-          this.user = data;
-          if ( this.user.role === "admin" ) {
-            this.isEditAdmin = true;
-            this.isEditManager = true;
-    
-          }
-          if ( this.user.role  === "manager" ) {
-            this.isEditManager = true;
-          }
-          if ( JSON.parse( localStorage.getItem( 'activleUser' ) || '[]' ).login == "user" ) {
-            this.isEdit = true;
-          }        } );
-      } else {
-        console.log( 'No active user found in local storage.' );
-      }      
+      const decodedToken = helper.decodeToken(activeUser);
+      this.sharedService.getById(decodedToken.id).subscribe((data: UsersData) => {
+        this.user = data;
+        if (this.user.role === "admin") {
+          this.isEditAdmin = true;
+          this.isEditManager = true;
+        }
+        if (this.user.role === "manager") {
+          this.isEditManager = true;
+        }
+        if (this.user.login == "user") {
+          this.isEdit = true;
+        }
+      });
       this.userLoggedIn();
+    } else {
+      console.log('No active user found in local storage.');
+      this.userLoggedOut();
     }
-
   }
-
-
-
-
-
-
+  
 
   ButtonText() {
 

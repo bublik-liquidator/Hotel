@@ -19,7 +19,7 @@ import { SharedService } from './components/SharedService';
 import { PopUpComponent } from './components/pop-up/pop-up.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
-import { HttpClientModule }   from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule }   from '@angular/common/http';
 import { AccountComponent } from './components/account/account.component';
 import { HotelsComponent } from './components/hotels/hotels.component';
 import { SharedServiceUsers } from './components/SharedServiceUsers';
@@ -35,6 +35,7 @@ import { EditInfoRoomComponent } from './components/edit-info-room/edit-info-roo
 import { ReactiveFormsModule } from '@angular/forms';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { AuthInterceptor } from './components/token.interceptor';
 
 const appRoutes: Routes = [
   {path:'',component:HotelsComponent},//HotelsComponent StartLoginComponent
@@ -85,7 +86,7 @@ const appRoutes: Routes = [
 
     
   ],
-  providers: [CookieService,SharedService,SharedServiceUsers,SharedServiceRoomBooking,SharedServiceShowInfo,HeaderComponent],
+  providers: [CookieService,SharedService,SharedServiceUsers,SharedServiceRoomBooking,SharedServiceShowInfo,HeaderComponent, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

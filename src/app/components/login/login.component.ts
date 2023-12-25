@@ -19,14 +19,14 @@ export class LoginComponent implements OnInit {
   user = new UsersData();
   test: UsersData;
   users: UsersData[] = [new UsersData()];
-  isEdit: boolean;
   initChekButton: true
   Data: string;
 
 
   ngOnInit(): void {
     this.GetUsers();
-    this.isEdit = JSON.parse(localStorage.getItem('Esidit') || '[]');
+    this.user.login='admin';
+    this.user.password='admin';
   }
 
   GetUsers() {
@@ -39,9 +39,12 @@ export class LoginComponent implements OnInit {
     this.GetUsers()
     const dialogRef = this.sharedService.getdialogRef();
     this.sharedService.putTokenUser(this.user);
-    console.log(this.user)
     this.sharedService.puttTokenUser(this.user).subscribe((data: Object) => {
       this.Data = JSON.stringify(data);
+
+      localStorage.setItem( 'activleUser', ( this.Data ) );
+
+
       if (this.Data == null) {
         this.informationError = 'You are not registered';
       }

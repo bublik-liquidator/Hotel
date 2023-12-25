@@ -35,7 +35,7 @@ export class AccountComponent {
       this.user.id = decodedToken.id;
       this.sharedService.getById( this.user.id ).subscribe( ( data: UsersData ) => {
         this.user = data;
-      } );
+      } ); 
     } else {
       console.log( 'No active user found in local storage.' );
     }
