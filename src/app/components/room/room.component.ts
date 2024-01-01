@@ -44,8 +44,9 @@ export class RoomComponent implements OnInit {
     this.getRooms();
     this.checLogin();
     this.getRoomBooking()
-
-  }
+    this.roomBookings.forEach(booking => {
+      console.log(booking);
+    });  }
 
 
   updateEvents() {
@@ -79,6 +80,7 @@ export class RoomComponent implements OnInit {
     this.SharedServiceRoomBooking.getAll().subscribe((data: any) => {
       if (data != null) {
         this.roomBookings = data;
+        console.log(data)
         this.roomBooking = data[0];
         this.updateEvents();
       }

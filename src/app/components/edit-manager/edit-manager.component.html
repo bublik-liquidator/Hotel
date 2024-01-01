@@ -3,10 +3,19 @@
     <input type="text" placeholder="Name" class="form-control" [(ngModel)]="edituser.username" name="name"><br>
     <div>Login</div>
     <input type="text" placeholder="Login" class="form-control" [(ngModel)]="edituser.login"><br>
+    <div>Role</div>
+    <input type="text" placeholder="Login" class="form-control" [(ngModel)]="edituser.role"><br>
     <div>Password</div>
     <input type="text" placeholder="Password" class="form-control" [(ngModel)]="edituser.password"><br>
     <div>Path_photo</div>
     <input type="text" placeholder="Path_photo" class="form-control" [(ngModel)]="edituser.photo"><br>
+    <div>Hotel</div>
+    <select [(ngModel)]="hotelID" name="hotelID" class="form-control">
+      <option *ngFor="let hotel of hotels" [value]="hotel.id">{{hotel.name}}</option>
+    </select>
+    <br>
+    <div>User ID</div>
+    <input type="number" placeholder="Hotel ID" class="form-control" [(ngModel)]="edituser.id" name="edituser.id" min="1"><br>
     <button class="Cancel" (click)="Cancel()">Cancel</button>
     <button class="save" (click)="savehotelsToStorage()">Save</button>
-    </body>
+</body>

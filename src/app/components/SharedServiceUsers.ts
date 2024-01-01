@@ -56,9 +56,10 @@ export class SharedServiceUsers {
     return this.http.get<UsersData>( `http://localhost:3000/api/user/${ id }` );
   }
 
-  create( user: UsersData ): Observable<any> {
-    return this.http.post( 'http://localhost:3000/api/register', user )
-  }
+  create( user: UsersData ){
+    console.log(user)
+    return this.http.post( 'http://localhost:3000/api/register/admin', user )
+}
 
   save( user: UsersData ) {
     return this.http.put( 'http://localhost:3000/api/user/' + user.id, user );
@@ -66,6 +67,13 @@ export class SharedServiceUsers {
 
   save_change_password( user: UsersData ) {
     return this.http.put( 'http://localhost:3000/api/user/change_password' + user.id, user );
+  }
+
+  saveInfoUser(user: UsersData, hotelId: number) {
+    const userUpdate = this.http.put(`http://localhost:3000/api/user/${user.id}`, user).toPromise();
+    const managerAssign = this.http.put(`http://localhost:3000/api/hotel/${hotelId}/assign_manager`, { manager_id: user.id }).toPromise();
+  
+    return Promise.all([userUpdate, managerAssign]);
   }
 
   delete( id: bigint ): Observable<any> {

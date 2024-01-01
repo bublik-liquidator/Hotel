@@ -1,5 +1,6 @@
 export class Hotel {
     id: bigint;
+    manager_name:string;
     manager_id: bigint;
     path_picture: string[];
     name: string;

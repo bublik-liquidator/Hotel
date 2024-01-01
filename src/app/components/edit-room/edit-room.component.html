@@ -7,39 +7,30 @@
             <th>IMG</th>
             <th>Number</th>
             <th>Description</th>
-            <th>price</th>
-            <th colspan="2" class="lastTh">button</th>
+            <th>Price</th>
+            <th colspan="2" class="lastTh">Button</th>
         </tr>
         <tr *ngFor="let room of rooms">
             <td>
-                <div class="tablic">{{room.id}}
-                </div>
+                <div class="tablic">{{room.id}}</div>
             </td>
             <td>
                 <div>{{room.name}}</div>
             </td>
             <td>
-                <div class="tablic">{{room.hotel_id}}
-                </div>
+                <div class="tablic">{{room.hotel_id}}</div>
             </td>
             <td>
                 <div class="tablic" class="thImg"><img class="imgTabel" src={{room.path_picture}}></div>
             </td>
             <td>
-                <div class="tablic">{{room.number}}
-                </div>
+                <div class="tablic">{{room.number}}</div>
             </td>
             <td>
-                <div class="tablic">{{room.description}}
-                </div>
+                <div class="tablic">{{room.description}}</div>
             </td>
-            <!-- <td>
-                <div class="tablic">{{infoRoom}}
-                </div>
-            </td> -->
             <td>
-                <div class="tablic">{{room.price}}
-                </div>
+                <div class="tablic">{{room.price}}</div>
             </td>
             <td class="lastTh">
                 <button class="btn btn-warning btn-sm" (click)="Edithotel(room)">Edit room</button>
@@ -49,26 +40,4 @@
             </td>
         </tr>
     </table>
-
-    <br>
-
-    <div class="centr">
-        <button class="Addhotel" (click)="AddButtonhotel()">I want to add a new number</button>
-        <form *ngIf="isEdit" #myForm="ngForm">
-            <input type="text" placeholder="Room name" class="form-control" [(ngModel)]="newRoom.name"
-                name="name"><br>
-            <input type="text" placeholder="Hotel ID" class="form-control" [(ngModel)]="newRoom.hotel_id"
-                name="people"><br>
-            <input type="text" placeholder="path_picture" class="form-control" [(ngModel)]="newRoom.path_picture"
-                name="people"><br>
-            <input type="text" placeholder="hotel.numbere" class="form-control" [(ngModel)]="newRoom.number"
-                name="hotel.path_picture"><br>
-            <input type="text" placeholder="hotel.description" class="form-control" [(ngModel)]="newRoom.description"
-                name="hotel.path_picture"><br>
-            <input type="text" placeholder="hotel.price" class="form-control" [(ngModel)]="newRoom.price"
-                name="hotel.path_picture"><br>
-            <button class="btn btn-warning btn-sm" (click)="Addhotel(newRoom)">Add</button>
-        </form>
-
-    </div>
 </div>

@@ -1,12 +1,16 @@
 <body>
     <div>Name</div>
     <input type="text" placeholder="Room name" class="form-control" [(ngModel)]="editedRoom.name" name="name"><br>
-    <div>Manager ID</div>
-    <input type="text" placeholder="Number of people" class="form-control" [(ngModel)]="editedRoom.hotel_id"><br>
+    <div>Hotel ID</div>
+    <input type="text" placeholder="Hotel ID" class="form-control" [(ngModel)]="editedRoom.hotel_id"><br>
     <div>Image path</div>
-    <input type="text" placeholder="path_picturs " class="form-control" [(ngModel)]="editedRoom.path_picture "><br>
-
+    <input type="text" placeholder="Path to picture" class="form-control" [(ngModel)]="editedRoom.path_picture"><br>
+    <div>Number</div>
+    <input type="text" placeholder="Room number" class="form-control" [(ngModel)]="editedRoom.number"><br>
+    <div>Description</div>
+    <input type="text" placeholder="Room description" class="form-control" [(ngModel)]="editedRoom.description"><br>
+    <div>Price</div>
+    <input type="text" placeholder="Room price" class="form-control" [(ngModel)]="editedRoom.price"><br>
     <button class="Cancel" (click)="Cancel()">Cancel</button>
     <button class="save" (click)="savehotelsToStorage()">Save</button>
 </body>
-<!-- <button (click)="helloFunction();">Click Me</button> -->

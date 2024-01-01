@@ -1,7 +1,7 @@
 export class UsersData {
     public id: bigint;
     public login: string;
-    public password: string;
+    public password?: string;
     public username: string;
     public photo: string;
     public many: number;

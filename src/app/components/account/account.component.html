@@ -16,22 +16,17 @@
         <div>Name</div>
         <input type="text" placeholder="Name" class="form-control" [(ngModel)]="user.username" name="username"><br>
         <div>Birthday</div>
-        <input type="text" placeholder="Birthday" class="form-control" [(ngModel)]="user.birthday" name="birthday"><br>
+        <input type="date" placeholder="Birthday" class="form-control" [(ngModel)]="user.birthday" name="birthday"><br>
         <div>Mail</div>
-        <input type="text" placeholder="Mail" class="form-control" [(ngModel)]="user.email" name="email"><br>
-        <div>Available finance</div>
-        <input type="text" placeholder="Available finance" class="form-control" [(ngModel)]="user.many" name="many"><br>
+        <input type="email" placeholder="Mail" class="form-control" [(ngModel)]="user.email" name="email"><br>
+       
         <div>Your phone number</div>
-        <input type="text" placeholder="phone number" class="form-control" [(ngModel)]="user.phonenomber"
-            name="phonenomber"><br>
-               <div>Your photo</div>
-        <input type="text" placeholder="Your photo" class="form-control" [(ngModel)]="user.photo" name="photo"><br>
+        <input type="tel" placeholder="phone number" class="form-control" [(ngModel)]="user.phonenomber" name="phonenomber"><br>
+        <div>Your photo</div>
+        <input type="url" placeholder="Your photo" class="form-control" [(ngModel)]="user.photo" name="photo"><br>
         <button class="IdetInfo" (click)="Save()">Save</button>
-        <!--           
-        <button class="Cancel" (click)="Cancel()">Cancel</button>
-        <button class="save" (click)="savehotelsToStorage()">Save</button> -->
-    
     </form>
+    
     <br>
     <div *ngIf="roomBookings"></div>
     <div *ngFor="let roomBooking of roomBookings">

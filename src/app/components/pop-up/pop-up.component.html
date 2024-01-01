@@ -1,8 +1,11 @@
 <body>
     <div>Name</div>
     <input type="text" placeholder="Number name" class="form-control" [(ngModel)]="editedHotel.name" name="name"><br>
-    <div>Manager ID</div>
-    <input type="text" placeholder="Number of people" class="form-control" [(ngModel)]="editedHotel.manager_id"><br>
+    <div>Manager ID(name)</div>
+    <select class="form-control" [(ngModel)]="editedHotel.manager_id">
+      <option *ngFor="let user of users" [value]="user.id">{{user.username}}</option>
+    </select>
+    <br>
     <div>Image path</div>
     <input type="text" placeholder="path_picturs " class="form-control" [(ngModel)]="editedHotel.path_picture "><br>
 

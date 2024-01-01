@@ -10,6 +10,7 @@
         <li>number: <strong>{{room.number}}</strong></li>
         <li>description: <strong>{{room.description}}</strong> </li>
         <li>price: <strong>{{room.price}}</strong> </li>
+        
         <div *ngFor="let booking of roomBookings">
           <div *ngIf="booking.room_id === room.id">Rааoom booked from {{booking.date_from| date:'HH:mm
             dd.MM.yyyy'}} to а {{booking.date_to| date:'HH:mm dd.MM.yyyy'}} </div>

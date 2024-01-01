@@ -10,6 +10,8 @@ import { Hotel } from '../hotel';
 import { ShowInfoComponent } from '../show-info/show-info.component';
 import { SharedServiceShowInfo } from '../SharedServiceShowInfo';
 import { EditRoomComponent } from '../edit-room/edit-room.component';
+import { UsersData } from '../users-data';
+import { SharedServiceUsers } from '../SharedServiceUsers';
 
 @Component({
   selector: 'app-manager',
@@ -20,9 +22,8 @@ export class ManagerComponent implements OnInit {
   hotels: Hotel[] = [];
   newHotel = new Hotel();
   isEdit: boolean = false;
-
-  person: { id: string; age?: number };
-  constructor(private sharedServiceInfo: SharedServiceShowInfo,private matdialog: MatDialog, private sharedService: SharedService, private http: HttpClient, private router: Router) {
+  user:UsersData;
+  constructor(private sharedServiceInfo: SharedServiceShowInfo,private matdialog: MatDialog, private sharedService: SharedService, private http: HttpClient, private router: Router,private sharedServiceUsers:SharedServiceUsers) {
   }
 
   isResultLoaded = false;
@@ -32,10 +33,17 @@ export class ManagerComponent implements OnInit {
     this.GetHotel(); 
     //  this.hotels=this.sharedService.getAll();
   }
+ 
 
   GetHotel() {
     this.sharedService.getAll().subscribe((data: any) => {
       this.hotels = data;
+      this.hotels.forEach(hotel => {
+        this.sharedServiceUsers.getById(hotel.manager_id).subscribe((userData: any) => {
+          hotel.manager_name = userData.username;
+        });
+      });
+      console.log(this.hotels);
     });
   }
 
@@ -63,8 +71,8 @@ export class ManagerComponent implements OnInit {
         this.matdialog.open(ShowInfoComponent);
       }
       else{
-        newHotel.path_picture = [newHotel.path_picture]; // Оберните path_picture в массив
-        newHotel.services = [newHotel.services]; // Оберните services в массив
+        newHotel.path_picture = [newHotel.path_picture]; 
+        newHotel.services = [newHotel.services];
         this.sharedService.create(newHotel).subscribe(() => {
           this.GetHotel();
           this.newHotel=new Hotel();

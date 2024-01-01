@@ -40,10 +40,17 @@
     <div class="centr">
         <button class="Addhotel" (click)="AddButtonUser()">I want to add a user</button>
         <form *ngIf="isEdit">
-            <!-- <input type="text" placeholder="Name user" class="form-control" [(ngModel)]="user.username" name="username"><br> -->
-            <input type="text" placeholder="Login user" class="form-control" [(ngModel)]="user.login" name="login"><br>
-            <input type="text" placeholder="Password user" class="form-control" [(ngModel)]="user.password" name="password"><br>
+            <input type="text" placeholder="Username" class="form-control" [(ngModel)]="user.username" name="username"><br>
+            <input type="text" placeholder="Login" class="form-control" [(ngModel)]="user.login" name="login"><br>
+            <input type="password" placeholder="Password" class="form-control" [(ngModel)]="user.password" name="password"><br>
+            <input type="text" placeholder="Photo URL" class="form-control" [(ngModel)]="user.photo" name="photo"><br>
+            <input type="date" placeholder="Birthday" class="form-control" [(ngModel)]="user.birthday" name="birthday"><br>
+            <input type="tel" placeholder="Phone Number" class="form-control" [(ngModel)]="user.phonenomber" name="phonenomber"><br>
+            <input type="email" placeholder="Email" class="form-control" [(ngModel)]="user.email" name="email"><br>
+            <input type="text" placeholder="Many" class="form-control" [(ngModel)]="user.many" name="many"><br>
+            <input type="text" placeholder="Role" class="form-control" [(ngModel)]="user.role" name="role"><br>
             <button class="btn btn-warning btn-sm" (click)="AddUser()">Add</button>
         </form>
     </div>
+    
 </div>

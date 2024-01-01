@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   isEdit: boolean = false;
   isEditAdmin: boolean = false;
   isEditManager: boolean = false;
-  authorizationButtonText: string = " ";
+  authorizationButtonText: string = " x";
   loggedInButtonText: string = "Exit";
   notLoggedInButtonText: string = "Login";
   user!: UsersData
@@ -67,14 +67,11 @@ export class HeaderComponent implements OnInit {
       this.sharedService.initdialogRef( dialogRef )
       const subscription = dialogRef.afterClosed().subscribe( result => {
         if ( result ) {
-
           this.checLogin();
-
-          console.log( 'Dialog was closed with result:', result );
+         // console.log( 'Dialog was closed with result:', result );
         } else {
-          console.log( 'Dialog was closed with no result.' );
+         // console.log( 'Dialog was closed with no result.' );
         }
-        // Unsubscribe from Observable
         subscription.unsubscribe();
       } );
     }

@@ -75,8 +75,11 @@ export class AccountComponent {
   }
 
   Save() {
-    this.users = this.users.filter( ( obj ) => this.user.login != this.user.login );
-    this.sharedService.save( this.user ).subscribe( response => {
+    let userCopy = JSON.parse(JSON.stringify(this.user));
+    delete userCopy.password; 
+    console.log(userCopy)
+    this.sharedService.save( userCopy ).subscribe( response => {
+      console.log(response)
     } );
     this.isEdit = !this.isEdit;
     return true;

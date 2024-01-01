@@ -74,67 +74,92 @@ export class BookingComponent implements OnInit {
   }
 
   savehotelsToStorage() {
-    if ( !this.bookingForm.value.payed ) {
-      this.sharedServiceInfo.initErrorInformation( "You didn't pay for the number" )
-      this.matdialog.open( ShowInfoComponent );
-    } else if ( +this.user.many < +this.room.price ) {
-      this.sharedServiceInfo.initErrorInformation( "You don't have enough money" )
-      this.matdialog.open( ShowInfoComponent );
+    if (!this.bookingForm.value.payed) {
+      this.sharedServiceInfo.initErrorInformation("You didn't pay for the number");
+      this.matdialog.open(ShowInfoComponent);
+      return;
     }
-    else {
-      if ( this.bookingForm.value.date_from == this.bookingForm.value.date_to ) {
-        this.sharedServiceInfo.initErrorInformation( "You have chosen the same day for entry and exit, unfortunately we cannot provide a reservation for a period of less than one day, but we are working on it" )
-        this.matdialog.open( ShowInfoComponent );
-      }
-      else {
-        if ( this.bookingForm.value.number == undefined || this.bookingForm.value.number < 0 ) {
-          this.sharedServiceInfo.initErrorInformation( "You have chosen an incorrect value regarding the number of people entering the room" )
-          this.matdialog.open( ShowInfoComponent );
-        }
-
-        else {
-          if ( +this.bookingForm.value.number <= 0 ) {
-            this.sharedServiceInfo.initErrorInformation( "The number of people visiting must be more than 0 people and no more than :" + this.room.number + " person" )
-            this.matdialog.open( ShowInfoComponent );
-          } else {
-            if ( this.bookingForm.value.number > this.room.number ) {
-              this.sharedServiceInfo.initErrorInformation( "You have selected the number of people coming to the room:" + this.bookingForm.value.number + ".But in this room there are restrictions in:" + this.room.number + "person" )
-              this.matdialog.open( ShowInfoComponent );
-            }
-            else {
-              if ( this.bookingForm.value.date_to == undefined ) {
-                this.sharedServiceInfo.initErrorInformation( "You didn't choose the day of departure from the room" )
-                this.matdialog.open( ShowInfoComponent );
-              } else {
-
-                this.sharedServiceInfo.initErrorInformation( "The room is booked for you)" )
-                this.matdialog.closeAll();
-                this.matdialog.open( ShowInfoComponent );
-
-                this.editedRoomBoking.date_from = this.bookingForm.value.date_from ?? '';
-                this.editedRoomBoking.date_to = this.bookingForm.value.date_to ?? '';
-                this.editedRoomBoking.payed = this.bookingForm.value.payed ?? '';
-                this.editedRoomBoking.number = this.bookingForm.value.number ?? '';
-                this.editedRoomBoking.booked_by_user_id = this.user.id
-                this.SharedServiceRoomBooking.post( this.editedRoomBoking );
-                this.user.many = ( this.user.many - ( this.room.price ) );
-                this.SharedServiceUsers.save( this.user ).subscribe( response => {
-                } );
-                this.router.navigate( [ '/' ] );
-
-              }
-            }
-
-          }
-
-        }
-
-      }
-
+  
+    if (+this.user.many < +this.room.price) {
+      this.sharedServiceInfo.initErrorInformation("You don't have enough money");
+      this.matdialog.open(ShowInfoComponent);
+      return;
     }
-
-
+  
+    if (this.bookingForm.value.date_from == this.bookingForm.value.date_to) {
+      this.sharedServiceInfo.initErrorInformation("You have chosen the same day for entry and exit, unfortunately we cannot provide a reservation for a period of less than one day, but we are working on it");
+      this.matdialog.open(ShowInfoComponent);
+      return;
+    }
+  
+    if (this.bookingForm.value.number == undefined || this.bookingForm.value.number < 0) {
+      this.sharedServiceInfo.initErrorInformation("You have chosen an incorrect value regarding the number of people entering the room");
+      this.matdialog.open(ShowInfoComponent);
+      return;
+    }
+  
+    if (+this.bookingForm.value.number <= 0) {
+      this.sharedServiceInfo.initErrorInformation("The number of people visiting must be more than 0 people and no more than :" + this.room.number + " person");
+      this.matdialog.open(ShowInfoComponent);
+      return;
+    }
+  
+    if (this.bookingForm.value.number > this.room.number) {
+      this.sharedServiceInfo.initErrorInformation("You have selected the number of people coming to the room:" + this.bookingForm.value.number + ".But in this room there are restrictions in:" + this.room.number + "person");
+      this.matdialog.open(ShowInfoComponent);
+      return;
+    }
+  
+    if (this.bookingForm.value.date_to == undefined) {
+      this.sharedServiceInfo.initErrorInformation("You didn't choose the day of departure from the room");
+      this.matdialog.open(ShowInfoComponent);
+      return;
+    }
+  
+    let newFromDate = new Date(this.bookingForm.value.date_from ?? '');
+    let newToDate = new Date(this.bookingForm.value.date_to);
+  
+    // Проверка, чтобы дата начала бронирования не была позже даты окончания бронирования
+    if (newFromDate > newToDate) {
+      this.sharedServiceInfo.initErrorInformation("The start date of the booking cannot be later than the end date");
+      this.matdialog.open(ShowInfoComponent);
+      return;
+    }
+  
+    let isOverlap = false;
+    for (let booking of this.roomBookings) {
+      if (booking.room_id === this.room.id) {
+        let existingFromDate = new Date(booking.date_from);
+        let existingToDate = new Date(booking.date_to);
+  
+        if ((newFromDate >= existingFromDate && newFromDate <= existingToDate) ||
+            (newToDate >= existingFromDate && newToDate <= existingToDate)) {
+          this.sharedServiceInfo.initErrorInformation("The room is already booked for the selected period");
+          this.matdialog.open(ShowInfoComponent);
+          isOverlap = true;
+          break;
+        }
+      }
+    }
+  
+    if (!isOverlap) {
+      this.sharedServiceInfo.initErrorInformation("The room is booked for you)");
+      this.matdialog.closeAll();
+      this.matdialog.open(ShowInfoComponent);
+  
+      this.editedRoomBoking.date_from = this.bookingForm.value.date_from ?? '';
+      this.editedRoomBoking.date_to = this.bookingForm.value.date_to ?? '';
+      this.editedRoomBoking.payed = this.bookingForm.value.payed ?? '';
+      this.editedRoomBoking.number = this.bookingForm.value.number ?? '';
+      this.editedRoomBoking.booked_by_user_id = this.user.id;
+      this.SharedServiceRoomBooking.post(this.editedRoomBoking);
+      this.user.many = (this.user.many - (this.room.price));
+      this.SharedServiceUsers.save(this.user).subscribe(response => {});
+      this.router.navigate(['/']);
+    }
   }
+  
+  
 
   Cancel() {
     this.editedRoomBoking.room_id = this.NewRoomBoking.room_id;

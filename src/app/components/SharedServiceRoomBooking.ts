@@ -43,7 +43,7 @@ export class SharedServiceRoomBooking {
     return this.http.get('http://localhost:3000/api/room_booking/')
   }
   async post(roomBooking: RoomBooking) {
-    console.log(roomBooking)
+    // console.log(roomBooking)
     this.http.post('http://localhost:3000/api/room_booking', roomBooking).subscribe((answer: Object) => {
     });
 
@@ -53,7 +53,7 @@ export class SharedServiceRoomBooking {
   //   await this.http.post('http://localhost:3000/api/room_booking', formValue).toPromise();
   // }
   delete(id: bigint) {
-    console.log("ID"+id)
+    //console.log("ID"+id)
     return this.http.delete('http://localhost:3000/api/room_booking/' + id)
 }
 

@@ -5,15 +5,11 @@
             <div>Login</div>
             <input [(ngModel)]="user.login" type="text" placeholder="Your login" class="form-control" name="name"><br>
             <div>Password</div>
-            <input type="password" [(ngModel)]="user.password" placeholder="name" placeholder="Your password"
-                class="form-control"><br>
+            <input type="password" [(ngModel)]="user.password" placeholder="Your password" class="form-control"><br>
             <div class="brt">
                 <button class="logBtn" (click)="Loginnn(user)">Login</button>
                 <button class="regBtn" (click)="Registration()">Register</button>
             </div>
         </div>  
-
     </div>
-    <!-- <button (click)="change(true)">+</button>
-               <button (click)="change(false)">-</button> -->
 </body>

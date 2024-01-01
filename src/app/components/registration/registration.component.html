@@ -1,20 +1,35 @@
 <body>
-    <div class="formRegistration">
-        <div class="informationError">{{informationError}} </div><br>
-        <div class="inputPlusLabels">
-            <div>Login</div>
-            <input [(ngModel)]="user.login" type="text" placeholder="Your future login" class="form-control"
-                name="name"><br>
-            <div>Password</div>
-            <input type="password" [(ng Model)]="user.password" placeholder="name" placeholder="Your future password"
-                class="form-control"><br>
-            <div class="brt">
-                <button class="logBtn" (click)="Cancel()">Cancel</button>
-                <button class="regBtn" (click)="Registration(user.login,user.password)">Register</button>
-            </div>
+    <div class="informationError">{{informationError}} </div><br>
+    <div class="inputPlusLabels">
+        <div>Login</div>
+        <input [(ngModel)]="user.login" type="text"
+            placeholder="Enter your desired login. Only letters and numbers are allowed." class="form-control"
+            name="name" required pattern="[a-zA-Z0-9]+"
+            title="Enter your desired login. Only letters and numbers are allowed."><br>
+        <div>Password</div>
+        <input type="password" [(ngModel)]="user.password" placeholder="Enter your desired password."
+            class="form-control" required title="Enter your desired password."><br>
+        <div>Email</div>
+        <input type="email" [(ngModel)]="user.email" placeholder="Enter your email address." class="form-control"
+            required title="Enter your email address."><br>
+        <div>Phone Number</div>
+        <input type="tel" [(ngModel)]="user.phonenomber"
+            placeholder="XXX-XXX-XXXX phone number in the format: XXX-XXX-XXXX" class="form-control" required
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Phone number format: XXX-XXX-XXXX"><br>
+        <!-- Добавленные поля -->
+        <div>Username</div>
+        <input [(ngModel)]="user.username" type="text" placeholder="Enter your username" class="form-control" required
+            title="Enter your username."><br>
+        <!-- <div>Photo URL</div>
+            <input [(ngModel)]="user.photo" type="url" placeholder="Enter the URL of your photo"
+                class="form-control" title="Enter the URL of your photo."><br> -->
+        <div>Birthday</div>
+        <input [(ngModel)]="user.birthday" type="date" placeholder="Enter your birthday" class="form-control"
+            title="Enter your birthday."><br>
+        <!-- Конец добавленных полей -->
+        <div class="brt">
+            <button class="logBtn" (click)="Cancel()">Cancel</button>
+            <button class="regBtn" (click)="Registration(user)">Register</button>
         </div>
-
     </div>
-    <!-- <button (click)="change(true)">+</button>
-               <button (click)="change(false)">-</button> -->
 </body>

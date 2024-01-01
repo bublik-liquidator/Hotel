@@ -2,7 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog, matDialogAnimations } from '@angular/material/dialog';
 import { HotelData } from '../hotel-data';
 import { SharedService } from '../SharedService';
+import { SharedServiceUsers } from '../SharedServiceUsers';
 import { Hotel } from '../hotel';
+import { UsersData } from '../users-data';
 // FormsModule
 @Component({
   selector: 'app-pop-up',
@@ -10,16 +12,23 @@ import { Hotel } from '../hotel';
   styleUrls: ['./pop-up.component.css'],
 })
 export class PopUpComponent {
-  constructor(private sharedService: SharedService, public matdialog:MatDialog) {}
-  
-  ngOnInit(): void {
-    this.hotel = this.sharedService.gethotel();
-    Hotel.copyFieldsValuesTo(this.hotel, this.editedHotel);
-  }
-
+  constructor(private sharedService: SharedService, public matdialog:MatDialog,private sharedServiceUsers:SharedServiceUsers) {}
+  users: UsersData[];
   hotel = new Hotel(); 
   editedHotel = new Hotel();
 
+  ngOnInit(): void {
+    this.GetUsers()
+    this.hotel = this.sharedService.gethotel();
+    Hotel.copyFieldsValuesTo(this.hotel, this.editedHotel);
+  }
+ 
+
+  GetUsers(){
+    this.sharedServiceUsers.getAll().subscribe((data: UsersData[]) => {
+      this.users = data;
+    });
+  }
 
   savehotelsToStorage() {
     Hotel.copyFieldsValuesTo(this.editedHotel, this.hotel);
