@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { UsersData } from '../users-data';
 import { EditManagerComponent } from '../edit-manager/edit-manager.component';
 import { switchMap } from 'rxjs/operators';
+import { SharedServiceRoomBooking } from '../SharedServiceRoomBooking';
+import { RoomBooking } from '../room-booking';
 
 @Component({
   selector: 'app-admin',
@@ -17,9 +19,9 @@ export class AdminComponent implements OnInit {
   newuser = new UsersData();
   users: UsersData[] = [];
   isEdit: boolean = false;
+  roomBookings: RoomBooking[] = [ new RoomBooking() ];
 
-  person: { id: string; age?: number };
-  constructor(private matdialog: MatDialog, private sharedService: SharedServiceUsers, private http: HttpClient, private router: Router) {
+  constructor(private matdialog: MatDialog, private SharedServiceRoomBooking: SharedServiceRoomBooking, private sharedService: SharedServiceUsers, private http: HttpClient, private router: Router) {
   }
 
   isResultLoaded = false;
@@ -27,6 +29,7 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.GetUser();
+    this.getRoomBooking()
   }
 
   GetUser() {
@@ -58,6 +61,14 @@ export class AdminComponent implements OnInit {
       switchMap(() => this.sharedService.getAll())
     ).subscribe((data: any) => {
       this.users = data;
+    });
+  }
+
+  getRoomBooking() {
+    this.SharedServiceRoomBooking.getAll().subscribe((data: any) => {
+      if (data != null) {
+        this.roomBookings = data;
+      }
     });
   }
 

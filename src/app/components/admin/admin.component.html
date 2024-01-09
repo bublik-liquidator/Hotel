@@ -5,7 +5,7 @@
             <th>Name</th>
             <th>Login</th>
             <th>IMG</th>
-
+            <th>Booked rooms</th>
             <th colspan="2" class="lastTh">button</th>
         </tr>
         <tr *ngFor="let user of users">
@@ -14,17 +14,30 @@
                 </div>
             </td>
             <td>
-                <div class="tablic tex">{{user.username}}</div>                
+                <div class="tablic tex">{{user.username}}</div>
             </td>
             <td>
-                <div class="tablic tex" >
+                <div class="tablic tex">
                     {{user.login}}</div>
             </td>
-       
-            <td>   <div class="tablic" class="thImg"><img class="pictur" src={{user.photo}}><br>
-                {{user.photo}}</div>             
-               
+
+            <td>
+                <div class="tablic" class="thImg"><img class="pictur" src={{user.photo}}><br>
+                    {{user.photo}}</div>
+
             </td>
+            <td>
+                <div class="tablic tex" ><br>
+                    <div *ngFor="let booking of roomBookings">
+                        <div *ngIf="booking.booked_by_user_id == user.id">
+                            name:{{booking.name}}
+                            from-to:{{booking.date_from|date:'HH:mm dd.MM.yyyy' }} - {{booking.date_to|date:'HH:mm
+                            dd.MM.yyyy'}}<br><br>
+                        </div>
+                    </div>
+                </div>
+            </td>
+
 
             <td class="lastTh">
                 <button class="btn btn-warning btn-sm" (click)="EditUser(user)">Edit user</button>
@@ -40,17 +53,21 @@
     <div class="centr">
         <button class="Addhotel" (click)="AddButtonUser()">I want to add a user</button>
         <form *ngIf="isEdit">
-            <input type="text" placeholder="Username" class="form-control" [(ngModel)]="user.username" name="username"><br>
+            <input type="text" placeholder="Username" class="form-control" [(ngModel)]="user.username"
+                name="username"><br>
             <input type="text" placeholder="Login" class="form-control" [(ngModel)]="user.login" name="login"><br>
-            <input type="password" placeholder="Password" class="form-control" [(ngModel)]="user.password" name="password"><br>
+            <input type="password" placeholder="Password" class="form-control" [(ngModel)]="user.password"
+                name="password"><br>
             <input type="text" placeholder="Photo URL" class="form-control" [(ngModel)]="user.photo" name="photo"><br>
-            <input type="date" placeholder="Birthday" class="form-control" [(ngModel)]="user.birthday" name="birthday"><br>
-            <input type="tel" placeholder="Phone Number" class="form-control" [(ngModel)]="user.phonenomber" name="phonenomber"><br>
+            <input type="date" placeholder="Birthday" class="form-control" [(ngModel)]="user.birthday"
+                name="birthday"><br>
+            <input type="tel" placeholder="Phone Number" class="form-control" [(ngModel)]="user.phonenomber"
+                name="phonenomber"><br>
             <input type="email" placeholder="Email" class="form-control" [(ngModel)]="user.email" name="email"><br>
             <input type="text" placeholder="Many" class="form-control" [(ngModel)]="user.many" name="many"><br>
             <input type="text" placeholder="Role" class="form-control" [(ngModel)]="user.role" name="role"><br>
             <button class="btn btn-warning btn-sm" (click)="AddUser()">Add</button>
         </form>
     </div>
-    
+
 </div>

@@ -71,10 +71,14 @@ export class SharedServiceUsers {
 
   saveInfoUser(user: UsersData, hotelId: number) {
     const userUpdate = this.http.put(`http://localhost:3000/api/user/${user.id}`, user).toPromise();
-    const managerAssign = this.http.put(`http://localhost:3000/api/hotel/${hotelId}/assign_manager`, { manager_id: user.id }).toPromise();
-  
-    return Promise.all([userUpdate, managerAssign]);
-  }
+
+    if (hotelId) {
+        const managerAssign = this.http.put(`http://localhost:3000/api/hotel/${hotelId}/assign_manager`, { manager_id: user.id }).toPromise();
+        return Promise.all([userUpdate, managerAssign]);
+    } else {
+        return userUpdate;
+    }
+}
 
   delete( id: bigint ): Observable<any> {
     return this.http.delete( 'http://localhost:3000/api/user/' + id )
