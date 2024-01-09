@@ -36,20 +36,21 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { AuthInterceptor } from './components/token.interceptor';
+import { AuthGuardGuard } from './components/auth-guard.guard';
 
 const appRoutes: Routes = [
-  {path:'',component:HotelsComponent},//HotelsComponent StartLoginComponent
+  {path:'',component:HotelsComponent},
   {path:'room',component:RoomComponent},
   {path:'about',component:ContactsComponent},
-  {path:'admin',component:AdminComponent},
-  {path:'manager',component:ManagerComponent},
+  {path:'admin',component:AdminComponent, canActivate: [AuthGuardGuard], data: {expectedRole: 'admin'}},
+  {path:'manager',component:ManagerComponent, canActivate: [AuthGuardGuard], data: {expectedRole: ['admin', 'manager']}},
   {path:'login',component:LoginComponent},
   {path:'registration',component:RegistrationComponent},
-  {path:'account',component:AccountComponent},
-  {path:'EditRoomComponent',component:EditRoomComponent},
-
-  
+  {path:'account',component:AccountComponent, canActivate: [AuthGuardGuard], data: {expectedRoles: ['user', 'admin', 'manager']}},
+  {path:'EditRoomComponent',component:EditRoomComponent, canActivate: [AuthGuardGuard], data: {expectedRole: ['admin', 'manager']}}
 ]
+
+
 
 @NgModule({
   declarations: [
