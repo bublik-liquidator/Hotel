@@ -61,6 +61,10 @@ export class SharedServiceUsers {
     return this.http.post( 'http://localhost:3000/api/register/admin', user )
 }
 
+createUser( user: UsersData ){
+  console.log(user)
+  return this.http.post( 'http://localhost:3000/api/register', user )
+}
   save( user: UsersData ) {
     return this.http.put( 'http://localhost:3000/api/user/' + user.id, user );
   }

@@ -47,7 +47,7 @@ const appRoutes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'registration',component:RegistrationComponent},
   {path:'account',component:AccountComponent, canActivate: [AuthGuardGuard], data: {expectedRoles: ['user', 'admin', 'manager']}},
-  {path:'EditRoomComponent',component:EditRoomComponent, canActivate: [AuthGuardGuard], data: {expectedRole: ['admin', 'manager']}}
+  {path:'EditRoomComponent',component:EditRoomComponent, canActivate: [AuthGuardGuard], data: {expectedRoles: ['admin', 'manager']}}
 ]
 
 

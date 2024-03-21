@@ -1,13 +1,11 @@
-
 .brt {
   display: flex;
   justify-content: space-between;
 }
 
 .informationError {
-  color: #1d2331;
+  color: #311d1d;
   font-size: 20px;
-  position: absolute;
 }
 
 .inputPlusLabels {
@@ -44,11 +42,8 @@ body {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  /* what is below can be deleted */
   overflow-x: hidden;
-  overflow-y: hidden;
 }
-
 
 .informationError {
   flex-grow: 1;
